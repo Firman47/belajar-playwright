@@ -2,7 +2,9 @@ import { test, expect } from "@playwright/test";
 import { LoginPage } from "./pages/LoginPage";
 
 test.describe("Authentication - Login", () => {
-  test("[AUTH-001] Login valid - berhasil login dan redirect", async ({ page }) => {
+  test("[AUTH-001] Login valid - berhasil login dan redirect", async ({
+    page,
+  }) => {
     const loginPage = new LoginPage(page);
 
     await test.step("Buka halaman login", async () => {
@@ -18,7 +20,9 @@ test.describe("Authentication - Login", () => {
     });
   });
 
-  test("[AUTH-004] Username kosong - muncul validasi username required", async ({ page }) => {
+  test("[AUTH-002] Username kosong - muncul validasi username required", async ({
+    page,
+  }) => {
     const loginPage = new LoginPage(page);
 
     await test.step("Buka halaman login", async () => {
@@ -34,7 +38,9 @@ test.describe("Authentication - Login", () => {
     });
   });
 
-  test("[AUTH-005] Password kosong - validasi mencegah form submit", async ({ page }) => {
+  test("[AUTH-003] Password kosong - validasi mencegah form submit", async ({
+    page,
+  }) => {
     const loginPage = new LoginPage(page);
 
     await test.step("Buka halaman login", async () => {
@@ -52,7 +58,9 @@ test.describe("Authentication - Login", () => {
     });
   });
 
-  test("[AUTH-002] Invalid username - API 401 dan UI toast muncul", async ({ page }) => {
+  test("[AUTH-004] Invalid username - API 401 dan UI toast muncul", async ({
+    page,
+  }) => {
     const loginPage = new LoginPage(page);
 
     await test.step("Buka halaman login", async () => {
@@ -70,24 +78,23 @@ test.describe("Authentication - Login", () => {
     });
 
     await test.step("Verifikasi toast error tampil", async () => {
-      await expect(loginPage.toastError).toBeVisible({ timeout: 10000 });
+      await expect(loginPage.toast).toBeVisible({ timeout: 10000 });
     });
 
-    await test.step("Ambil screenshot toast", async () => {
-      await loginPage.toastError.screenshot({
-        path: "evidence-login-toast.png",
-      });
-    });
-
-    await test.step("Verifikasi pesan toast", async () => {
-      // BUG: UI menampilkan localization key, bukan pesan dari API
+    await test.step("Verifikasi pesan toast harus sama dengan API", async () => {
+      // BUG: UI menampilkan "Login failed" tapi API return "Invalid username or password"
       // API: "Invalid username or password"
-      // UI:  "common.toast.auth.login_failed"
-      await expect(loginPage.toastError).toHaveText("Invalid username or password");
+      // UI Title: "Login failed"
+      // UI Description: "Login failed"
+      await expect(loginPage.toastDescription).toHaveText(
+        "Invalid username or password",
+      );
     });
   });
 
-  test("[AUTH-003] Invalid password - API 401 dan UI toast muncul", async ({ page }) => {
+  test("[AUTH-005] Invalid password - API 401 dan UI toast muncul", async ({
+    page,
+  }) => {
     const loginPage = new LoginPage(page);
 
     await test.step("Buka halaman login", async () => {
@@ -105,7 +112,17 @@ test.describe("Authentication - Login", () => {
     });
 
     await test.step("Verifikasi toast error tampil", async () => {
-      await expect(loginPage.toastError).toBeVisible({ timeout: 10000 });
+      await expect(loginPage.toast).toBeVisible({ timeout: 10000 });
+    });
+
+    await test.step("Verifikasi pesan toast harus sama dengan API", async () => {
+      // BUG: UI menampilkan "Login failed" tapi API return "Invalid username or password"
+      // API: "Invalid username or password"
+      // UI Title: "Login failed"
+      // UI Description: "Login failed"
+      await expect(loginPage.toastDescription).toHaveText(
+        "Invalid username or password",
+      );
     });
   });
 });

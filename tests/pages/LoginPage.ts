@@ -43,8 +43,16 @@ export class LoginPage {
     return this.page.getByText("Username is required");
   }
 
-  get toastError() {
-    return this.page.getByText("common.toast.auth.login_failed").first();
+  get toast() {
+    return this.page.getByRole("alert").first();
+  }
+
+  get toastTitle() {
+    return this.toast.locator('[data-slot="title"]').first();
+  }
+
+  get toastDescription() {
+    return this.toast.locator('[data-slot="description"]').first();
   }
 
   async waitAndGetLoginResponse(): Promise<{ status: number; body: Record<string, unknown> }> {
