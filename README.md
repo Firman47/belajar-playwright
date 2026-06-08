@@ -1,76 +1,83 @@
 # E-Commerce Playwright Tests
 
-## Test Execution
+## Project Structure
 
-### Run all tests
+```
+.
+├── tests/              # Test specifications
+│   ├── login.spec.ts   # Authentication tests
+│   └── pages/          # Page Object Models
+├── docs/               # Documentation
+│   ├── AUTH_TEST_CASES.md      # Test case mapping
+│   └── BUG_REPORT_TEMPLATE.md  # Bug report template
+├── playwright.config.ts        # Playwright configuration
+├── test-results/       # Test artifacts (auto-generated)
+└── playwright-report/  # HTML Report (auto-generated)
+```
+
+## Run Tests
+
 ```bash
+# Run all tests
 npx playwright test
-```
 
-### Run specific test file
-```bash
+# Run specific test file
 npx playwright test tests/login.spec.ts
-```
 
-### Run tests with UI mode (interactive)
-```bash
+# Run with UI mode (interactive)
 npx playwright test --ui
-```
 
-### Run tests in headed mode (see browser)
-```bash
+# Run headed (see browser)
 npx playwright test --headed
-```
 
-### Run tests for specific project
-```bash
+# Run specific project
 npx playwright test --project=chromium
 ```
 
-## Generate & View Report
+## Open HTML Report
 
-### Generate HTML report (auto-generated after test run)
 ```bash
-npx playwright test --reporter=html
-```
-
-### Open last HTML report
-```bash
+# Open last report
 npx playwright show-report
-```
 
-### Open specific report folder
-```bash
+# Open specific report
 npx playwright show-report playwright-report
 ```
 
-## Test Artifacts Location
+## Locate Evidence (Playwright HTML Report)
 
-After test execution, find artifacts in:
+The **HTML Report is the single source of truth** for all evidence. No separate markdown files needed.
 
-| Artifact | Location | Description |
-|----------|----------|-------------|
-| **HTML Report** | `playwright-report/` | Interactive report with test results, screenshots, videos, traces |
-| **Screenshots** | `test-results/` | Captured on failure (`.png`) |
-| **Videos** | `test-results/` | Recorded on failure (`.webm`) |
-| **Traces** | `test-results/` | Trace files for debugging (`.zip`) |
-| **JSON Results** | `test-results/results.json` | Machine-readable test results |
-| **JUnit XML** | `test-results/results.xml` | CI/CD integration format |
+| Evidence | How to Access |
+|----------|---------------|
+| **Screenshots** | Report → Test → **Screenshot** tab (captured on failure) |
+| **Videos** | Report → Test → **Video** tab (recorded on failure) |
+| **Traces** | Report → Test → **Trace** tab → click `.zip` to open in Trace Viewer |
+| **Error Details** | Report → Test → **Errors** tab (stack trace, API responses) |
+| **Test Steps** | Report → Test → **Steps** tab (test.step() actions) |
 
-## Configuration
+### Trace Viewer (Debugging)
+```bash
+npx playwright show-trace test-results/<trace-file>.zip
+```
 
-- **Reporter**: HTML, JSON, JUnit (see `playwright.config.ts`)
-- **Screenshots**: Captured only on failure
-- **Videos**: Retained only on failure
-- **Traces**: Captured on first retry
-- **Retries**: 2 on CI, 0 locally
+## Documentation
 
-## Test Structure
+- [Test Cases](docs/AUTH_TEST_CASES.md) - Test ID mapping
+- [Bug Report Template](docs/BUG_REPORT_TEMPLATE.md) - Simplified template (Bahasa Indonesia)
 
-Tests use `test.step()` for clear action grouping:
-- Navigate to page
-- Perform action
-- Verify result
-- Capture evidence (on failure)
+## Why Playwright HTML Report is Sufficient
 
-Test cases follow `[AUTH-XXX]` ID convention (see `AUTH_TEST_CASES.md`).
+1. **Built-in evidence**: Screenshots, videos, traces automatically attached to failed tests
+2. **Interactive debugging**: Trace Viewer shows DOM, network, console, timeline
+3. **No duplication**: Evidence lives in report, not scattered markdown files
+4. **Developer-friendly**: Click test → see everything (steps, errors, artifacts)
+5. **CI/CD ready**: HTML report published as artifact in pipelines
+6. **Single source**: One report URL shares all context with team
+
+## Configuration Highlights (playwright.config.ts)
+
+- `screenshot: "only-on-failure"` - Capture on failure only
+- `video: "retain-on-failure"` - Record video on failure
+- `trace: "on-first-retry"` - Capture trace for debugging flaky tests
+- Reporters: HTML (primary), JSON, JUnit
