@@ -9,7 +9,8 @@ import { defineConfig, devices } from "@playwright/test";
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
- * See https://playwright.dev/docs/test-configuration.
+ * Playwright Test Configuration
+ * See https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
   testDir: "./tests",
@@ -21,22 +22,39 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+
+  /* Reporter configuration
+   * HTML Reporter: Interactive report with screenshots, videos, traces
+   * JSON Reporter: Machine-readable results for CI integration
+   * JUnit Reporter: Standard XML format for CI/CD pipelines
+   */
   reporter: [
-    ["html"],
+    ["html", { 
+      open: "never", 
+      outputFolder: "playwright-report" 
+    }],
     ["json", { outputFile: "test-results/results.json" }],
     ["junit", { outputFile: "test-results/results.xml" }],
   ],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+
+  /* Shared settings for all projects */
   use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
+    /* Base URL for tests - uncomment and set if needed */
     // baseURL: 'http://localhost:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    /* Capture screenshot on failure only - reduces storage */
     screenshot: "only-on-failure",
+    /* Record video only for failed tests */
     video: "retain-on-failure",
+    /* Capture trace on first retry - helps debug flaky tests */
     trace: "on-first-retry",
+    /* Set test timeout (default 30s) */
+    actionTimeout: 15000,
+    navigationTimeout: 30000,
   },
+
+  /* Output directories for artifacts */
+  outputDir: "test-results/",
 
   /* Configure projects for major browsers */
   projects: [
@@ -44,37 +62,20 @@ export default defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
-
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
     // },
-
     // {
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },
     // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
+
+  /* Test metadata for better reporting */
+  metadata: {
+    description: "E-Commerce Authentication Tests",
+  },
 
   /* Run your local dev server before starting the tests */
   // webServer: {
