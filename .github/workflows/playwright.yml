@@ -80,18 +80,17 @@ jobs:
             STATUS="❌ FAILED"
           fi
 
-          curl -H "Content-Type: application/json" \
-            -X POST \
-            -d "{
-              \"content\": \"$STATUS Playwright Test Result
-              
-              Repository: ${{ github.repository }}
+          MESSAGE="$STATUS
 
-              Branch: ${{ github.ref_name }}
+          Repository: ${{ github.repository }}
+          Branch: ${{ github.ref_name }}
+          Actor: ${{ github.actor }}
 
-              Actor: ${{ github.actor }}
+          Report:
+          https://firman47.github.io/belajar-playwright/"
 
-              Report:
-              https://firman47.github.io/belajar-playwright/\"
-            }" \
-            "$DISCORD_WEBHOOK_URL"
+              jq -n --arg content "$MESSAGE" '{content:$content}' \
+              | curl -H "Content-Type: application/json" \
+                -X POST \
+                -d @- \
+                "$DISCORD_WEBHOOK_URL"
