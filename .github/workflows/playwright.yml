@@ -15,23 +15,26 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - uses: pnpm/action-setup@v4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
         with:
           version: 10
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: pnpm install
 
-      - name: Install Playwright
+      - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
 
-      - name: Run tests
+      - name: Run Playwright Tests
         run: pnpm exec playwright test
 
       - name: Upload Test Artifacts
@@ -43,7 +46,9 @@ jobs:
             playwright-report
             test-results
 
-      # ===== GITHUB PAGES =====
+      # ==========================
+      # GitHub Pages
+      # ==========================
 
       - name: Setup Pages
         if: always()
@@ -57,4 +62,36 @@ jobs:
 
       - name: Deploy to GitHub Pages
         if: always()
+        id: deployment
         uses: actions/deploy-pages@v4
+
+      # ==========================
+      # Discord Notification
+      # ==========================
+
+      - name: Notify Discord
+        if: always()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            STATUS="✅ PASSED"
+          else
+            STATUS="❌ FAILED"
+          fi
+
+          curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "{
+              \"content\": \"$STATUS Playwright Test Result
+              
+              Repository: ${{ github.repository }}
+
+              Branch: ${{ github.ref_name }}
+
+              Actor: ${{ github.actor }}
+
+              Report:
+              https://firman47.github.io/belajar-playwright/\"
+            }" \
+            "$DISCORD_WEBHOOK_URL"
