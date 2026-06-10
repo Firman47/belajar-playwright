@@ -1,0 +1,38 @@
+name: Daily Smoke Test
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 1 * * *"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - run: pnpm install
+
+      - run: pnpm exec playwright install --with-deps
+
+      - run: pnpm exec playwright test tests/smoke
+
+      - name: Notify Discord
+        if: failure()
+        run: |
+          curl -X POST "$DISCORD_WEBHOOK_URL" \
+          -H "Content-Type: application/json" \
+          -d "{\"content\":\"🚨 Daily Smoke Test Failed
+
+          Report:
+          https://firman47.github.io/belajar-playwright/\"}"
