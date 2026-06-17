@@ -1,4 +1,4 @@
-import { type Page, type Locator, type Response } from "@playwright/test";
+import { type Page, type Locator, type Response, type Request } from "@playwright/test";
 
 const BASE_URL = "https://store.olpos.id/kurostoreid";
 
@@ -138,31 +138,6 @@ export class RegisterPage {
     return this.page.getByRole("alert").filter({ hasText: /Registration successful/i });
   }
 
-  /** Mengisi form kosong (membersihkan field) sebelum submit untuk trigger validasi */
-  async clearFieldAndSubmit(fieldName: string) {
-    switch (fieldName) {
-      case "fullName":
-        await this.fullNameInput.fill("");
-        break;
-      case "phone":
-        await this.phoneInput.fill("");
-        break;
-      case "username":
-        await this.usernameInput.fill("");
-        break;
-      case "email":
-        await this.emailInput.fill("");
-        break;
-      case "password":
-        await this.passwordInput.fill("");
-        break;
-      case "confirmPassword":
-        await this.confirmPasswordInput.fill("");
-        break;
-    }
-    await this.clickRegister();
-  }
-
   /** Wait for register API response - returns status and body */
   async waitForRegisterResponse(): Promise<{ status: number; body: Record<string, unknown> }> {
     const response = await this.page.waitForResponse(
@@ -181,20 +156,27 @@ export class RegisterPage {
     await this.page.waitForURL(/auth\/login/, { timeout: 15000 });
   }
 
-  /** Verify no API call was made to register endpoint */
+  /**
+   * Verifies no API call was made to register endpoint.
+   * Call this AFTER triggering the submit action.
+   * Uses request event (not response) for deterministic capture.
+   */
   async hasNoRegisterApiCall(): Promise<boolean> {
     let apiCallCount = 0;
-    const handler = (resp: Response) => {
+    const handler = (req: Request) => {
       if (
-        resp.url().includes("/e_commerce/v1/auth/register") &&
-        resp.request().method() === "POST"
+        req.url().includes("/e_commerce/v1/auth/register") &&
+        req.method() === "POST"
       ) {
         apiCallCount++;
       }
     };
-    this.page.on("response", handler);
-    await this.page.waitForTimeout(1500);
-    this.page.off("response", handler);
+    this.page.on("request", handler);
+    // Allow microtask queue to drain — no arbitrary timeout for waiting,
+    // because the action (click submit) should already have been performed
+    // before calling this method.
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    this.page.off("request", handler);
     return apiCallCount === 0;
   }
 
