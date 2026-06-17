@@ -1,0 +1,8 @@
+[     594ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[     594ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   15165ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   15165ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   16225ms] [ERROR] Failed to load resource: the server responded with a status of 409 (Conflict) @ https://be.olpos.id/e_commerce/v1/auth/register:0
+[   16231ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://be.olpos.id/e_commerce/v1/me:0

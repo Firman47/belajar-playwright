@@ -1,0 +1,297 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - banner [ref=e4]:
+        - generic [ref=e5]:
+          - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+            - /url: /kurostoreid
+            - img "kuroStoreID" [ref=e8]
+          - generic [ref=e10]:
+            - button "Category" [ref=e11] [cursor=pointer]:
+              - generic [ref=e12]: Category
+            - textbox "Search products, categories, etc." [ref=e16]
+          - generic [ref=e20]:
+            - button "EN" [ref=e21] [cursor=pointer]:
+              - generic [ref=e23]: EN
+            - link "Login" [ref=e25] [cursor=pointer]:
+              - /url: /kurostoreid/auth/login
+              - generic [ref=e26]: Login
+      - main [ref=e27]:
+        - generic [ref=e28]:
+          - region [ref=e31]:
+            - generic [ref=e33]:
+              - tabpanel [ref=e34]:
+                - link "Banner Image Lihat Detail" [ref=e35] [cursor=pointer]:
+                  - /url: https://drive.google.com/drive/u/0/folders/1JN5KCKRqwg6jsA38klN2PpzdSwma_Jd1
+                  - img "Banner Image" [ref=e36]
+                  - generic:
+                    - generic: Lihat Detail
+              - tabpanel [ref=e37]:
+                - link "Banner Image Lihat Detail" [ref=e38] [cursor=pointer]:
+                  - /url: /test
+                  - img "Banner Image" [ref=e39]
+                  - generic:
+                    - generic: Lihat Detail
+              - tabpanel [ref=e40]:
+                - link "Banner Image Lihat Detail" [ref=e41] [cursor=pointer]:
+                  - /url: /agus link
+                  - img "Banner Image" [ref=e42]
+                  - generic:
+                    - generic: Lihat Detail
+            - generic:
+              - tablist "Choose slide to display":
+                - tab "Go to slide 1" [selected]
+                - tab "Go to slide 2"
+                - tab "Go to slide 3"
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e50]:
+                - generic [ref=e51]:
+                  - heading "Check Service Status" [level=3] [ref=e52]
+                  - generic [ref=e53]: Baru
+                - paragraph [ref=e54]: Track your device repair progress quickly and transparently.
+              - generic [ref=e56]:
+                - generic [ref=e57]:
+                  - generic [ref=e60]: Service Code*
+                  - generic [ref=e62]:
+                    - textbox "Service Code*" [ref=e64]:
+                      - /placeholder: "Example: SRV-2026-00123"
+                    - button "Paste from clipboard" [ref=e67] [cursor=pointer]
+                - generic [ref=e69]:
+                  - paragraph [ref=e70]: After submitting, you will be redirected to the official service tracking page.
+                  - button "Check Status Now" [disabled] [ref=e71]:
+                    - generic [ref=e73]: Check Status Now
+            - generic [ref=e74]:
+              - generic [ref=e79]:
+                - heading "Build PC" [level=3] [ref=e80]
+                - paragraph [ref=e81]: Design your ideal PC for your needs and budget with confidence.
+              - generic [ref=e83]:
+                - generic [ref=e84]:
+                  - paragraph [ref=e87]: Get balanced and compatible component recommendations.
+                  - paragraph [ref=e90]: Choose setups for work, gaming, or creative workloads.
+                  - paragraph [ref=e93]: Continue to the builder page for detailed configuration.
+                - link "Start Building" [ref=e95] [cursor=pointer]:
+                  - /url: /kurostoreid/simasko/rakit-komputer
+                  - generic [ref=e97]: Start Building
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - generic [ref=e101]:
+                - heading "All Products" [level=2] [ref=e102]
+                - paragraph [ref=e103]: Temukan produk terbaik untuk Anda
+              - combobox [ref=e104]:
+                - generic: Terbaru
+            - generic [ref=e107]:
+              - generic [ref=e110]:
+                - paragraph [ref=e111]: Category
+                - generic [ref=e112]:
+                  - link "Casing" [ref=e113] [cursor=pointer]:
+                    - /url: /kurostoreid/casing
+                    - generic [ref=e115]: Casing
+                  - link "CPU Cooler" [ref=e116] [cursor=pointer]:
+                    - /url: /kurostoreid/cpu-cooler
+                    - generic [ref=e118]: CPU Cooler
+                  - link "Graphic Card" [ref=e119] [cursor=pointer]:
+                    - /url: /kurostoreid/graphic-card
+                    - generic [ref=e121]: Graphic Card
+                  - link "Keyboard" [ref=e122] [cursor=pointer]:
+                    - /url: /kurostoreid/keyboard
+                    - generic [ref=e124]: Keyboard
+                  - link "Laptop" [ref=e125] [cursor=pointer]:
+                    - /url: /kurostoreid/laptop
+                    - generic [ref=e127]: Laptop
+                  - link "Laptop Gaming" [ref=e128] [cursor=pointer]:
+                    - /url: /kurostoreid/laptop-gaming
+                    - generic [ref=e130]: Laptop Gaming
+                  - link "ma" [ref=e131] [cursor=pointer]:
+                    - /url: /kurostoreid/ma
+                    - generic [ref=e133]: ma
+                  - link "Monitor" [ref=e134] [cursor=pointer]:
+                    - /url: /kurostoreid/monitor
+                    - generic [ref=e136]: Monitor
+                  - link "Motherboard" [ref=e137] [cursor=pointer]:
+                    - /url: /kurostoreid/motherboard
+                    - generic [ref=e139]: Motherboard
+                  - link "mouse" [ref=e140] [cursor=pointer]:
+                    - /url: /kurostoreid/mouse
+                    - generic [ref=e142]: mouse
+                  - link "Power Supply" [ref=e143] [cursor=pointer]:
+                    - /url: /kurostoreid/power-supply
+                    - generic [ref=e145]: Power Supply
+                  - link "Processor" [ref=e146] [cursor=pointer]:
+                    - /url: /kurostoreid/processor
+                    - generic [ref=e148]: Processor
+                  - link "RAM" [ref=e149] [cursor=pointer]:
+                    - /url: /kurostoreid/ram
+                    - generic [ref=e151]: RAM
+                  - link "Storage" [ref=e152] [cursor=pointer]:
+                    - /url: /kurostoreid/storage
+                    - generic [ref=e154]: Storage
+                  - link "VGA" [ref=e155] [cursor=pointer]:
+                    - /url: /kurostoreid/vga
+                    - generic [ref=e157]: VGA
+              - generic [ref=e160]:
+                - link "Keyboard Keyboard Rp. 100.000" [ref=e161] [cursor=pointer]:
+                  - /url: /kurostoreid/keyboard
+                  - generic [ref=e166]:
+                    - paragraph [ref=e167]: Keyboard
+                    - paragraph [ref=e168]: Keyboard
+                    - paragraph [ref=e169]: Rp. 100.000
+                - link "Monitor Monitor Rp. 100.000" [ref=e170] [cursor=pointer]:
+                  - /url: /kurostoreid/monitor
+                  - generic [ref=e175]:
+                    - paragraph [ref=e176]: Monitor
+                    - paragraph [ref=e177]: Monitor
+                    - paragraph [ref=e178]: Rp. 100.000
+                - link "Casing Casing Rp. 100.000" [ref=e179] [cursor=pointer]:
+                  - /url: /kurostoreid/casing
+                  - generic [ref=e184]:
+                    - paragraph [ref=e185]: Casing
+                    - paragraph [ref=e186]: Casing
+                    - paragraph [ref=e187]: Rp. 100.000
+                - link "CPU Cooler CPU Cooler Rp. 100.000" [ref=e188] [cursor=pointer]:
+                  - /url: /kurostoreid/cpu-cooler
+                  - generic [ref=e193]:
+                    - paragraph [ref=e194]: CPU Cooler
+                    - paragraph [ref=e195]: CPU Cooler
+                    - paragraph [ref=e196]: Rp. 100.000
+                - link "VGA Graphic Card Rp. 100.000" [ref=e197] [cursor=pointer]:
+                  - /url: /kurostoreid/graphic-card
+                  - generic [ref=e202]:
+                    - paragraph [ref=e203]: VGA
+                    - paragraph [ref=e204]: Graphic Card
+                    - paragraph [ref=e205]: Rp. 100.000
+                - link "Power Supply Power Supply 500W Rp. 100.000" [ref=e206] [cursor=pointer]:
+                  - /url: /kurostoreid/power-supply-500w
+                  - generic [ref=e211]:
+                    - paragraph [ref=e212]: Power Supply
+                    - paragraph [ref=e213]: Power Supply 500W
+                    - paragraph [ref=e214]: Rp. 100.000
+                - link "Storage SSD 1t Rp. 100.000" [ref=e215] [cursor=pointer]:
+                  - /url: /kurostoreid/ssd-1t
+                  - generic [ref=e220]:
+                    - paragraph [ref=e221]: Storage
+                    - paragraph [ref=e222]: SSD 1t
+                    - paragraph [ref=e223]: Rp. 100.000
+                - link "RAM RAM 12gb Rp. 100.000" [ref=e224] [cursor=pointer]:
+                  - /url: /kurostoreid/ram-12gb
+                  - generic [ref=e229]:
+                    - paragraph [ref=e230]: RAM
+                    - paragraph [ref=e231]: RAM 12gb
+                    - paragraph [ref=e232]: Rp. 100.000
+                - link "Motherboard Motherboard Rp. 100.000" [ref=e233] [cursor=pointer]:
+                  - /url: /kurostoreid/motherboard
+                  - generic [ref=e238]:
+                    - paragraph [ref=e239]: Motherboard
+                    - paragraph [ref=e240]: Motherboard
+                    - paragraph [ref=e241]: Rp. 100.000
+                - link "Processor Processor Rp. 100.000" [ref=e242] [cursor=pointer]:
+                  - /url: /kurostoreid/processor
+                  - generic [ref=e247]:
+                    - paragraph [ref=e248]: Processor
+                    - paragraph [ref=e249]: Processor
+                    - paragraph [ref=e250]: Rp. 100.000
+                - link "produk 7jt Rp. 7.000.000" [ref=e251] [cursor=pointer]:
+                  - /url: /kurostoreid/produk-7jt
+                  - generic [ref=e256]:
+                    - paragraph
+                    - paragraph [ref=e257]: produk 7jt
+                    - paragraph [ref=e258]: Rp. 7.000.000
+                - link "produk 5jt Rp. 5.000.000" [ref=e259] [cursor=pointer]:
+                  - /url: /kurostoreid/produk-5jt
+                  - generic [ref=e264]:
+                    - paragraph
+                    - paragraph [ref=e265]: produk 5jt
+                    - paragraph [ref=e266]: Rp. 5.000.000
+                - link "prudk 1jt Rp. 1.000.000" [ref=e267] [cursor=pointer]:
+                  - /url: /kurostoreid/prudk-1jt
+                  - generic [ref=e272]:
+                    - paragraph
+                    - paragraph [ref=e273]: prudk 1jt
+                    - paragraph [ref=e274]: Rp. 1.000.000
+                - link "produk 700k Rp. 700.000" [ref=e275] [cursor=pointer]:
+                  - /url: /kurostoreid/produk-700k
+                  - generic [ref=e280]:
+                    - paragraph
+                    - paragraph [ref=e281]: produk 700k
+                    - paragraph [ref=e282]: Rp. 700.000
+                - link "produk 500k Rp. 500.000" [ref=e283] [cursor=pointer]:
+                  - /url: /kurostoreid/produk-500k
+                  - generic [ref=e288]:
+                    - paragraph
+                    - paragraph [ref=e289]: produk 500k
+                    - paragraph [ref=e290]: Rp. 500.000
+                - link "produk 200k Rp. 200.000" [ref=e291] [cursor=pointer]:
+                  - /url: /kurostoreid/produk-200k
+                  - generic [ref=e296]:
+                    - paragraph
+                    - paragraph [ref=e297]: produk 200k
+                    - paragraph [ref=e298]: Rp. 200.000
+                - link "produk 100k Rp. 100.000" [ref=e299] [cursor=pointer]:
+                  - /url: /kurostoreid/produk-100k
+                  - generic [ref=e304]:
+                    - paragraph
+                    - paragraph [ref=e305]: produk 100k
+                    - paragraph [ref=e306]: Rp. 100.000
+                - link "Produk 90k Rp. 90.000" [ref=e307] [cursor=pointer]:
+                  - /url: /kurostoreid/produk-90k
+                  - generic [ref=e312]:
+                    - paragraph
+                    - paragraph [ref=e313]: Produk 90k
+                    - paragraph [ref=e314]: Rp. 90.000
+                - 'link "Product image: Zelotes F35 Wireless Rechargeable Vertical Ergonomic Gaming Mouse || 2400 DPI 6 programmable button mouse Zelotes F35 Wireless Rechargeable Vertical Ergonomic Gaming Mouse || 2400 DPI 6 programmable button Rp. 2" [ref=e315] [cursor=pointer]':
+                  - /url: /kurostoreid/zelotes-f35-wireless-rechargeable-vertical-ergonomic-gaming-mouse-2400-dpi-6-programmable-button
+                  - generic [ref=e316]:
+                    - 'img "Product image: Zelotes F35 Wireless Rechargeable Vertical Ergonomic Gaming Mouse || 2400 DPI 6 programmable button" [ref=e318]'
+                    - generic [ref=e321]:
+                      - paragraph [ref=e322]: mouse
+                      - paragraph [ref=e323]: Zelotes F35 Wireless Rechargeable Vertical Ergonomic Gaming Mouse || 2400 DPI 6 programmable button
+                      - paragraph [ref=e324]: Rp. 2
+                - 'link "Product image: Lenovo LOQ 15 Intel Core i7 13650HX 32GB DDR5 1TB SSD RTX4050-6GB FHD IPS 100%sRGB Win 11 + OHS Laptop Lenovo LOQ 15 Intel Core i7 13650HX 32GB DDR5 1TB SSD RTX4050-6GB FHD IPS 100%sRGB Win 11 + OHS Rp. 18.999.000" [ref=e325] [cursor=pointer]':
+                  - /url: /kurostoreid/lenovo-loq-15-intel-core-i7-13650hx-32gb-ddr5-1tb-ssd-rtx4050-6gb-fhd-ips-100srgb-win-11-ohs
+                  - generic [ref=e326]:
+                    - 'img "Product image: Lenovo LOQ 15 Intel Core i7 13650HX 32GB DDR5 1TB SSD RTX4050-6GB FHD IPS 100%sRGB Win 11 + OHS" [ref=e328]'
+                    - generic [ref=e331]:
+                      - paragraph [ref=e332]: Laptop
+                      - paragraph [ref=e333]: Lenovo LOQ 15 Intel Core i7 13650HX 32GB DDR5 1TB SSD RTX4050-6GB FHD IPS 100%sRGB Win 11 + OHS
+                      - paragraph [ref=e334]: Rp. 18.999.000
+      - contentinfo [ref=e336]:
+        - generic [ref=e337]:
+          - generic [ref=e338]:
+            - generic [ref=e339]:
+              - img "kuroStoreID" [ref=e340]
+              - generic [ref=e341]:
+                - heading "kuroStoreID" [level=2] [ref=e342]
+                - paragraph [ref=e343]: "-"
+            - generic [ref=e344]:
+              - button "Belanja" [ref=e345]:
+                - heading "Belanja" [level=3] [ref=e346]
+              - generic [ref=e348]:
+                - link "About Us" [ref=e349] [cursor=pointer]:
+                  - /url: /kurostoreid/about
+                - link "Privacy Policy" [ref=e350] [cursor=pointer]:
+                  - /url: /privacy
+                - link "Terms of Service" [ref=e351] [cursor=pointer]:
+                  - /url: /terms
+            - generic [ref=e352]:
+              - button "Contact" [ref=e353]:
+                - heading "Contact" [level=3] [ref=e354]
+              - generic [ref=e356]:
+                - generic [ref=e359]:
+                  - paragraph [ref=e360]: Contact
+                  - paragraph [ref=e361]: "6285318158201"
+                - generic [ref=e364]:
+                  - paragraph [ref=e365]: Operating Hours
+                  - paragraph [ref=e366]: "Senin - Minggu: 08:00 - 17:00"
+            - generic [ref=e367]:
+              - button "Address" [ref=e368]:
+                - heading "Address" [level=3] [ref=e369]
+              - paragraph [ref=e374]: "12"
+          - generic [ref=e375]:
+            - paragraph [ref=e376]: © 2026 OLPOS. All rights reserved.
+            - generic [ref=e377]:
+              - generic [ref=e378]: Powered by
+              - link "OLPOS" [ref=e379] [cursor=pointer]:
+                - /url: https://olpos.id
+    - button "Open chatbot" [ref=e382] [cursor=pointer]
+  - region "Notifications (F8)":
+    - list

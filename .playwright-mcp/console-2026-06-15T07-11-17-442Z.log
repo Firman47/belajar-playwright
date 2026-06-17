@@ -1,0 +1,4 @@
+[     594ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/CzLyqVQ-.js:20
+[     594ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/CzLyqVQ-.js:20
+[    9420ms] [ERROR] Failed to load resource: the server responded with a status of 409 (Conflict) @ https://be.olpos.id/e_commerce/v1/auth/register:0

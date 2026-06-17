@@ -1,0 +1,90 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "EN" [ref=e5] [cursor=pointer]:
+        - generic [ref=e7]: EN
+      - generic [ref=e9]:
+        - link "kuroStoreID" [ref=e10] [cursor=pointer]:
+          - /url: /kurostoreid
+          - img "kuroStoreID" [ref=e11]
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - heading "Login" [level=1] [ref=e128]
+            - paragraph [ref=e129]: Sign in to your account
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - generic [ref=e134]: Username
+              - textbox "Username" [ref=e137]:
+                - /placeholder: Enter your username
+            - generic [ref=e138]:
+              - generic [ref=e141]: Password
+              - generic [ref=e143]:
+                - textbox "Password" [ref=e144]:
+                  - /placeholder: Enter your password
+                - button "Show password" [ref=e146]
+            - generic [ref=e148]:
+              - generic [ref=e149] [cursor=pointer]:
+                - checkbox "Remember me" [ref=e152]
+                - generic [ref=e153]: Remember me
+              - link "Forgot Password?" [ref=e154] [cursor=pointer]:
+                - /url: /kurostoreid/auth/forgot-password
+            - button "Login" [ref=e155] [cursor=pointer]
+            - generic [ref=e158]: or
+            - generic [ref=e161]:
+              - button "Lanjutkan dengan Google. Dibuka di tab baru" [ref=e163] [cursor=pointer]:
+                - generic [ref=e165]:
+                  - img [ref=e167]
+                  - generic [ref=e174]: Lanjutkan dengan Google
+              - iframe
+            - generic [ref=e175]:
+              - paragraph [ref=e176]: Don't have an account?
+              - link "Register" [ref=e177] [cursor=pointer]:
+                - /url: /kurostoreid/auth/register
+      - contentinfo [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - img "kuroStoreID" [ref=e77]
+              - generic [ref=e78]:
+                - heading "kuroStoreID" [level=2] [ref=e79]
+                - paragraph [ref=e80]: "-"
+            - generic [ref=e81]:
+              - button "Belanja" [ref=e82]:
+                - heading "Belanja" [level=3] [ref=e83]
+              - generic [ref=e85]:
+                - link "About Us" [ref=e86] [cursor=pointer]:
+                  - /url: /kurostoreid/about
+                - link "Privacy Policy" [ref=e87] [cursor=pointer]:
+                  - /url: /privacy
+                - link "Terms of Service" [ref=e88] [cursor=pointer]:
+                  - /url: /terms
+            - generic [ref=e89]:
+              - button "Contact" [ref=e90]:
+                - heading "Contact" [level=3] [ref=e91]
+              - generic [ref=e93]:
+                - generic [ref=e96]:
+                  - paragraph [ref=e97]: Contact
+                  - paragraph [ref=e98]: "6285318158201"
+                - generic [ref=e101]:
+                  - paragraph [ref=e102]: Operating Hours
+                  - paragraph [ref=e103]: "Senin - Minggu: 08:00 - 17:00"
+            - generic [ref=e104]:
+              - button "Address" [ref=e105]:
+                - heading "Address" [level=3] [ref=e106]
+              - paragraph [ref=e111]: "12"
+          - generic [ref=e112]:
+            - paragraph [ref=e113]: © 2026 OLPOS. All rights reserved.
+            - generic [ref=e114]:
+              - generic [ref=e115]: Powered by
+              - link "OLPOS" [ref=e116] [cursor=pointer]:
+                - /url: https://olpos.id
+    - button "Open chatbot" [ref=e119] [cursor=pointer]
+    - alert [ref=e178]: Notification [ "Success", "Registration successful. Please log in." ]
+  - region "Notifications (F8)":
+    - list [ref=e180]:
+      - alert [ref=e181]:
+        - generic [ref=e183]:
+          - generic [ref=e184]: Success
+          - generic [ref=e185]: Registration successful. Please log in.
+        - button "Close" [ref=e187]
+        - progressbar "91%" [ref=e190]

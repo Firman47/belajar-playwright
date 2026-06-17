@@ -1,0 +1,61 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "EN" [ref=e5] [cursor=pointer]:
+        - generic [ref=e7]: EN
+      - generic [ref=e9]:
+        - link "kuroStoreID" [ref=e20] [cursor=pointer]:
+          - /url: /kurostoreid
+          - img "kuroStoreID" [ref=e21]
+        - generic [ref=e11]:
+          - generic [ref=e22]:
+            - heading "Register" [level=1] [ref=e23]
+            - paragraph [ref=e24]: Create your new account
+          - generic [ref=e25]:
+            - generic [ref=e26]:
+              - generic [ref=e27]:
+                - generic [ref=e28]:
+                  - generic [ref=e31]: Full Name
+                  - textbox "Full Name" [ref=e34]:
+                    - /placeholder: Enter your full name
+                    - text: Test User
+                - generic [ref=e35]:
+                  - generic [ref=e38]: Phone Number
+                  - textbox "Phone Number" [ref=e41]:
+                    - /placeholder: Enter your phone number
+                    - text: "08123456789"
+                - generic [ref=e42]:
+                  - generic [ref=e45]: Username
+                  - textbox "Username" [ref=e48]:
+                    - /placeholder: Choose a username
+                    - text: testuser123
+              - generic [ref=e49]:
+                - generic [ref=e50]:
+                  - generic [ref=e53]: Email
+                  - textbox "Email" [ref=e56]:
+                    - /placeholder: Enter your email address
+                    - text: test@example.com
+                - generic [ref=e57]:
+                  - generic [ref=e60]: Password
+                  - generic [ref=e61]:
+                    - generic [ref=e62]:
+                      - textbox "Password" [invalid] [ref=e63]:
+                        - /placeholder: Create a password
+                        - text: short
+                      - button [ref=e65]
+                    - generic [ref=e85]: Password must be at least 8 characters
+                - generic [ref=e67]:
+                  - generic [ref=e70]: Confirm Password
+                  - generic [ref=e72]:
+                    - textbox "Confirm Password" [ref=e73]:
+                      - /placeholder: Re-enter your password
+                      - text: short
+                    - button [ref=e75]
+            - button "Register" [active] [ref=e77] [cursor=pointer]
+            - generic [ref=e78]:
+              - paragraph [ref=e79]: Already have an account?
+              - link "Login" [ref=e80] [cursor=pointer]:
+                - /url: /kurostoreid/auth/login
+    - button "Open chatbot" [ref=e83] [cursor=pointer]
+  - region "Notifications (F8)":
+    - list

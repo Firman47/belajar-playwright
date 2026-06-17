@@ -1,0 +1,10 @@
+- generic [ref=e3]:
+  - button "EN" [ref=e5] [cursor=pointer]:
+    - generic [ref=e7]: EN
+  - generic [ref=e11]:
+    - generic [ref=e14]:
+      - heading "Store Not Found" [level=1] [ref=e15]
+      - paragraph [ref=e16]: The store you are looking for is not available or the link you used may have expired.
+    - link "Back to Home" [ref=e17] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e18]: Back to Home

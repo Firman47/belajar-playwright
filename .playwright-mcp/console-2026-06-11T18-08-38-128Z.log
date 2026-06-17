@@ -1,0 +1,65 @@
+[     563ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[     563ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   31666ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   31667ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   32658ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://be.olpos.id/e_commerce/v1/auth/login:0
+[   45647ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   45647ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   55831ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   55832ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   66807ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   66807ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   78663ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   78663ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   91583ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   91583ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[   92765ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://be.olpos.id/e_commerce/v1/me:0
+[  105004ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  105004ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  105713ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://be.olpos.id/e_commerce/v1/auth/forgot-password:0
+[  120533ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  120534ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  123290ms] [LOG] Unauthenticated user, fetching public service data @ https://simasko.olpos.id/_simasko/BHMtdwre.js:0
+[  123420ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://be.olpos.id/simasko/v1/public/service/SRV-2026-00001:0
+[  123422ms] [LOG] Error fetching service: Error: Service not found
+    at t (https://simasko.olpos.id/_simasko/L4bUmS1r.js:1:9701)
+    at onResponseError (https://simasko.olpos.id/_simasko/L4bUmS1r.js:1:10185)
+    at ys (https://simasko.olpos.id/_simasko/-Vgw9UZC.js:4:62887)
+    at s (https://simasko.olpos.id/_simasko/-Vgw9UZC.js:4:65909)
+    at async i (https://simasko.olpos.id/_simasko/-Vgw9UZC.js:4:65994)
+    at async d (https://simasko.olpos.id/_simasko/L4bUmS1r.js:1:9856)
+    at async fetchPublicService (https://simasko.olpos.id/_simasko/BHMtdwre.js:1:611)
+    at async https://simasko.olpos.id/_simasko/BHMtdwre.js:1:6329 @ https://simasko.olpos.id/_simasko/BHMtdwre.js:0
+[  123429ms] [LOG] Fetched service data: null @ https://simasko.olpos.id/_simasko/BHMtdwre.js:0
+[  135949ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  135949ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  136718ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://be.olpos.id/e_commerce/v1/auth/login:0
+[  148087ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  148087ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  158617ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  158617ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  159340ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ https://be.olpos.id/e_commerce/v1/auth/forgot-password:0
+[  174996ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  174996ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  220115ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  220115ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  230365ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  230365ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  242306ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[  242307ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20

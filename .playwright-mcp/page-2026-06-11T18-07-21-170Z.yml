@@ -1,0 +1,122 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]
+      - generic [ref=e20]:
+        - link [ref=e21] [cursor=pointer]:
+          - /url: /kurostoreid/simasko/rakit-komputer
+        - button "EN" [ref=e23] [cursor=pointer]:
+          - generic [ref=e25]: EN
+        - link "Login" [ref=e27] [cursor=pointer]:
+          - /url: /kurostoreid/auth/login
+          - generic [ref=e28]: Login
+  - main [ref=e29]:
+    - generic [ref=e30]:
+      - navigation "breadcrumb" [ref=e33]:
+        - list [ref=e34]:
+          - listitem [ref=e35]:
+            - link "Home" [ref=e36] [cursor=pointer]:
+              - /url: /kurostoreid
+              - generic [ref=e37]: Home
+          - listitem [ref=e38]
+          - listitem [ref=e40]:
+            - link "Keyboard" [ref=e41] [cursor=pointer]:
+              - /url: /kurostoreid/search?category=keyboard
+              - generic [ref=e42]: Keyboard
+          - listitem [ref=e43]
+          - listitem [ref=e45]:
+            - link "Keyboard" [ref=e46] [cursor=pointer]:
+              - /url: /kurostoreid/keyboard/keyboard
+              - generic [ref=e47]: Keyboard
+          - listitem [ref=e48]
+          - listitem [ref=e50]:
+            - link "Keyboard" [ref=e51] [cursor=pointer]:
+              - /url: /kurostoreid/keyboard
+              - generic [ref=e52]: Keyboard
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - region
+            - generic:
+              - region
+          - generic [ref=e57]:
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - heading "Keyboard" [level=1] [ref=e60]
+                - paragraph [ref=e62]: Rp. 100.000
+              - generic [ref=e63]:
+                - button "Specification and Description":
+                  - heading "Specification and Description" [level=2]
+                - generic [ref=e64]:
+                  - generic [ref=e65]:
+                    - generic [ref=e66]: SKU:Keyboard-001
+                    - generic [ref=e67]:
+                      - text: "Category:"
+                      - link "Keyboard" [ref=e68] [cursor=pointer]:
+                        - /url: /kurostoreid/keyboard
+                    - generic [ref=e69]: Minimum purchase:1 unit
+                    - generic [ref=e70]: Weight:10
+                  - generic [ref=e71]: "-"
+            - generic [ref=e72]:
+              - paragraph [ref=e74]: "Stock: 11"
+              - generic [ref=e76]:
+                - generic [ref=e77]:
+                  - paragraph [ref=e78]: Order Quantity
+                  - group [ref=e79]:
+                    - spinbutton [ref=e80]: "1"
+                    - button "Increment" [ref=e82]
+                    - button "Decrement" [disabled] [ref=e85]
+                - generic [ref=e87]:
+                  - paragraph [ref=e88]: Subtotal
+                  - paragraph [ref=e89]: Rp. 100.000
+              - button "Add to Cart" [ref=e91] [cursor=pointer]: Add to Cart
+        - generic [ref=e94]:
+          - heading "Buyer Reviews" [level=2] [ref=e95]
+          - generic [ref=e98]:
+            - generic [ref=e99]: No reviews yet
+            - generic [ref=e100]: Be the first buyer to review this product.
+  - contentinfo [ref=e101]:
+    - generic [ref=e102]:
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - img "kuroStoreID" [ref=e105]
+          - generic [ref=e106]:
+            - heading "kuroStoreID" [level=2] [ref=e107]
+            - paragraph [ref=e108]: "-"
+        - generic [ref=e109]:
+          - button "Belanja" [ref=e110]:
+            - heading "Belanja" [level=3] [ref=e111]
+          - generic [ref=e113]:
+            - link "About Us" [ref=e114] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e115] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e116] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e117]:
+          - button "Contact" [ref=e118]:
+            - heading "Contact" [level=3] [ref=e119]
+          - generic [ref=e121]:
+            - generic [ref=e124]:
+              - paragraph [ref=e125]: Contact
+              - paragraph [ref=e126]: "6285318158201"
+            - generic [ref=e129]:
+              - paragraph [ref=e130]: Operating Hours
+              - paragraph [ref=e131]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e132]:
+          - button "Address" [ref=e133]:
+            - heading "Address" [level=3] [ref=e134]
+          - paragraph [ref=e139]: "12"
+      - generic [ref=e140]:
+        - paragraph [ref=e141]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e142]:
+          - generic [ref=e143]: Powered by
+          - link "OLPOS" [ref=e144] [cursor=pointer]:
+            - /url: https://olpos.id

@@ -1,0 +1,6 @@
+[     789ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[     789ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/BkCofVI7.js:20
+[    9179ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://be.olpos.id/e_commerce/v1/auth/login:0
+[25201160ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://store.olpos.id/_olpos/builds/latest.json?1781227576323:0
+[25201170ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://store.olpos.id/_olpos/builds/latest.json?1781227576323:0
