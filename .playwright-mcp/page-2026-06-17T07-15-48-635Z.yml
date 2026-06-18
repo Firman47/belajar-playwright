@@ -1,0 +1,94 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]
+      - generic [ref=e20]:
+        - button "EN" [ref=e21] [cursor=pointer]:
+          - generic [ref=e23]: EN
+        - link [ref=e26] [cursor=pointer]:
+          - /url: /kurostoreid/checkout/history
+        - button "F" [ref=e28] [cursor=pointer]:
+          - generic [ref=e30]: F
+  - main [ref=e31]:
+    - generic [ref=e32]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - img "kuroStoreID" [ref=e36]
+          - heading "kuroStoreID" [level=1] [ref=e37]
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - link [ref=e40] [cursor=pointer]:
+              - /url: "#"
+            - link [ref=e42] [cursor=pointer]:
+              - /url: "#"
+            - link [ref=e44] [cursor=pointer]:
+              - /url: "#"
+          - generic [ref=e46]:
+            - link "WhatsApp" [ref=e47] [cursor=pointer]:
+              - /url: "#"
+              - text: WhatsApp
+            - link "Bagikan" [ref=e49] [cursor=pointer]:
+              - /url: "#"
+              - text: Bagikan
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - heading "About Us" [level=2] [ref=e54]
+          - paragraph
+          - paragraph [ref=e55]: "12312323232"
+          - heading "123123232" [level=3] [ref=e56]
+          - paragraph
+          - paragraph
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - heading "Address" [level=2] [ref=e59]
+            - paragraph [ref=e60]: "12"
+          - generic [ref=e61]:
+            - heading "Contact" [level=2] [ref=e62]
+            - paragraph [ref=e63]: "6285318158201"
+          - generic [ref=e64]:
+            - heading "Operating Hours" [level=2] [ref=e65]
+            - paragraph [ref=e66]: "Senin - Minggu: 08:00 - 17:00"
+  - contentinfo [ref=e67]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - img "kuroStoreID" [ref=e71]
+          - generic [ref=e72]:
+            - heading "kuroStoreID" [level=2] [ref=e73]
+            - paragraph [ref=e74]: 12312323232 123123232
+        - generic [ref=e75]:
+          - button "Belanja" [ref=e76]:
+            - heading "Belanja" [level=3] [ref=e77]
+          - generic [ref=e79]:
+            - link "About Us" [ref=e80] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e81] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e82] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e83]:
+          - button "Contact" [ref=e84]:
+            - heading "Contact" [level=3] [ref=e85]
+          - generic [ref=e87]:
+            - generic [ref=e90]:
+              - paragraph [ref=e91]: Contact
+              - paragraph [ref=e92]: "6285318158201"
+            - generic [ref=e95]:
+              - paragraph [ref=e96]: Operating Hours
+              - paragraph [ref=e97]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e98]:
+          - button "Address" [ref=e99]:
+            - heading "Address" [level=3] [ref=e100]
+          - paragraph [ref=e105]: "12"
+      - generic [ref=e106]:
+        - paragraph [ref=e107]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e108]:
+          - generic [ref=e109]: Powered by
+          - link "OLPOS" [ref=e110] [cursor=pointer]:
+            - /url: https://olpos.id

@@ -1,0 +1,6 @@
+[     814ms] [ERROR] Failed to load resource: the server responded with a status of 404 (IPX_FILE_NOT_FOUND) @ https://store.olpos.id/_ipx/_/uploads/uploads/banner/1780473563182.jfif:0
+[     818ms] [ERROR] Failed to load resource: the server responded with a status of 404 (IPX_FILE_NOT_FOUND) @ https://store.olpos.id/_ipx/_/uploads/uploads/banner/1780549139024.png:0
+[     822ms] [ERROR] Failed to load resource: the server responded with a status of 404 (IPX_FILE_NOT_FOUND) @ https://store.olpos.id/_ipx/_/uploads/uploads/banner/1780549190278.jfif:0
+[     944ms] [LOG] %c⚠️ Peringatan Keamanan font-size:24px; font-weight:bold; color:#ef4444; @ https://store.olpos.id/_olpos/HLC5pHQg.js:20
+[     944ms] [LOG] %cHalaman ini dilindungi. Jangan menempelkan kode atau skrip yang tidak dikenal di console.
+Fitur ini hanya untuk developer yang berwenang. font-size:13px; color:#666; line-height:1.5; @ https://store.olpos.id/_olpos/HLC5pHQg.js:20

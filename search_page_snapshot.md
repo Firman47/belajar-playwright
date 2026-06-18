@@ -1,0 +1,100 @@
+- generic [active] [ref=e1] [box=0,0,1521,1077]:
+  - generic [ref=e2] [box=0,0,1521,1077]:
+    - generic [ref=e3] [box=0,0,1521,1077]:
+      - banner [ref=e4] [box=0,0,1521,64]:
+        - generic [ref=e5] [box=120,0,1280,63]:
+          - link "kuroStoreID" [ref=e7] [cursor=pointer] [box=120,16,48,32]:
+            - /url: /kurostoreid
+            - img "kuroStoreID" [ref=e8] [box=120,16,48,32]
+          - generic [ref=e10] [box=424,12,672,40]:
+            - button "Category" [ref=e11] [cursor=pointer] [box=424,12,112,40]:
+              - generic [ref=e12] [box=436,22,62,20]: Category
+            - textbox "Search products, categories, etc." [ref=e16] [box=544,12,576,40]: test
+          - generic [ref=e20] [box=1219,14,181,36]:
+            - link [ref=e21] [cursor=pointer] [box=1219,14,36,36]:
+              - /url: /kurostoreid/simasko/rakit-komputer
+            - button "EN" [ref=e23] [cursor=pointer] [box=1259,14,51,36]:
+              - generic [ref=e25] [box=1287,24,17,16]: EN
+            - link "Login" [ref=e27] [cursor=pointer] [box=1331,14,69,36]:
+              - /url: /kurostoreid/auth/login
+              - generic [ref=e28] [box=1347,22,37,20]: Login
+      - main [ref=e29] [box=0,64,1521,636]:
+        - generic [ref=e30] [box=0,64,1521,636]:
+          - generic [ref=e32] [box=120,76,1280,58]:
+            - generic [ref=e33] [box=120,76,1280,20]:
+              - navigation "breadcrumb" [ref=e34] [box=120,76,188,20]:
+                - list [ref=e35] [box=120,76,188,20]
+              - generic [ref=e44] [box=316,76,84,20]: "Search: \"test\""
+            - generic [ref=e46] [box=120,104,1012,30]:
+              - generic [ref=e47] [box=120,104,410,30]:
+                - button "Terbaru" [ref=e48] [box=120,104,71,30]
+                - button "Terpopuler" [ref=e49] [box=197,104,88,30]
+                - button "Rating Tertinggi" [ref=e50] [box=291,104,116,30]
+                - button "Promo Terbesar" [ref=e51] [box=413,104,117,30]
+              - generic [ref=e53] [box=548,104,504,30]:
+                - button "Rp100k - Rp500k" [ref=e54] [box=548,104,120,30]
+                - button "Rp500k - Rp1jt" [ref=e55] [box=674,104,105,30]
+                - button "Rp1jt - Rp5jt" [ref=e56] [box=785,104,90,30]
+                - button "Rp5jt - Rp10jt" [ref=e57] [box=881,104,98,30]
+                - button "> Rp10jt" [ref=e58] [box=985,104,67,30]
+              - paragraph [ref=e59] [box=1064,109,68,20]: 1 products
+          - generic [ref=e62] [box=120,170,1280,505]:
+            - navigation "Main" [ref=e65] [box=133,183,181,480]:
+              - list [ref=e66] [box=133,183,181,480]:
+                - listitem [ref=e67] [box=133,183,181,32]
+                - listitem [ref=e70] [box=133,215,181,32]
+                - listitem [ref=e73] [box=133,247,181,32]
+                - listitem [ref=e76] [box=133,279,181,32]
+                - listitem [ref=e79] [box=133,311,181,32]
+                - listitem [ref=e84] [box=133,343,181,32]
+                - listitem [ref=e87] [box=133,375,181,32]
+                - listitem [ref=e90] [box=133,407,181,32]
+                - listitem [ref=e93] [box=133,439,181,32]
+                - listitem [ref=e96] [box=133,471,181,32]
+                - listitem [ref=e101] [box=133,503,181,32]
+                - listitem [ref=e104] [box=133,535,181,32]
+                - listitem [ref=e107] [box=133,567,181,32]
+                - listitem [ref=e110] [box=133,599,181,32]
+                - listitem [ref=e113] [box=133,631,181,32]
+            - 'link "Product image: Charger 5V Charger 5V Rp. 50.000" [ref=e118] [cursor=pointer] [box=335,170,207,283]':
+              - /url: /kurostoreid/charger-5v
+              - generic [ref=e119] [box=335,170,207,283]:
+                - 'img "Product image: Charger 5V" [ref=e121] [box=336,171,205,205]'
+                - generic [ref=e124] [box=336,377,205,75]
+      - contentinfo [ref=e128] [box=0,700,1521,378]:
+        - generic [ref=e129] [box=120,701,1280,377]:
+          - generic [ref=e130] [box=152,749,1216,196]:
+            - generic [ref=e131] [box=152,749,389,196]:
+              - img "kuroStoreID" [ref=e132] [box=152,749,84,56]
+              - generic [ref=e133] [box=152,817,164,56]:
+                - heading "kuroStoreID" [level=2] [ref=e134] [box=152,817,164,24]
+                - paragraph [ref=e135] [box=152,849,164,24]: 12312323232 123123232
+            - generic [ref=e136] [box=566,749,286,196]:
+              - button "Belanja" [ref=e137] [box=566,749,286,44]:
+                - heading "Belanja" [level=3] [ref=e138] [box=566,761,69,20]
+              - generic [ref=e140] [box=566,793,286,152]:
+                - link "About Us" [ref=e141] [cursor=pointer] [box=566,793,61,44]:
+                  - /url: /kurostoreid/about
+                - link "Privacy Policy" [ref=e142] [cursor=pointer] [box=566,847,93,44]:
+                  - /url: /privacy
+                - link "Terms of Service" [ref=e143] [cursor=pointer] [box=566,901,113,44]:
+                  - /url: /terms
+            - generic [ref=e144] [box=876,749,286,196]:
+              - button "Contact" [ref=e145] [box=876,749,286,44]:
+                - heading "Contact" [level=3] [ref=e146] [box=876,761,74,20]
+              - generic [ref=e148] [box=876,793,286,96]:
+                - generic [ref=e151] [box=902,793,103,36]
+                - generic [ref=e156] [box=902,845,197,40]
+            - generic [ref=e159] [box=1186,749,183,196]:
+              - button "Address" [ref=e160] [box=1186,749,183,44]:
+                - heading "Address" [level=3] [ref=e161] [box=1186,761,71,20]
+              - paragraph [ref=e166] [box=1212,793,14,24]: "12"
+          - generic [ref=e167] [box=152,993,1216,37]:
+            - paragraph [ref=e168] [box=152,1013,201,16]: © 2026 OLPOS. All rights reserved.
+            - generic [ref=e169] [box=1253,1013,116,16]:
+              - generic [ref=e170] [box=1253,1013,67,16]: Powered by
+              - link "OLPOS" [ref=e171] [cursor=pointer] [box=1328,1013,41,16]:
+                - /url: https://olpos.id
+    - button "Open chatbot" [ref=e174] [cursor=pointer] [box=1445,644,56,56]
+  - region "Notifications (F8)" [box=0,1077,1521,0]:
+    - list [box=1121,704,384,0]

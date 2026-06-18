@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { RegisterPage } from "./pages/RegisterPage";
+import { assertToastMismatch } from "./helpers/bug-assertions";
 
 test.describe("Register Module", () => {
   /**
@@ -85,7 +86,7 @@ test.describe("Register Module", () => {
    * BUG_APP: UI toast description = "Registration failed" (generic),
    * bukan "Email is already registered" dari API → API message ≠ UI message
    */
-  test("[REG-003] Email sudah terdaftar — API 409, UI mismatch toast description (BUG_APP)", async ({ page }) => {
+  test("[REG-003] Email sudah terdaftar — tampilkan pesan error spesifik", async ({ page }) => {
     const registerPage = new RegisterPage(page);
     const user = RegisterPage.generateUniqueUser();
 
@@ -116,7 +117,13 @@ test.describe("Register Module", () => {
       await expect(registerPage.errorNotification).toBeVisible({ timeout: 5000 });
 
       // BUG_APP: UI toast ≠ API message — assertion FAIL untuk dokumentasi bug
-      await expect(registerPage.toastDescription).toHaveText(response.body.message as string);
+      // Guard condition: jika toast ≠ API → assertToastMismatch throw error → test FAIL
+      const toastText = await registerPage.toastDescription.textContent();
+      const apiMsg = response.body.message as string;
+      if (toastText !== apiMsg) {
+        assertToastMismatch(toastText, apiMsg, "REG-003",
+          "UI harus menampilkan pesan 'Email is already registered' dari API, bukan pesan generic");
+      }
     });
 
     await test.step("Verifikasi tetap di halaman Register (tidak redirect)", async () => {
@@ -247,7 +254,7 @@ test.describe("Register Module", () => {
    * BUG_APP: UI toast description = "Registration failed" (generic),
    * bukan "Username is already taken" dari API → API message ≠ UI message
    */
-  test("[REG-007] Username sudah terdaftar — API 409, UI mismatch toast description (BUG_APP)", async ({ page }) => {
+  test("[REG-007] Username sudah terdaftar — tampilkan pesan error spesifik", async ({ page }) => {
     const registerPage = new RegisterPage(page);
     const user = RegisterPage.generateUniqueUser();
 
@@ -278,7 +285,13 @@ test.describe("Register Module", () => {
       await expect(registerPage.errorNotification).toBeVisible({ timeout: 5000 });
 
       // BUG_APP: UI toast ≠ API message — assertion FAIL untuk dokumentasi bug
-      await expect(registerPage.toastDescription).toHaveText(response.body.message as string);
+      // Guard condition: jika toast ≠ API → assertToastMismatch throw error → test FAIL
+      const toastText = await registerPage.toastDescription.textContent();
+      const apiMsg = response.body.message as string;
+      if (toastText !== apiMsg) {
+        assertToastMismatch(toastText, apiMsg, "REG-007",
+          "UI harus menampilkan pesan 'Username is already taken' dari API, bukan pesan generic");
+      }
     });
 
     await test.step("Verifikasi tetap di halaman Register (tidak redirect)", async () => {
@@ -625,7 +638,7 @@ test.describe("Register Module", () => {
    * UI toast: "Registration failed" (generic)
    * BUG_APP: UI tidak menampilkan specific validation error dari API
    */
-  test("[REG-017] Username 300 karakter — API 400, UI toast generic (BUG_APP)", async ({ page }) => {
+  test("[REG-017] Username 300 karakter — validasi maxlength tidak ada", async ({ page }) => {
     const registerPage = new RegisterPage(page);
     let responseStatus: number | null = null;
     let responseBody: Record<string, unknown> | null = null;
@@ -654,8 +667,13 @@ test.describe("Register Module", () => {
     await test.step("Verifikasi UI toast ≠ API message (BUG_APP harus FAIL)", async () => {
       await expect(registerPage.errorNotification).toBeVisible({ timeout: 5000 });
       // BUG_APP: UI toast "Registration failed" ≠ API validation message
-      // Assertion akan FAIL karena toast "Registration failed" ≠ API message
-      await expect(registerPage.toastDescription).toHaveText(responseBody?.message as string);
+      // Guard condition: jika toast ≠ API → assertToastMismatch throw error → test FAIL
+      const toastText = await registerPage.toastDescription.textContent();
+      const apiMsg = responseBody?.message as string;
+      if (toastText !== apiMsg) {
+        assertToastMismatch(toastText, apiMsg, "REG-017",
+          "UI harus menampilkan pesan validasi spesifik dari API untuk username 300 karakter, bukan pesan generic");
+      }
     });
   });
 
@@ -705,7 +723,7 @@ test.describe("Register Module", () => {
    * UI toast: "Registration failed" (generic)
    * BUG_APP: UI tidak menampilkan specific validation error dari API
    */
-  test("[REG-019] Email 300 karakter — API 400, UI toast generic (BUG_APP)", async ({ page }) => {
+  test("[REG-019] Email 300 karakter — validasi maxlength tidak ada", async ({ page }) => {
     const registerPage = new RegisterPage(page);
     let responseStatus: number | null = null;
     let responseBody: Record<string, unknown> | null = null;
@@ -734,16 +752,15 @@ test.describe("Register Module", () => {
     await test.step("Verifikasi UI toast ≠ API message (BUG_APP harus FAIL)", async () => {
       await expect(registerPage.errorNotification).toBeVisible({ timeout: 5000 });
       // BUG_APP: UI toast "Registration failed" ≠ API validation message
-      await expect(registerPage.toastDescription).toHaveText(responseBody?.message as string);
+      // Guard condition: jika toast ≠ API → assertToastMismatch throw error → test FAIL
+      const toastText = await registerPage.toastDescription.textContent();
+      const apiMsg = responseBody?.message as string;
+      if (toastText !== apiMsg) {
+        assertToastMismatch(toastText, apiMsg, "REG-019",
+          "UI harus menampilkan pesan validasi spesifik dari API untuk email 300 karakter, bukan pesan generic");
+      }
     });
   });
-
-  /**
-   * REG-021: Phone Number terlalu panjang (300 karakter)
-   * Client-side: tidak ada validasi maxlength
-   * Server-side: API 400 generic "Registration failed"
-   * UI toast: konsisten dengan API message
-   */
   test("[REG-021] Phone 300 karakter — API 400, UI toast konsisten", async ({ page }) => {
     const registerPage = new RegisterPage(page);
     let responseStatus: number | null = null;
@@ -790,7 +807,7 @@ test.describe("Register Module", () => {
    * UI toast: "Registration failed" (generic)
    * BUG_APP: UI tidak menampilkan specific validation error dari API
    */
-  test("[REG-022] Username karakter ilegal @#$% — API 400, UI toast generic (BUG_APP)", async ({ page }) => {
+  test("[REG-022] Username karakter ilegal @#$% — validasi karakter tidak ada", async ({ page }) => {
     const registerPage = new RegisterPage(page);
     let responseStatus: number | null = null;
     let responseBody: Record<string, unknown> | null = null;
@@ -820,7 +837,13 @@ test.describe("Register Module", () => {
     await test.step("Verifikasi UI toast ≠ API message (BUG_APP harus FAIL)", async () => {
       await expect(registerPage.errorNotification).toBeVisible({ timeout: 5000 });
       // BUG_APP: UI toast "Registration failed" ≠ API validation message
-      await expect(registerPage.toastDescription).toHaveText(responseBody?.message as string);
+      // Guard condition: jika toast ≠ API → assertToastMismatch throw error → test FAIL
+      const toastText = await registerPage.toastDescription.textContent();
+      const apiMsg = responseBody?.message as string;
+      if (toastText !== apiMsg) {
+        assertToastMismatch(toastText, apiMsg, "REG-022",
+          "UI harus menampilkan pesan validasi spesifik dari API untuk username karakter ilegal, bukan pesan generic");
+      }
     });
   });
 
@@ -873,7 +896,7 @@ test.describe("Register Module", () => {
    * UI toast: "Registration failed" (generic)
    * BUG_APP: UI tidak menampilkan specific validation error dari API
    */
-  test("[REG-025] Username mengandung spasi — API 400, UI toast generic (BUG_APP)", async ({ page }) => {
+  test("[REG-025] Username mengandung spasi — validasi tidak ada", async ({ page }) => {
     const registerPage = new RegisterPage(page);
     let responseStatus: number | null = null;
     let responseBody: Record<string, unknown> | null = null;
@@ -903,7 +926,13 @@ test.describe("Register Module", () => {
     await test.step("Verifikasi UI toast ≠ API message (BUG_APP harus FAIL)", async () => {
       await expect(registerPage.errorNotification).toBeVisible({ timeout: 5000 });
       // BUG_APP: UI toast "Registration failed" ≠ API validation message
-      await expect(registerPage.toastDescription).toHaveText(responseBody?.message as string);
+      // Guard condition: jika toast ≠ API → assertToastMismatch throw error → test FAIL
+      const toastText = await registerPage.toastDescription.textContent();
+      const apiMsg = responseBody?.message as string;
+      if (toastText !== apiMsg) {
+        assertToastMismatch(toastText, apiMsg, "REG-025",
+          "UI harus menampilkan pesan validasi spesifik dari API untuk username dengan spasi, bukan pesan generic");
+      }
     });
   });
 

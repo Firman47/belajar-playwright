@@ -1,0 +1,56 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]
+      - generic [ref=e20]:
+        - button "EN" [ref=e21] [cursor=pointer]:
+          - generic [ref=e23]: EN
+        - link [ref=e26] [cursor=pointer]:
+          - /url: /kurostoreid/checkout/history
+        - button "F" [ref=e28] [cursor=pointer]:
+          - generic [ref=e30]: F
+  - main [ref=e31]
+  - contentinfo [ref=e56]:
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - img "kuroStoreID" [ref=e60]
+          - generic [ref=e61]:
+            - heading "kuroStoreID" [level=2] [ref=e62]
+            - paragraph [ref=e63]: 12312323232 123123232
+        - generic [ref=e64]:
+          - button "Belanja" [ref=e65]:
+            - heading "Belanja" [level=3] [ref=e66]
+          - generic [ref=e68]:
+            - link "About Us" [ref=e69] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e70] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e71] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e72]:
+          - button "Contact" [ref=e73]:
+            - heading "Contact" [level=3] [ref=e74]
+          - generic [ref=e76]:
+            - generic [ref=e79]:
+              - paragraph [ref=e80]: Contact
+              - paragraph [ref=e81]: "6285318158201"
+            - generic [ref=e84]:
+              - paragraph [ref=e85]: Operating Hours
+              - paragraph [ref=e86]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e87]:
+          - button "Address" [ref=e88]:
+            - heading "Address" [level=3] [ref=e89]
+          - paragraph [ref=e94]: "12"
+      - generic [ref=e95]:
+        - paragraph [ref=e96]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e97]:
+          - generic [ref=e98]: Powered by
+          - link "OLPOS" [ref=e99] [cursor=pointer]:
+            - /url: https://olpos.id

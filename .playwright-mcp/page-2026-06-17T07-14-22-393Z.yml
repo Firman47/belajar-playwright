@@ -1,0 +1,58 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]
+      - generic [ref=e20]:
+        - button "EN" [ref=e21] [cursor=pointer]:
+          - generic [ref=e23]: EN
+        - link [ref=e26] [cursor=pointer]:
+          - /url: /kurostoreid/cart
+        - link [ref=e29] [cursor=pointer]:
+          - /url: /kurostoreid/checkout/history
+        - button "F" [ref=e31] [cursor=pointer]:
+          - generic [ref=e33]: F
+  - main [ref=e34]
+  - contentinfo [ref=e35]:
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - img "kuroStoreID" [ref=e39]
+          - generic [ref=e40]:
+            - heading "kuroStoreID" [level=2] [ref=e41]
+            - paragraph [ref=e42]: 12312323232 123123232
+        - generic [ref=e43]:
+          - button "Belanja" [ref=e44]:
+            - heading "Belanja" [level=3] [ref=e45]
+          - generic [ref=e47]:
+            - link "About Us" [ref=e48] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e49] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e50] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e51]:
+          - button "Contact" [ref=e52]:
+            - heading "Contact" [level=3] [ref=e53]
+          - generic [ref=e55]:
+            - generic [ref=e58]:
+              - paragraph [ref=e59]: Contact
+              - paragraph [ref=e60]: "6285318158201"
+            - generic [ref=e63]:
+              - paragraph [ref=e64]: Operating Hours
+              - paragraph [ref=e65]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e66]:
+          - button "Address" [ref=e67]:
+            - heading "Address" [level=3] [ref=e68]
+          - paragraph [ref=e73]: "12"
+      - generic [ref=e74]:
+        - paragraph [ref=e75]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e76]:
+          - generic [ref=e77]: Powered by
+          - link "OLPOS" [ref=e78] [cursor=pointer]:
+            - /url: https://olpos.id

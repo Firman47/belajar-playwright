@@ -1,0 +1,110 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]
+      - generic [ref=e20]:
+        - button "EN" [ref=e21] [cursor=pointer]:
+          - generic [ref=e23]: EN
+        - link [ref=e26] [cursor=pointer]:
+          - /url: /kurostoreid/checkout/history
+        - button "F" [ref=e28] [cursor=pointer]:
+          - generic [ref=e30]: F
+  - main [ref=e31]:
+    - generic [ref=e33]:
+      - generic [ref=e36]:
+        - img [ref=e37]
+        - generic [ref=e43]: Cart
+        - generic [ref=e47]: Shipping
+        - generic [ref=e51]: Payment
+        - generic [ref=e55]: Complete
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - heading "Shipping Address" [level=2] [ref=e62]
+            - generic [ref=e63]:
+              - paragraph [ref=e64]: "-"
+              - paragraph [ref=e65]: "-"
+          - heading "Item" [level=2] [ref=e70]
+        - generic [ref=e73]:
+          - heading "Payment" [level=2] [ref=e75]
+          - generic [ref=e76]:
+            - generic [ref=e78]: "Method: QRIS"
+            - button "Download QRIS code" [ref=e86] [cursor=pointer]:
+              - generic [ref=e88]: Download QRIS code
+            - generic [ref=e89]:
+              - generic [ref=e90]:
+                - generic [ref=e91]: Payment expires at --:--
+                - generic [ref=e92]: 10:00
+              - button "Batalkan Pembayaran" [ref=e95] [cursor=pointer]:
+                - generic [ref=e97]: Batalkan Pembayaran
+            - generic [ref=e99]:
+              - generic [ref=e100]: Total Bill
+              - generic [ref=e101]: Rp. 0
+            - generic [ref=e102]:
+              - paragraph [ref=e103]: "Payment on mobile:"
+              - list [ref=e104]:
+                - listitem [ref=e105]:
+                  - generic [ref=e106]: "1"
+                  - generic [ref=e107]: Download the QRIS code
+                - listitem [ref=e108]:
+                  - generic [ref=e109]: "2"
+                  - generic [ref=e110]: Open your mobile banking or e-wallet app
+                - listitem [ref=e111]:
+                  - generic [ref=e112]: "3"
+                  - generic [ref=e113]: Choose the “QRIS” payment method
+                - listitem [ref=e114]:
+                  - generic [ref=e115]: "4"
+                  - generic [ref=e116]: Choose image from gallery
+                - listitem [ref=e117]:
+                  - generic [ref=e118]: "5"
+                  - generic [ref=e119]: Search and select the downloaded QRIS code from your gallery
+                - listitem [ref=e120]:
+                  - generic [ref=e121]: "6"
+                  - generic [ref=e122]: Input the payment
+                - listitem [ref=e123]:
+                  - generic [ref=e124]: "7"
+                  - generic [ref=e125]: Confirm the payment
+  - contentinfo [ref=e126]:
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - img "kuroStoreID" [ref=e130]
+          - generic [ref=e131]:
+            - heading "kuroStoreID" [level=2] [ref=e132]
+            - paragraph [ref=e133]: 12312323232 123123232
+        - generic [ref=e134]:
+          - button "Belanja" [ref=e135]:
+            - heading "Belanja" [level=3] [ref=e136]
+          - generic [ref=e138]:
+            - link "About Us" [ref=e139] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e140] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e141] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e142]:
+          - button "Contact" [ref=e143]:
+            - heading "Contact" [level=3] [ref=e144]
+          - generic [ref=e146]:
+            - generic [ref=e149]:
+              - paragraph [ref=e150]: Contact
+              - paragraph [ref=e151]: "6285318158201"
+            - generic [ref=e154]:
+              - paragraph [ref=e155]: Operating Hours
+              - paragraph [ref=e156]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e157]:
+          - button "Address" [ref=e158]:
+            - heading "Address" [level=3] [ref=e159]
+          - paragraph [ref=e164]: "12"
+      - generic [ref=e165]:
+        - paragraph [ref=e166]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e167]:
+          - generic [ref=e168]: Powered by
+          - link "OLPOS" [ref=e169] [cursor=pointer]:
+            - /url: https://olpos.id

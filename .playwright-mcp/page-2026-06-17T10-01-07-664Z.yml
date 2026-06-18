@@ -1,0 +1,95 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "EN" [ref=e5] [cursor=pointer]:
+        - generic [ref=e7]: EN
+      - generic [ref=e9]:
+        - link "kuroStoreID" [ref=e84] [cursor=pointer]:
+          - /url: /kurostoreid
+          - img "kuroStoreID" [ref=e85]
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - heading "Forgot Password" [level=1] [ref=e13]
+            - paragraph [ref=e14]: Reset your account password
+          - generic [ref=e15]:
+            - generic [ref=e19]: Email
+            - generic [ref=e21]:
+              - generic [ref=e23]: "2"
+              - generic [ref=e24]: Verify
+            - generic [ref=e26]:
+              - generic [ref=e28]: "3"
+              - generic [ref=e29]: New Password
+          - paragraph [ref=e92]: Enter the OTP code sent to firman@gmail.com.
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e97]: OTP Code
+              - generic [ref=e99]:
+                - textbox "pin input 1 of 6" [ref=e100]:
+                  - /placeholder: •
+                  - text: "1"
+                - textbox "pin input 2 of 6" [ref=e101]:
+                  - /placeholder: ""
+                  - text: "1"
+                - textbox "pin input 3 of 6" [ref=e102]:
+                  - /placeholder: ""
+                  - text: "1"
+                - textbox "pin input 4 of 6" [ref=e103]:
+                  - /placeholder: ""
+                  - text: "1"
+                - textbox "pin input 5 of 6" [ref=e104]:
+                  - /placeholder: ""
+                  - text: "1"
+                - textbox "pin input 6 of 6" [ref=e105]:
+                  - /placeholder: ""
+                  - text: "1"
+                - textbox [ref=e106]: "11111"
+            - button "Resend OTP" [ref=e111] [cursor=pointer]
+            - button "Verify OTP" [ref=e109] [cursor=pointer]
+      - contentinfo [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - img "kuroStoreID" [ref=e86]
+              - generic [ref=e45]:
+                - heading "kuroStoreID" [level=2] [ref=e46]
+                - paragraph [ref=e47]: 12312323232 123123232
+            - generic [ref=e48]:
+              - button "Belanja" [ref=e49]:
+                - heading "Belanja" [level=3] [ref=e50]
+              - generic [ref=e52]:
+                - link "About Us" [ref=e53] [cursor=pointer]:
+                  - /url: /kurostoreid/about
+                - link "Privacy Policy" [ref=e54] [cursor=pointer]:
+                  - /url: /privacy
+                - link "Terms of Service" [ref=e55] [cursor=pointer]:
+                  - /url: /terms
+            - generic [ref=e56]:
+              - button "Contact" [ref=e57]:
+                - heading "Contact" [level=3] [ref=e58]
+              - generic [ref=e60]:
+                - generic [ref=e63]:
+                  - paragraph [ref=e64]: Contact
+                  - paragraph [ref=e65]: "6285318158201"
+                - generic [ref=e68]:
+                  - paragraph [ref=e69]: Operating Hours
+                  - paragraph [ref=e70]: "Senin - Minggu: 08:00 - 17:00"
+            - generic [ref=e71]:
+              - button "Address" [ref=e72]:
+                - heading "Address" [level=3] [ref=e73]
+              - paragraph [ref=e78]: "12"
+          - generic [ref=e79]:
+            - paragraph [ref=e80]: © 2026 OLPOS. All rights reserved.
+            - generic [ref=e81]:
+              - generic [ref=e82]: Powered by
+              - link "OLPOS" [ref=e83] [cursor=pointer]:
+                - /url: https://olpos.id
+    - button "Open chatbot" [ref=e89] [cursor=pointer]
+    - alert [ref=e127]: Notification [ "Something went wrong", "Invalid OTP" ]
+  - region "Notifications (F8)":
+    - list [ref=e114]:
+      - alert [ref=e129]:
+        - generic [ref=e131]:
+          - generic [ref=e132]: Something went wrong
+          - generic [ref=e133]: Invalid OTP
+        - button "Close" [ref=e135]
+        - progressbar "84%" [ref=e138]

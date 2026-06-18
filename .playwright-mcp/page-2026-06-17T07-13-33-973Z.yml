@@ -1,0 +1,76 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]
+      - generic [ref=e20]:
+        - button "EN" [ref=e21] [cursor=pointer]:
+          - generic [ref=e23]: EN
+        - link [ref=e26] [cursor=pointer]:
+          - /url: /kurostoreid/cart
+        - link [ref=e29] [cursor=pointer]:
+          - /url: /kurostoreid/checkout/history
+        - button "F" [ref=e31] [cursor=pointer]:
+          - generic [ref=e33]: F
+  - main [ref=e34]:
+    - generic [ref=e37]:
+      - generic [ref=e39]:
+        - heading "Transaction History" [level=1] [ref=e40]
+        - paragraph [ref=e41]: View and manage all your orders
+      - textbox "Search product" [ref=e43]
+      - generic [ref=e46]:
+        - button "All" [ref=e47]
+        - button "Pending" [ref=e48]
+        - button "Processing" [ref=e49]
+        - button "Shipped" [ref=e50]
+        - button "Completed" [ref=e51]
+        - button "Cancelled" [ref=e52]
+      - generic [ref=e53]:
+        - paragraph [ref=e56]: No orders yet
+        - paragraph [ref=e57]: Your first order awaits
+        - link "Start Shopping" [ref=e58] [cursor=pointer]:
+          - /url: /kurostoreid
+          - generic [ref=e59]: Start Shopping
+  - contentinfo [ref=e60]:
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - img "kuroStoreID" [ref=e64]
+          - generic [ref=e65]:
+            - heading "kuroStoreID" [level=2] [ref=e66]
+            - paragraph [ref=e67]: 12312323232 123123232
+        - generic [ref=e68]:
+          - button "Belanja" [ref=e69]:
+            - heading "Belanja" [level=3] [ref=e70]
+          - generic [ref=e72]:
+            - link "About Us" [ref=e73] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e74] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e75] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e76]:
+          - button "Contact" [ref=e77]:
+            - heading "Contact" [level=3] [ref=e78]
+          - generic [ref=e80]:
+            - generic [ref=e83]:
+              - paragraph [ref=e84]: Contact
+              - paragraph [ref=e85]: "6285318158201"
+            - generic [ref=e88]:
+              - paragraph [ref=e89]: Operating Hours
+              - paragraph [ref=e90]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e91]:
+          - button "Address" [ref=e92]:
+            - heading "Address" [level=3] [ref=e93]
+          - paragraph [ref=e98]: "12"
+      - generic [ref=e99]:
+        - paragraph [ref=e100]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e101]:
+          - generic [ref=e102]: Powered by
+          - link "OLPOS" [ref=e103] [cursor=pointer]:
+            - /url: https://olpos.id

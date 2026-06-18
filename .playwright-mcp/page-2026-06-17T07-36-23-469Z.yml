@@ -1,0 +1,8 @@
+- main [ref=e4]:
+  - generic [ref=e6]:
+    - generic [ref=e9]:
+      - heading "Store Not Found" [level=1] [ref=e10]
+      - paragraph [ref=e11]: The store you are looking for is not available or the link you used may have expired.
+    - link "Back to Home" [ref=e12] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e13]: Back to Home

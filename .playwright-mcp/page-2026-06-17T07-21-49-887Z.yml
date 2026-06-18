@@ -1,0 +1,74 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]
+      - generic [ref=e20]:
+        - button "EN" [ref=e21] [cursor=pointer]:
+          - generic [ref=e23]: EN
+        - link [ref=e26] [cursor=pointer]:
+          - /url: /kurostoreid/checkout/history
+        - button "F" [ref=e28] [cursor=pointer]:
+          - generic [ref=e30]: F
+  - main [ref=e31]:
+    - generic [ref=e33]:
+      - generic [ref=e36]:
+        - img [ref=e37]
+        - generic [ref=e43]: Cart
+        - generic [ref=e47]: Shipping
+        - generic [ref=e51]: Payment
+        - generic [ref=e55]: Complete
+      - generic [ref=e56]:
+        - generic [ref=e60]:
+          - heading "Payment Successful 🎉" [level=1] [ref=e61]
+          - paragraph [ref=e62]: Your payment has been successfully processed.
+        - generic [ref=e63]:
+          - link "View Order History" [ref=e64] [cursor=pointer]:
+            - /url: /kurostoreid/checkout/history
+            - text: View Order History
+          - link "Back to Home" [ref=e66] [cursor=pointer]:
+            - /url: /kurostoreid
+            - text: Back to Home
+  - contentinfo [ref=e68]:
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - img "kuroStoreID" [ref=e72]
+          - generic [ref=e73]:
+            - heading "kuroStoreID" [level=2] [ref=e74]
+            - paragraph [ref=e75]: 12312323232 123123232
+        - generic [ref=e76]:
+          - button "Belanja" [ref=e77]:
+            - heading "Belanja" [level=3] [ref=e78]
+          - generic [ref=e80]:
+            - link "About Us" [ref=e81] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e82] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e83] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e84]:
+          - button "Contact" [ref=e85]:
+            - heading "Contact" [level=3] [ref=e86]
+          - generic [ref=e88]:
+            - generic [ref=e91]:
+              - paragraph [ref=e92]: Contact
+              - paragraph [ref=e93]: "6285318158201"
+            - generic [ref=e96]:
+              - paragraph [ref=e97]: Operating Hours
+              - paragraph [ref=e98]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e99]:
+          - button "Address" [ref=e100]:
+            - heading "Address" [level=3] [ref=e101]
+          - paragraph [ref=e106]: "12"
+      - generic [ref=e107]:
+        - paragraph [ref=e108]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e109]:
+          - generic [ref=e110]: Powered by
+          - link "OLPOS" [ref=e111] [cursor=pointer]:
+            - /url: https://olpos.id

@@ -1,0 +1,158 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]: charger
+      - generic [ref=e20]:
+        - button "EN" [ref=e21] [cursor=pointer]:
+          - generic [ref=e23]: EN
+        - link [ref=e26] [cursor=pointer]:
+          - /url: /kurostoreid/cart
+        - link [ref=e29] [cursor=pointer]:
+          - /url: /kurostoreid/checkout/history
+        - button "F" [ref=e31] [cursor=pointer]:
+          - generic [ref=e33]: F
+  - main [ref=e34]:
+    - generic [ref=e35]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - navigation "breadcrumb" [ref=e39]:
+            - list [ref=e40]:
+              - listitem [ref=e41]:
+                - link "Home" [ref=e42] [cursor=pointer]:
+                  - /url: /kurostoreid
+                  - generic [ref=e43]: Home
+              - listitem [ref=e44]
+              - listitem [ref=e46]:
+                - 'link "Pencarian: \"charger\"" [ref=e47] [cursor=pointer]':
+                  - /url: /kurostoreid/search?q=charger
+                  - generic [ref=e48]: "Pencarian: \"charger\""
+          - generic [ref=e49]: "Search: \"charger\""
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - button "Terbaru" [ref=e53]
+            - button "Terpopuler" [ref=e54]
+            - button "Rating Tertinggi" [ref=e55]
+            - button "Promo Terbesar" [ref=e56]
+          - generic [ref=e58]:
+            - button "Rp100k - Rp500k" [ref=e59]
+            - button "Rp500k - Rp1jt" [ref=e60]
+            - button "Rp1jt - Rp5jt" [ref=e61]
+            - button "Rp5jt - Rp10jt" [ref=e62]
+            - button "> Rp10jt" [ref=e63]
+          - paragraph [ref=e64]: 1 products
+      - generic [ref=e67]:
+        - navigation "Main" [ref=e70]:
+          - list [ref=e71]:
+            - listitem [ref=e72]:
+              - link "Casing" [ref=e73] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=casing
+                - generic [ref=e74]: Casing
+            - listitem [ref=e75]:
+              - link "CPU Cooler" [ref=e76] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=cpu-cooler
+                - generic [ref=e77]: CPU Cooler
+            - listitem [ref=e78]:
+              - link "Graphic Card" [ref=e79] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=graphic-card
+                - generic [ref=e80]: Graphic Card
+            - listitem [ref=e81]:
+              - link "Keyboard" [ref=e82] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=keyboard
+                - generic [ref=e83]: Keyboard
+            - listitem [ref=e84]:
+              - link "Laptop" [ref=e85] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=laptop
+                - generic [ref=e86]: Laptop
+            - listitem [ref=e89]:
+              - link "Laptop Gaming" [ref=e90] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=laptop-gaming
+                - generic [ref=e91]: Laptop Gaming
+            - listitem [ref=e92]:
+              - link "ma" [ref=e93] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=ma
+                - generic [ref=e94]: ma
+            - listitem [ref=e95]:
+              - link "Monitor" [ref=e96] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=monitor
+                - generic [ref=e97]: Monitor
+            - listitem [ref=e98]:
+              - link "Motherboard" [ref=e99] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=motherboard
+                - generic [ref=e100]: Motherboard
+            - listitem [ref=e101]:
+              - link "mouse" [ref=e102] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=mouse
+                - generic [ref=e103]: mouse
+            - listitem [ref=e106]:
+              - link "Power Supply" [ref=e107] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=power-supply
+                - generic [ref=e108]: Power Supply
+            - listitem [ref=e109]:
+              - link "Processor" [ref=e110] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=processor
+                - generic [ref=e111]: Processor
+            - listitem [ref=e112]:
+              - link "RAM" [ref=e113] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=ram
+                - generic [ref=e114]: RAM
+            - listitem [ref=e115]:
+              - link "Storage" [ref=e116] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=storage
+                - generic [ref=e117]: Storage
+            - listitem [ref=e118]:
+              - link "VGA" [ref=e119] [cursor=pointer]:
+                - /url: /kurostoreid/search?q=charger&category=vga
+                - generic [ref=e120]: VGA
+        - 'link "Product image: Charger 5V Charger 5V Rp. 50.000 Keranjang" [ref=e123] [cursor=pointer]':
+          - /url: /kurostoreid/charger-5v
+          - generic [ref=e124]:
+            - 'img "Product image: Charger 5V" [ref=e126]'
+            - generic [ref=e129]:
+              - paragraph
+              - paragraph [ref=e130]: Charger 5V
+              - paragraph [ref=e131]: Rp. 50.000
+              - button "Keranjang" [ref=e132]: Keranjang
+  - contentinfo [ref=e135]:
+    - generic [ref=e136]:
+      - generic [ref=e137]:
+        - generic [ref=e138]:
+          - img "kuroStoreID" [ref=e139]
+          - generic [ref=e140]:
+            - heading "kuroStoreID" [level=2] [ref=e141]
+            - paragraph [ref=e142]: 12312323232 123123232
+        - generic [ref=e143]:
+          - button "Belanja" [ref=e144]:
+            - heading "Belanja" [level=3] [ref=e145]
+          - generic [ref=e147]:
+            - link "About Us" [ref=e148] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e149] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e150] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e151]:
+          - button "Contact" [ref=e152]:
+            - heading "Contact" [level=3] [ref=e153]
+          - generic [ref=e155]:
+            - generic [ref=e158]:
+              - paragraph [ref=e159]: Contact
+              - paragraph [ref=e160]: "6285318158201"
+            - generic [ref=e163]:
+              - paragraph [ref=e164]: Operating Hours
+              - paragraph [ref=e165]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e166]:
+          - button "Address" [ref=e167]:
+            - heading "Address" [level=3] [ref=e168]
+          - paragraph [ref=e173]: "12"
+      - generic [ref=e174]:
+        - paragraph [ref=e175]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e176]:
+          - generic [ref=e177]: Powered by
+          - link "OLPOS" [ref=e178] [cursor=pointer]:
+            - /url: https://olpos.id

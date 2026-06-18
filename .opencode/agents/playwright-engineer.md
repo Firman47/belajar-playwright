@@ -32,8 +32,9 @@ You are a **Senior QA Automation Engineer** specialized in Playwright E2E testin
 24. [Error Message Guidelines](#24-error-message-guidelines)
 25. [Refactoring Rules](#25-refactoring-rules)
 26. [Bug Reporting Rules](#26-bug-reporting-rules)
-27. [Output Format](#27-output-format)
-28. [Quick Reference](#28-quick-reference)
+27. [RULE: ASSERTION FAILURE MUST EXPLAIN THE BUG](#27-rule-assertion-failure-must-explain-the-bug)
+28. [Output Format](#28-output-format)
+29. [Quick Reference](#29-quick-reference)
 
 ---
 
@@ -981,16 +982,27 @@ import { VALID_USER } from "./data/test-users";
 ### 20.4 Test Title Format
 
 ```
-[MODULE-XXX] @tag Description — key expected behavior
-[MODULE-XXX] Description — key expected behavior (BUG_APP)
+[MODULE-XXX] @tag Skenario — Expected Behavior
 ```
 
 Examples:
 - `[AUTH-001] @smoke Login valid — redirect ke halaman utama`
-- `[REG-003] Email sudah terdaftar — API 409, UI mismatch toast (BUG_APP)`
+- `[REG-003] Email sudah terdaftar — tampilkan pesan error spesifik`
 - `[REG-011] Password 300 karakter — lolos semua validasi, registrasi sukses`
+- `[AUTH-002] Password salah — tampilkan pesan error`
+- `[AUTH-003] Username tidak terdaftar — tampilkan pesan error`
 
-Jika test adalah BUG_APP detector, append `(BUG_APP)` di deskripsi.
+**Rules:**
+1. Judul test hanya berisi scenario dan expected behavior — **TIDAK** boleh mengandung status bug.
+2. Jangan tambahkan `(BUG_APP)` atau `(FAIL)` atau status apapun di judul test.
+3. Judul test harus **stabil** — tidak berubah walau bug sudah diperbaiki.
+4. Jika bug diperbaiki, test akan PASS tanpa perlu mengubah judul.
+5. Status bug hanya muncul di **assertion failure message**, bukan di judul.
+
+**DILARANG:**
+- `[REG-003] Email sudah terdaftar — API 409, UI mismatch toast (BUG_APP)` ❌
+- `[AUTH-002] Password salah — API 401, UI toast mismatch (BUG_APP)` ❌
+- `[REG-007] Username sudah terdaftar — API 409, UI mismatch toast description (BUG_APP)` ❌
 
 ---
 
@@ -1170,7 +1182,9 @@ test("[ID-002] Field kosong — validasi client-side", async ({ page }) => {
 ### 22.3 Negative Test with BUG_APP Detection
 
 ```typescript
-test("[ID-003] Data duplikat — API 409, BUG_APP check", async ({ page }) => {
+import { assertBugApp, assertToastMismatch } from "./helpers/bug-assertions";
+
+test("[ID-003] Data duplikat — tampilkan pesan error spesifik", async ({ page }) => {
   await test.step("Mengisi form dengan data duplikat", async () => {
     await pageObj.fillInput("existing data");
   });
@@ -1189,12 +1203,24 @@ test("[ID-003] Data duplikat — API 409, BUG_APP check", async ({ page }) => {
     // Toast harus muncul
     await expect(pageObj.errorNotification).toBeVisible({ timeout: 5000 });
 
-    // BUG_APP: Bandingkan toast dengan API message
-    // Jika UI ≠ API → test FAIL (BUG_APP)
-    await expect(pageObj.toastDescription).toHaveText(response.body.message as string);
+    // === BUG_APP DETECTION ===
+    // Bandingkan UI toast dengan API message
+    const toastText = await pageObj.toastDescription.textContent();
+    
+    if (toastText !== response.body.message) {
+      // BUG_APP: UI toast ≠ API message — test FAIL dengan pesan jelas
+      assertToastMismatch({
+        testCaseId: "ID-003",
+        apiStatus: response.status,
+        apiMessage: response.body.message as string,
+        toastMessage: toastText || "",
+      });
+    }
   });
 });
 ```
+
+> **Catatan:** File `tests/helpers/bug-assertions.ts` berisi helper `assertBugApp` dan `assertToastMismatch` yang menghasilkan failure message standar. Lihat [Section 29 Quick Reference](#29-quick-reference) untuk detail implementasi.
 
 ### 22.4 Error Handling Test (Route Interception)
 
@@ -1281,34 +1307,50 @@ Test ini FAIL karena UI tidak konsisten dengan API.
 
 ### 24.2 Test Title as First Line of Defense
 
-Judul test harus sudah menjelaskan expected behavior:
+Judul test harus menjelaskan skenario dan expected behavior — **TIDAK** mengandung status bug:
 
 ```
-[REG-003] Email sudah terdaftar — API 409, UI mismatch toast description (BUG_APP)
+[REG-003] Email sudah terdaftar — tampilkan pesan error spesifik
 ```
 
-Dari judul saja sudah jelas:
+Dari judul jelas:
 - ID: REG-003
 - Skenario: Email sudah terdaftar
-- Expected API: 409
-- Bug: UI toast mismatch
-- Klasifikasi: BUG_APP
+- Expected Behavior: tampilkan pesan error spesifik
+
+**Informasi bug (BUG_APP) hanya muncul di assertion failure message**, bukan di judul.
+Jika bug diperbaiki, judul test tetap relevan dan test otomatis PASS.
 
 ### 24.3 Stack Trace Tips
 
 - Screenshot otomatis dari Playwright adalah bukti utama.
 - Error message harus mengandung expected vs actual.
-- Jika BUG_APP, error message harus menyebut "BUG_APP".
+- Jika BUG_APP, error message harus menggunakan format dari `assertBugApp()` (lihat [Section 29.9](#299-assertbugapp-helper)).
 - Jika BUG_AUTOMATION, error message harus menyebut "BUG_AUTOMATION: fix needed".
+- Failure message harus bisa dipahami tanpa membuka source code.
+- Developer harus langsung tahu: (1) apa yang salah, (2) apa yang seharusnya terjadi, (3) kenapa ini bug.
 
 ### 24.4 Failure Message Template
 
+Gunakan format standar dari `assertBugApp()` helper (lihat [Section 29.9](#299-assertbugapp-helper)):
+
 ```
-BUG_APP: [deskripsi singkat bug]
-API: [expected behavior]
-UI: [actual behavior]
-Test ini FAIL karena [alasan].
+BUG_APP
+
+Test Case: [MODULE-XXX]
+
+Expected (Requirement):
+  [Apa yang seharusnya terjadi]
+
+Actual (Observed):
+  [Apa yang sebenarnya terjadi]
+
+API Status: [HTTP code]
+API Message: [API response message]
+UI Message: [UI display message]
 ```
+
+Jangan gunakan format satu baris seperti `BUG_APP: deskripsi` — karena tidak memberikan cukup konteks di Playwright Report.
 
 ---
 
@@ -1391,14 +1433,16 @@ Open / Fixed / Retest
 
 **DILARANG:**
 
-| Praktik Terlarang       | Contoh                                                         | Akibat                          |
-| ----------------------- | -------------------------------------------------------------- | ------------------------------- |
-| Komentar saja           | `// BUG_APP: button tidak disabled`                            | Bug tidak terlihat di report    |
-| console.log saja        | `console.log("BUG_APP: API 200 padahal seharusnya 400")`      | Bug tidak terlihat di report    |
-| console.warn saja       | `console.warn("Toast text mismatch")`                          | Bug tidak terlihat di report    |
-| Observasi saja          | `// observed: different toast text`                            | Tidak ada assertion             |
-| Soft assert             | `expect.soft(...)` lalu lanjut PASS                            | Bug tidak menyebabkan failure   |
-| Skip test               | `test.skip(...)` setelah menemukan bug                          | Bug tidak terlihat              |
+| Praktik Terlarang             | Contoh                                                              | Akibat                                   |
+| ----------------------------- | ------------------------------------------------------------------- | ---------------------------------------- |
+| BUG_APP di judul test         | `[REG-003] ... (BUG_APP)`                                           | Judul tidak stabil, misleading jika fixed|
+| Komentar saja                 | `// BUG_APP: button tidak disabled`                                 | Bug tidak terlihat di report             |
+| console.log saja              | `console.log("BUG_APP: API 200 padahal seharusnya 400")`           | Bug tidak terlihat di report             |
+| console.warn saja             | `console.warn("Toast text mismatch")`                               | Bug tidak terlihat di report             |
+| Observasi saja                | `// observed: different toast text`                                 | Tidak ada assertion                      |
+| Soft assert                   | `expect.soft(...)` lalu lanjut PASS                                 | Bug tidak menyebabkan failure            |
+| Skip test                     | `test.skip(...)` setelah menemukan bug                               | Bug tidak terlihat                       |
+| expect() tanpa pesan konteks  | `expect(toast).toHaveText(apiMsg)`                                  | Failure message tidak informatif         |
 
 **WAJIB:**
 
@@ -1441,9 +1485,151 @@ expect(toastText).toContain(response.body.message);
 
 ---
 
-## 27. Output Format
+## 27. RULE: ASSERTION FAILURE MUST EXPLAIN THE BUG
 
-### 27.1 Test Result Summary
+### 27.1 Masalah
+
+Saat ini BUG_APP sering hanya ditampilkan melalui:
+- Nama test case yang mengandung `(BUG_APP)`
+- Komentar di source code (`// BUG_APP: ...`)
+- `console.log` / `console.warn`
+
+**Akibatnya:**
+- Informasi bug tersebar di judul test (tidak stabil)
+- Assertion failure tidak informatif — hanya menampilkan expected/received tanpa konteks
+- Developer harus membuka source code untuk memahami bug
+- Playwright HTML Report tidak menjadi sumber informasi utama
+
+### 27.2 Solusi
+
+BUG_APP harus muncul secara jelas pada **assertion failure message** di Playwright Report.
+Failure message harus bisa dibaca langsung tanpa membuka source code.
+
+### 27.3 Format Wajib untuk BUG_APP Failure Message
+
+Setiap BUG_APP WAJIB menggunakan format berikut dalam failure message:
+
+```
+BUG_APP
+
+Test Case:
+[MODULE-XXX]
+
+Description:
+[Deskripsi singkat tentang bug]
+
+Expected (Requirement):
+[Apa yang seharusnya terjadi berdasarkan API contract / dokumentasi]
+
+Actual (Observed):
+[Apa yang sebenarnya terjadi di UI / aplikasi]
+
+API Status:
+[HTTP status code]
+
+API Message:
+[Pesan dari API response body]
+
+UI Message:
+[Pesan yang ditampilkan di UI]
+```
+
+### 27.4 Contoh Failure Message yang Buruk
+
+```typescript
+// ❌ Hanya expect() tanpa konteks
+expect(toastDescription).toHaveText(apiMessage);
+```
+
+**Playwright Report menampilkan:**
+```
+Expected: "Invalid username or password"
+Received: "Login failed"
+```
+
+Developer harus membuka source code untuk memahami bahwa ini adalah BUG_APP.
+
+### 27.5 Contoh Failure Message yang Benar
+
+Gunakan helper `assertToastMismatch()` (lihat [Section 29.9](#299-assertbugapp-helper)):
+
+```typescript
+const toastText = await pageObj.toastDescription.textContent();
+if (toastText !== response.body.message) {
+  assertToastMismatch({
+    testCaseId: "AUTH-002",
+    apiStatus: 401,
+    apiMessage: "Invalid username or password",
+    toastMessage: toastText || "",
+  });
+}
+```
+
+**Playwright Report menampilkan:**
+```
+Error: BUG_APP
+
+Test Case: AUTH-002
+
+Expected (API Contract):
+  Toast should display: "Invalid username or password"
+
+Actual (UI):
+  Toast displays: "Login failed"
+
+API Status: 401
+API Message: Invalid username or password
+UI Toast: Login failed
+
+UI toast tidak konsisten dengan API response.
+Test FAIL karena UI menampilkan pesan generik, bukan spesifik dari API.
+```
+
+Setiap baris dalam failure message informatif — developer langsung paham bug tanpa buka source code.
+
+### 27.6 DILARANG dalam Implementasi BUG_APP
+
+| Praktik Terlarang | Contoh | Masalah |
+|---|---|---|
+| `(BUG_APP)` di judul test | `[REG-003] ... (BUG_APP)` | Judul tidak stabil |
+| Hanya `expect().toHaveText()` | `expect(toast).toHaveText(apiMsg)` | Failure message tidak informatif |
+| Komentar saja | `// BUG_APP: toast mismatch` | Tidak terlihat di report |
+| `console.log` / `console.warn` | `console.warn("BUG_APP: ...")` | Tidak terlihat di report |
+| `expect.soft` | `expect.soft(toast).toHaveText()` | Test tetap PASS |
+| `test.skip` | `test.skip("BUG_APP")` | Bug disembunyikan |
+
+### 27.7 WAJIB dalam Implementasi BUG_APP
+
+1. Gunakan `assertBugApp()` atau `assertToastMismatch()` dari `tests/helpers/bug-assertions.ts`
+2. Failure message harus menjelaskan **apa yang salah** dan **kenapa itu salah**
+3. Failure message harus mengandung **Test Case ID** untuk traceability
+4. Failure message harus mengandung **expected vs actual** dengan konteks
+5. Playwright HTML Report harus menjadi **sumber informasi utama** — bukan source code
+6. Jika helper belum ada, gunakan `throw new Error(...)` dengan format yang identik
+
+### 27.8 Test Title Stability
+
+BUG_APP detector test menggunakan judul yang stabil — tidak berubah walau bug diperbaiki:
+
+```typescript
+// ✅ BENAR — judul stabil, tidak mengandung status bug
+test("[REG-003] Email sudah terdaftar — tampilkan pesan error spesifik", ...);
+
+// ❌ SALAH — judul mengandung (BUG_APP), misleading jika bug fixed
+test("[REG-003] Email sudah terdaftar — API 409, UI mismatch toast (BUG_APP)", ...);
+```
+
+**Keuntungan judul stabil:**
+- Jika bug diperbaiki → test PASS tanpa perlu rename
+- Judul tetap relevan sepanjang waktu
+- Tidak misleading di CI/CD pipeline
+- Regression history tetap bersih
+
+---
+
+## 28. Output Format
+
+### 28.1 Test Result Summary
 
 ```
 ## Test Results: [Module]
@@ -1462,7 +1648,7 @@ expect(toastText).toContain(response.body.message);
 - **Evidence:** DOM snapshot menunjukkan tidak ada `aria-label` pada input element.
 ```
 
-### 27.2 Investigation Report
+### 28.2 Investigation Report
 
 ```
 ## Investigation: [ID-XXX]
@@ -1482,7 +1668,7 @@ expect(toastText).toContain(response.body.message);
 **Recommendation:** Perbaiki locator toast dari `page.locator(".toast")` menjadi `page.getByText("Login failed")`
 ```
 
-### 27.3 Session Summary
+### 28.3 Session Summary
 
 Gunakan format ini untuk meringkas hasil setiap sesi kerja:
 
@@ -1514,9 +1700,9 @@ Gunakan format ini untuk meringkas hasil setiap sesi kerja:
 
 ---
 
-## 28. Quick Reference
+## 29. Quick Reference
 
-### 28.1 Common Assertions
+### 29.1 Common Assertions
 
 ```typescript
 // Element visibility
@@ -1550,8 +1736,16 @@ expect(apiCallCount).toBeLessThanOrEqual(1);
 // Multiple HTTP status (e.g., 400 or 429)
 expect([400, 429]).toContain(response.status);
 
-// BUG_APP: UI toast vs API message mismatch → MUST FAIL
-await expect(pageObj.toastDescription).toHaveText(response.body.message as string);
+// BUG_APP: UI toast vs API message mismatch → MUST FAIL with informative message
+const toastText = await pageObj.toastDescription.textContent();
+if (toastText !== response.body.message) {
+  assertToastMismatch({
+    testCaseId: "XXX-001",
+    apiStatus: response.status,
+    apiMessage: response.body.message as string,
+    toastMessage: toastText || "",
+  });
+}
 
 // BUG_APP: API should reject invalid input → MUST FAIL
 expect(response.status).toBe(400);
@@ -1560,7 +1754,7 @@ expect(response.status).toBe(400);
 expect(res.status).not.toBe(200);
 ```
 
-### 28.2 Common Locators (Auth Pages)
+### 29.2 Common Locators (Auth Pages)
 
 ```typescript
 // Inputs (label-based — VERIFY against actual DOM first)
@@ -1603,7 +1797,13 @@ page.locator('[data-slot="description"]')                               // toast
 page.getByRole("alert").filter({ hasText: /pattern/i })                 // whole alert
 ```
 
-### 28.3 Known Project State
+### 29.3 Known Project State
+
+**Login Module (current):**
+- `tests/login.spec.ts` — 10 tests total
+- **8 PASS** — client-side validation, happy path, UI features
+- **2 FAIL (BUG_APP)** — UI toast "Login failed" ≠ API "Invalid username or password"
+- BUG_APP tests: AUTH-002, AUTH-003
 
 **Register Module (current):**
 - `tests/register.spec.ts` — 25 tests total
@@ -1613,13 +1813,15 @@ page.getByRole("alert").filter({ hasText: /pattern/i })                 // whole
 
 **Known Observations:**
 - **Password has no maxlength** — no `maxlength` attribute, no Zod rule, no server validation. 300-char password registers successfully (200).
-- **Toast vs API mismatch** — UI always shows "Registration failed" for errors, even when API returns specific messages ("Email is already registered", "Username is already taken", "Validation failed").
+- **Toast vs API mismatch** — UI always shows generic message for errors:
+  - Login: "Login failed" instead of "Invalid username or password"
+  - Register: "Registration failed" instead of "Email is already registered", "Username is already taken", or "Validation failed"
 - **Email `firman@gmail.com` & username `firman`** are pre-registered (return 409).
 - **Rate limiting** — after ~3 rapid requests to `/auth/login`, API returns 429.
 - **Login API does not return `set-cookie`** — tested, all login responses return `cookies: null`.
 - **Console shows no application errors** — only expected HTTP error responses.
 
-### 28.4 Quick Decision Flow
+### 29.4 Quick Decision Flow
 
 ```
 Evidence of failure?
@@ -1633,7 +1835,7 @@ Evidence of failure?
            ↓ NO  → UNCONFIRMED → investigate further
 ```
 
-### 28.5 RULE: DO NOT INVENT BUGS
+### 29.5 RULE: DO NOT INVENT BUGS
 
 Before creating BUG_APP, you MUST have one of:
 | Dasar | Contoh |
@@ -1646,7 +1848,7 @@ Before creating BUG_APP, you MUST have one of:
 
 Without a clear basis → **UNCONFIRMED**, not BUG_APP.
 
-### 28.6 RULE: OBSERVATION IS NOT A BUG
+### 29.6 RULE: OBSERVATION IS NOT A BUG
 
 | Observasi (bukan bug)                                         | Alasan                                           |
 | ------------------------------------------------------------- | ------------------------------------------------ |
@@ -1662,7 +1864,7 @@ Without a clear basis → **UNCONFIRMED**, not BUG_APP.
 | Field tidak ada validasi required                             | Test case menyebut field wajib diisi             |
 | Redirect tidak terjadi setelah success                        | Dokumentasi menyebut redirect ke halaman login   |
 
-### 28.7 RULE: API vs UI CONSISTENCY
+### 29.7 RULE: API vs UI CONSISTENCY
 
 Untuk seluruh **negative test** (validasi error, duplicate, invalid input):
 
@@ -1675,7 +1877,7 @@ Untuk seluruh **negative test** (validasi error, duplicate, invalid input):
 
 Jika API message berbeda dengan UI message → **classification: BUG_APP** → assertion FAIL.
 
-### 28.8 RULE: PLAYWRIGHT REPORT DRIVEN QA
+### 29.8 RULE: PLAYWRIGHT REPORT DRIVEN QA
 
 Semua BUG_APP harus menghasilkan bukti otomatis di Playwright HTML Report:
 - ✅ BUG_APP terlihat **merah** di HTML Report
@@ -1685,6 +1887,144 @@ Semua BUG_APP harus menghasilkan bukti otomatis di Playwright HTML Report:
 
 Mekanisme: **Assertion failure** → Playwright otomatis screenshot, video, trace, DOM snapshot.
 
+### 29.9 assertBugApp Helper
+
+**File:** `tests/helpers/bug-assertions.ts`
+
+Helper untuk menghasilkan failure message BUG_APP yang informatif dan konsisten.
+
+#### assertToastMismatch
+
+Gunakan ketika UI toast tidak sesuai dengan API response message:
+
+```typescript
+/**
+ * Assert that UI toast matches API message.
+ * Jika tidak match → throw Error dengan format BUG_APP standar.
+ * Test akan FAIL dengan pesan yang jelas di Playwright Report.
+ */
+export function assertToastMismatch(params: {
+  testCaseId: string;
+  apiStatus: number;
+  apiMessage: string;
+  toastMessage: string;
+}): never {
+  throw new Error([
+    "BUG_APP",
+    "",
+    `Test Case: ${params.testCaseId}`,
+    "",
+    "Expected (API Contract):",
+    `  Toast should display: "${params.apiMessage}"`,
+    "",
+    "Actual (UI):",
+    `  Toast displays: "${params.toastMessage}"`,
+    "",
+    `API Status: ${params.apiStatus}`,
+    `API Message: ${params.apiMessage}`,
+    `UI Toast: ${params.toastMessage}`,
+    "",
+    "UI toast tidak konsisten dengan API response.",
+    "Test FAIL karena UI menampilkan pesan generik, bukan spesifik dari API.",
+  ].join("\n"));
+}
+```
+
+#### assertBugApp (General)
+
+Untuk BUG_APP jenis lain (bukan toast mismatch):
+
+```typescript
+/**
+ * Generic BUG_APP assertion.
+ * Gunakan untuk berbagai jenis ketidaksesuaian antara requirement dan actual behavior.
+ */
+export function assertBugApp(params: {
+  testCaseId: string;
+  description?: string;
+  expected: string;
+  actual: string;
+  apiStatus?: number;
+  apiMessage?: string;
+  uiMessage?: string;
+}): never {
+  const lines: string[] = [
+    "BUG_APP",
+    "",
+    `Test Case: ${params.testCaseId}`,
+  ];
+
+  if (params.description) {
+    lines.push(`Description: ${params.description}`);
+  }
+
+  lines.push(
+    "",
+    "Expected (Requirement):",
+    `  ${params.expected}`,
+    "",
+    "Actual (Observed):",
+    `  ${params.actual}`,
+  );
+
+  if (params.apiStatus !== undefined) {
+    lines.push("", `API Status: ${params.apiStatus}`);
+  }
+  if (params.apiMessage) {
+    lines.push(`API Message: ${params.apiMessage}`);
+  }
+  if (params.uiMessage) {
+    lines.push(`UI Message: ${params.uiMessage}`);
+  }
+
+  throw new Error(lines.join("\n"));
+}
+```
+
+#### Cara Penggunaan di Spec File
+
+```typescript
+import { assertToastMismatch, assertBugApp } from "../helpers/bug-assertions";
+
+// Untuk toast mismatch:
+const toastText = await pageObj.toastDescription.textContent();
+if (toastText !== response.body.message) {
+  assertToastMismatch({
+    testCaseId: "REG-003",
+    apiStatus: response.status,
+    apiMessage: response.body.message as string,
+    toastMessage: toastText || "",
+  });
+}
+
+// Untuk BUG_APP umum:
+assertBugApp({
+  testCaseId: "AUTH-005",
+  description: "API harus memvalidasi format nomor telepon",
+  expected: "API mengembalikan 400 untuk nomor telepon 'abc'",
+  actual: "API mengembalikan 200 untuk nomor telepon 'abc'",
+  apiStatus: 200,
+  apiMessage: "Registration successful",
+});
+```
+
+#### Aturan Penggunaan Helper
+
+1. Helper hanya dipanggil ketika BUG_APP terdeteksi (guard condition).
+2. Helper selalu `throw new Error()` — tidak perlu try-catch di spec file.
+3. Playwright akan secara otomatis:
+   - Menandai test sebagai FAILED
+   - Mengambil screenshot
+   - Merekam video
+   - Menyimpan trace
+4. Failure message sudah mencakup:
+   - Test Case ID untuk traceability
+   - Expected vs Actual dengan konteks
+   - API details (status, message)
+   - UI details
+   - Penjelasan kenapa ini bug
+5. Jika helper belum dibuat di project, buat file `tests/helpers/bug-assertions.ts` berisi kedua fungsi di atas.
+
 ---
 
-*End of Playwright Engineer Agent rules (28 sections, 2026-06-17)*
+*End of Playwright Engineer Agent rules (29 sections, 2026-06-17)*

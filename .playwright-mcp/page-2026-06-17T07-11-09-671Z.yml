@@ -1,0 +1,74 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - banner [ref=e4]:
+        - generic [ref=e5]:
+          - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+            - /url: /kurostoreid
+            - img "kuroStoreID" [ref=e8]
+          - generic [ref=e10]:
+            - button "Category" [ref=e11] [cursor=pointer]:
+              - generic [ref=e12]: Category
+            - textbox "Search products, categories, etc." [ref=e16]
+          - generic [ref=e20]:
+            - link [ref=e21] [cursor=pointer]:
+              - /url: /kurostoreid/simasko/rakit-komputer
+            - button "EN" [ref=e23] [cursor=pointer]:
+              - generic [ref=e25]: EN
+            - link "Login" [ref=e27] [cursor=pointer]:
+              - /url: /kurostoreid/auth/login
+              - generic [ref=e28]: Login
+      - main [ref=e29]:
+        - generic [ref=e32]:
+          - heading "Settings" [level=1] [ref=e34]
+          - generic [ref=e35]:
+            - heading "Sign In to Continue" [level=2] [ref=e38]
+            - paragraph [ref=e39]: Please sign in to your account to access profile settings, addresses, and order history.
+            - link "Sign In" [ref=e40] [cursor=pointer]:
+              - /url: /kurostoreid/auth/login
+              - generic [ref=e42]: Sign In
+            - paragraph [ref=e43]:
+              - text: Don't have an account?
+              - link "Register now" [ref=e44] [cursor=pointer]:
+                - /url: /kurostoreid/auth/register
+      - contentinfo [ref=e45]:
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - img "kuroStoreID" [ref=e49]
+              - generic [ref=e50]:
+                - heading "kuroStoreID" [level=2] [ref=e51]
+                - paragraph [ref=e52]: 12312323232 123123232
+            - generic [ref=e53]:
+              - button "Belanja" [ref=e54]:
+                - heading "Belanja" [level=3] [ref=e55]
+              - generic [ref=e57]:
+                - link "About Us" [ref=e58] [cursor=pointer]:
+                  - /url: /kurostoreid/about
+                - link "Privacy Policy" [ref=e59] [cursor=pointer]:
+                  - /url: /privacy
+                - link "Terms of Service" [ref=e60] [cursor=pointer]:
+                  - /url: /terms
+            - generic [ref=e61]:
+              - button "Contact" [ref=e62]:
+                - heading "Contact" [level=3] [ref=e63]
+              - generic [ref=e65]:
+                - generic [ref=e68]:
+                  - paragraph [ref=e69]: Contact
+                  - paragraph [ref=e70]: "6285318158201"
+                - generic [ref=e73]:
+                  - paragraph [ref=e74]: Operating Hours
+                  - paragraph [ref=e75]: "Senin - Minggu: 08:00 - 17:00"
+            - generic [ref=e76]:
+              - button "Address" [ref=e77]:
+                - heading "Address" [level=3] [ref=e78]
+              - paragraph [ref=e83]: "12"
+          - generic [ref=e84]:
+            - paragraph [ref=e85]: © 2026 OLPOS. All rights reserved.
+            - generic [ref=e86]:
+              - generic [ref=e87]: Powered by
+              - link "OLPOS" [ref=e88] [cursor=pointer]:
+                - /url: https://olpos.id
+    - button "Open chatbot" [ref=e91] [cursor=pointer]
+  - region "Notifications (F8)":
+    - list

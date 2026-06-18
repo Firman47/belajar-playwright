@@ -1,0 +1,89 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "EN" [ref=e5] [cursor=pointer]:
+        - generic [ref=e7]: EN
+      - generic [ref=e9]:
+        - link "kuroStoreID" [ref=e10] [cursor=pointer]:
+          - /url: /kurostoreid
+          - img "kuroStoreID" [ref=e11]
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - heading "Forgot Password" [level=1] [ref=e15]
+            - paragraph [ref=e16]: Reset your account password
+          - generic [ref=e17]:
+            - generic [ref=e21]: Email
+            - generic [ref=e23]:
+              - generic [ref=e25]: "2"
+              - generic [ref=e26]: Verify
+            - generic [ref=e28]:
+              - generic [ref=e30]: "3"
+              - generic [ref=e31]: New Password
+          - paragraph [ref=e92]: Enter the OTP code sent to test@example.com.
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e97]: OTP Code
+              - generic [ref=e98]:
+                - generic [ref=e99]:
+                  - textbox "pin input 1 of 6" [ref=e100]:
+                    - /placeholder: ""
+                    - text: "1"
+                  - textbox "pin input 2 of 6" [ref=e101]:
+                    - /placeholder: •
+                  - textbox "pin input 3 of 6" [ref=e102]:
+                    - /placeholder: •
+                    - text: "1"
+                  - textbox "pin input 4 of 6" [ref=e103]:
+                    - /placeholder: ""
+                    - text: "1"
+                  - textbox "pin input 5 of 6" [ref=e104]:
+                    - /placeholder: ""
+                    - text: "1"
+                  - textbox "pin input 6 of 6" [ref=e105]:
+                    - /placeholder: ""
+                    - text: "1"
+                  - textbox [ref=e106]: "11111"
+                - generic [ref=e113]: OTP code is required
+            - button "Resend OTP" [ref=e112] [cursor=pointer]
+            - button "Verify OTP" [active] [ref=e109] [cursor=pointer]
+      - contentinfo [ref=e43]:
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - img "kuroStoreID" [ref=e47]
+              - generic [ref=e48]:
+                - heading "kuroStoreID" [level=2] [ref=e49]
+                - paragraph [ref=e50]: 12312323232 123123232
+            - generic [ref=e51]:
+              - button "Belanja" [ref=e52]:
+                - heading "Belanja" [level=3] [ref=e53]
+              - generic [ref=e55]:
+                - link "About Us" [ref=e56] [cursor=pointer]:
+                  - /url: /kurostoreid/about
+                - link "Privacy Policy" [ref=e57] [cursor=pointer]:
+                  - /url: /privacy
+                - link "Terms of Service" [ref=e58] [cursor=pointer]:
+                  - /url: /terms
+            - generic [ref=e59]:
+              - button "Contact" [ref=e60]:
+                - heading "Contact" [level=3] [ref=e61]
+              - generic [ref=e63]:
+                - generic [ref=e66]:
+                  - paragraph [ref=e67]: Contact
+                  - paragraph [ref=e68]: "6285318158201"
+                - generic [ref=e71]:
+                  - paragraph [ref=e72]: Operating Hours
+                  - paragraph [ref=e73]: "Senin - Minggu: 08:00 - 17:00"
+            - generic [ref=e74]:
+              - button "Address" [ref=e75]:
+                - heading "Address" [level=3] [ref=e76]
+              - paragraph [ref=e81]: "12"
+          - generic [ref=e82]:
+            - paragraph [ref=e83]: © 2026 OLPOS. All rights reserved.
+            - generic [ref=e84]:
+              - generic [ref=e85]: Powered by
+              - link "OLPOS" [ref=e86] [cursor=pointer]:
+                - /url: https://olpos.id
+    - button "Open chatbot" [ref=e89] [cursor=pointer]
+  - region "Notifications (F8)":
+    - list

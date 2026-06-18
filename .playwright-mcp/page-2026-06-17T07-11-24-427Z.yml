@@ -1,0 +1,72 @@
+- generic [ref=e3]:
+  - button "EN" [ref=e5] [cursor=pointer]:
+    - generic [ref=e7]: EN
+  - generic [ref=e9]:
+    - link "kuroStoreID" [ref=e10] [cursor=pointer]:
+      - /url: /kurostoreid
+      - img "kuroStoreID" [ref=e11]
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Login" [level=1] [ref=e17]
+        - paragraph [ref=e18]: Sign in to your account
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e23]: Username
+          - textbox "Username" [ref=e26]:
+            - /placeholder: Enter your username
+        - generic [ref=e27]:
+          - generic [ref=e30]: Password
+          - generic [ref=e32]:
+            - textbox "Password" [ref=e33]:
+              - /placeholder: Enter your password
+            - button "Show password" [ref=e35]
+        - generic [ref=e37]:
+          - generic [ref=e38] [cursor=pointer]:
+            - checkbox "Remember me" [ref=e41]
+            - generic [ref=e42]: Remember me
+          - link "Forgot Password?" [ref=e43] [cursor=pointer]:
+            - /url: /kurostoreid/auth/forgot-password
+        - button "Login" [ref=e44] [cursor=pointer]
+        - generic [ref=e47]: or
+        - generic [ref=e49]:
+          - paragraph [ref=e50]: Don't have an account?
+          - link "Register" [ref=e51] [cursor=pointer]:
+            - /url: /kurostoreid/auth/register
+  - contentinfo [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - img "kuroStoreID" [ref=e56]
+          - generic [ref=e57]:
+            - heading "kuroStoreID" [level=2] [ref=e58]
+            - paragraph [ref=e59]: 12312323232 123123232
+        - generic [ref=e60]:
+          - button "Belanja" [ref=e61]:
+            - heading "Belanja" [level=3] [ref=e62]
+          - generic [ref=e64]:
+            - link "About Us" [ref=e65] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e66] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e67] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e68]:
+          - button "Contact" [ref=e69]:
+            - heading "Contact" [level=3] [ref=e70]
+          - generic [ref=e72]:
+            - generic [ref=e75]:
+              - paragraph [ref=e76]: Contact
+              - paragraph [ref=e77]: "6285318158201"
+            - generic [ref=e80]:
+              - paragraph [ref=e81]: Operating Hours
+              - paragraph [ref=e82]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e83]:
+          - button "Address" [ref=e84]:
+            - heading "Address" [level=3] [ref=e85]
+          - paragraph [ref=e90]: "12"
+      - generic [ref=e91]:
+        - paragraph [ref=e92]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e93]:
+          - generic [ref=e94]: Powered by
+          - link "OLPOS" [ref=e95] [cursor=pointer]:
+            - /url: https://olpos.id
