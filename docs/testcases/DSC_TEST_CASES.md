@@ -1,10 +1,10 @@
-# Search Module — Test Case Specifications
+# Catalog Discovery Module — Test Case Specifications
 
 **Module:** Search & Product Listing  
 **Route:** `/kurostoreid/search?q=...&category=...&subcategory=...&sort=...`  
 **API Endpoint:** `GET /e_commerce/v1/kurostoreid/products?search=&category=&sort=&price_min=&price_max=&cursor=&limit=`  
 **Auth:** Public  
-**Test ID Prefix:** `SRC-`
+**Test ID Prefix:** `DSC-`
 
 > **API Contract (from API_DOCUMENTATION.md §8.1):**
 > - Base: `GET /e_commerce/v1/{store}/products`
@@ -17,11 +17,11 @@
 
 ## Test Cases
 
-### SRC-001: Search by keyword (found) — API 200, results appear in grid
+### DSC-001: Search by keyword (found) — API 200, results appear in grid
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-001 |
+| **ID** | DSC-001 |
 | **Priority** | P0 |
 | **Tags** | `@smoke` `@regression` |
 | **Description** | Search dengan keyword yang ada di database harus mengembalikan produk yang match dan menampilkannya di grid. |
@@ -30,11 +30,11 @@
 | **Expected Result** | API mengembalikan produk yang match keyword. Grid menampilkan produk tersebut. |
 | **Classification** | ✅ PASS (API + UI match) |
 
-### SRC-002: Search no results — empty state
+### DSC-002: Search no results — empty state
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-002 |
+| **ID** | DSC-002 |
 | **Priority** | P0 |
 | **Tags** | `@regression` |
 | **Description** | Search dengan keyword yang tidak ada di database harus menampilkan empty state. |
@@ -43,11 +43,11 @@
 | **Expected Result** | API mengembalikan items kosong. UI menampilkan pesan "0 products" atau empty state. |
 | **Classification** | ✅ PASS (API behavior benar) |
 
-### SRC-003: Search tanpa keyword — semua produk tampil
+### DSC-003: Search tanpa keyword — semua produk tampil
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-003 |
+| **ID** | DSC-003 |
 | **Priority** | P1 |
 | **Tags** | `@regression` |
 | **Description** | Search tanpa query param `q` (hanya `/search`) harus menampilkan semua produk. |
@@ -56,11 +56,11 @@
 | **Expected Result** | API mengembalikan semua produk. Grid menampilkan produk-produk tersebut. |
 | **Classification** | ✅ PASS (API behavior benar) |
 
-### SRC-004: Filter by category via sidebar — produk sesuai kategori
+### DSC-004: Filter by category via sidebar — produk sesuai kategori
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-004 |
+| **ID** | DSC-004 |
 | **Priority** | P1 |
 | **Tags** | `@regression` |
 | **Description** | Klik kategori "Laptop" di sidebar harus memfilter produk hanya dari kategori Laptop. |
@@ -69,11 +69,11 @@
 | **Expected Result** | API mengembalikan produk kategori Laptop saja. URL terupdate dengan `?category=laptop`. |
 | **Classification** | ✅ PASS |
 
-### SRC-005: Sort by price ascending
+### DSC-005: Sort by price ascending
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-005 |
+| **ID** | DSC-005 |
 | **Priority** | P1 |
 | **Tags** | `@regression` |
 | **Description** | Pilih sort "Termurah" harus mengurutkan produk dari harga terendah ke tertinggi. |
@@ -82,11 +82,11 @@
 | **Expected Result** | API mengembalikan produk terurut price ascending. UI menampilkan produk termurah pertama. |
 | **Classification** | ✅ PASS |
 
-### SRC-006: Sort by price descending
+### DSC-006: Sort by price descending
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-006 |
+| **ID** | DSC-006 |
 | **Priority** | P1 |
 | **Tags** | `@regression` |
 | **Description** | Pilih sort "Termahal" harus mengurutkan produk dari harga tertinggi ke terendah. |
@@ -95,11 +95,11 @@
 | **Expected Result** | API mengembalikan produk terurut price descending. |
 | **Classification** | ✅ PASS |
 
-### SRC-007: Price range filter — produk dalam rentang harga
+### DSC-007: Price range filter — produk dalam rentang harga
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-007 |
+| **ID** | DSC-007 |
 | **Priority** | P2 |
 | **Tags** | `@regression` |
 | **Description** | Klik filter harga "Rp100k - Rp500k" harus menampilkan produk dengan harga dalam rentang tersebut. |
@@ -108,11 +108,11 @@
 | **Expected Result** | API mengembalikan produk dalam rentang harga. UI menampilkan filter aktif. |
 | **Classification** | ✅ PASS |
 
-### SRC-008: Search dari header input — navigasi ke search page
+### DSC-008: Search dari header input — navigasi ke search page
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-008 |
+| **ID** | DSC-008 |
 | **Priority** | P1 |
 | **Tags** | `@smoke` `@regression` |
 | **Description** | Input keyword di search bar header dan tekan Enter harus redirect ke search page dengan query param. |
@@ -121,11 +121,11 @@
 | **Expected Result** | Navigasi ke search page dengan hasil pencarian. |
 | **Classification** | ✅ PASS |
 
-### SRC-009: Breadcrumb navigasi — Home link
+### DSC-009: Breadcrumb navigasi — Home link
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-009 |
+| **ID** | DSC-009 |
 | **Priority** | P2 |
 | **Tags** | `@regression` |
 | **Description** | Breadcrumb "Home" di search page harus navigate ke homepage. |
@@ -134,11 +134,11 @@
 | **Expected Result** | Navigasi ke homepage. |
 | **Classification** | ✅ PASS |
 
-### SRC-010: Product card click — navigate to product detail
+### DSC-010: Product card click — navigate to product detail
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-010 |
+| **ID** | DSC-010 |
 | **Priority** | P1 |
 | **Tags** | `@regression` |
 | **Description** | Klik product card harus navigate ke halaman detail produk. |
@@ -147,11 +147,11 @@
 | **Expected Result** | Navigasi ke product detail page. |
 | **Classification** | ✅ PASS |
 
-### SRC-011: @error-handling API 500 — error handling products
+### DSC-011: @error-handling API 500 — error handling products
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-011 |
+| **ID** | DSC-011 |
 | **Priority** | P2 |
 | **Tags** | `@error-handling` |
 | **Description** | Jika API products mengembalikan 500, UI harus menampilkan error toast atau fallback. |
@@ -160,11 +160,11 @@
 | **Expected Result** | Error toast muncul atau empty state. Tidak crash. |
 | **Classification** | ✅ PASS (error handling) |
 
-### SRC-012: Product count display — total_count sesuai
+### DSC-012: Product count display — total_count sesuai
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-012 |
+| **ID** | DSC-012 |
 | **Priority** | P2 |
 | **Tags** | `@regression` |
 | **Description** | Jumlah produk yang ditampilkan di UI harus sesuai dengan `total_count` dari API. |
@@ -174,11 +174,11 @@
 | **BUG_APP Detection** | Jika UI count != API total_count → BUG_APP |
 | **Classification** | ⚠️ BUG_APP jika mismatch |
 
-### SRC-013: Subcategory filter — produk sesuai subkategori
+### DSC-013: Subcategory filter — produk sesuai subkategori
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-013 |
+| **ID** | DSC-013 |
 | **Priority** | P2 |
 | **Tags** | `@regression` |
 | **Description** | Filter dengan subcategory harus mengembalikan produk sesuai subkategori. |
@@ -187,11 +187,11 @@
 | **Expected Result** | API mengembalikan produk dengan subkategori yang sesuai. |
 | **Classification** | ✅ PASS |
 
-### SRC-014: XSS in search description — API tidak melakukan sanitasi
+### DSC-014: XSS in search description — API tidak melakukan sanitasi
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-014 |
+| **ID** | DSC-014 |
 | **Priority** | P2 |
 | **Tags** | `@regression` `@security` |
 | **Description** | Produk "Charger 5V" memiliki description berisi `<script><b>test</b>alert('a')</script>`. API mengembalikan description tanpa sanitasi. UI harus menampilkan dengan aman (tidak execute script). |
@@ -200,11 +200,11 @@
 | **Expected Result** | Halaman tidak crash. Script tidak tereksekusi. |
 | **Classification** | ✅ OBSERVATION (no documented requirement about sanitization) |
 
-### SRC-015: @error-handling API timeout — loading state
+### DSC-015: @error-handling API timeout — loading state
 
 | Field | Value |
 |-------|-------|
-| **ID** | SRC-015 |
+| **ID** | DSC-015 |
 | **Priority** | P2 |
 | **Tags** | `@error-handling` `@slow` |
 | **Description** | Jika API products lambat, UI harus menampilkan loading state (spinner/skeleton). |

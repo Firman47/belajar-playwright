@@ -2,8 +2,11 @@ import { test, expect } from "@playwright/test";
 import { SearchPage } from "./pages/SearchPage";
 
 /**
- * Search Module — E2E Tests
- * ==========================
+ * Catalog Discovery Module — E2E Tests
+ * =====================================
+ * Covers search, category filter, price filter, sorting, breadcrumb,
+ * product navigation, product count validation, and error handling.
+ *
  * Architecture notes:
  * - Initial page load: SSR (server-side rendered). Product data is embedded
  *   in __NUXT_DATA__. NO client-side API call on initial navigation.
@@ -14,15 +17,15 @@ import { SearchPage } from "./pages/SearchPage";
  *   - Header search form submission (navigates to search page via SSR)
  * - Product cards are <a> links inside <main> with "Rp." price text.
  *
- * Test IDs: SRC-001 to SRC-012
+ * Test IDs: DSC-001 to DSC-012
  */
 
-test.describe("Search Module", () => {
+test.describe("Catalog Discovery Module", () => {
   // ====================================================================
-  // SRC-001: Search by keyword (SSR) + API contract via direct request
+  // DSC-001: Search by keyword (SSR) + API contract via direct request
   // ====================================================================
 
-  test("[SRC-001] @smoke Search 'charger' — produk muncul di DOM, API contract valid", async ({ page, request }) => {
+  test("[DSC-001] @smoke Search keyword valid — produk muncul", async ({ page, request }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search page dengan q=charger (SSR)", async () => {
@@ -52,10 +55,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-002: Search no results — empty state (SSR)
+  // DSC-002: Search no results — empty state (SSR)
   // ====================================================================
 
-  test("[SRC-002] Search tanpa hasil — API 200, empty state", async ({ page, request }) => {
+  test("[DSC-002] Search tanpa hasil — tampil empty state", async ({ page, request }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search dengan keyword tidak ada (SSR)", async () => {
@@ -82,10 +85,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-003: Search empty string (SSR) — all products shown
+  // DSC-003: Search empty string (SSR) — all products shown
   // ====================================================================
 
-  test("[SRC-003] Search q= (empty) — semua produk tampil", async ({ page, request }) => {
+  test("[DSC-003] Search kosong — tampil semua produk", async ({ page, request }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search dengan q= (empty string, SSR)", async () => {
@@ -109,10 +112,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-004: Filter by category — triggers client-side API call
+  // DSC-004: Filter by category — triggers client-side API call
   // ====================================================================
 
-  test("[SRC-004] Filter kategori Laptop — API category=laptop, produk sesuai", async ({ page }) => {
+  test("[DSC-004] Filter kategori — produk sesuai kategori", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search page dengan query", async () => {
@@ -145,10 +148,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-005: Sort "Terpopuler" — triggers client-side API call
+  // DSC-005: Sort "Terpopuler" — triggers client-side API call
   // ====================================================================
 
-  test("[SRC-005] Sort Terpopuler — API sort=best_seller", async ({ page }) => {
+  test("[DSC-005] Sorting Terpopuler — urutan produk sesuai", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search page dengan query", async () => {
@@ -174,10 +177,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-006: Sort "Rating Tertinggi" — triggers client-side API call
+  // DSC-006: Sort "Rating Tertinggi" — triggers client-side API call
   // ====================================================================
 
-  test("[SRC-006] Sort Rating Tertinggi — API sort=highest_rating", async ({ page }) => {
+  test("[DSC-006] Sorting Rating Tertinggi — urutan produk sesuai", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search page dengan query", async () => {
@@ -203,10 +206,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-007: Price range filter — triggers client-side API call
+  // DSC-007: Price range filter — triggers client-side API call
   // ====================================================================
 
-  test("[SRC-007] Filter harga Rp100k-Rp500k — produk dalam rentang", async ({ page }) => {
+  test("[DSC-007] Filter harga — produk dalam rentang", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search page", async () => {
@@ -240,10 +243,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-008: Header search → redirect + SSR products
+  // DSC-008: Header search → redirect + SSR products
   // ====================================================================
 
-  test("[SRC-008] @smoke Search dari header input — redirect + produk muncul", async ({ page }) => {
+  test("[DSC-008] @smoke Search dari header — redirect ke hasil pencarian", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka homepage", async () => {
@@ -272,10 +275,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-009: Breadcrumb → Home
+  // DSC-009: Breadcrumb → Home
   // ====================================================================
 
-  test("[SRC-009] Breadcrumb Home — navigasi ke homepage", async ({ page }) => {
+  test("[DSC-009] Breadcrumb Home — navigasi ke homepage", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search page", async () => {
@@ -294,10 +297,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-010: Product card → detail page
+  // DSC-010: Product card → detail page
   // ====================================================================
 
-  test("[SRC-010] @smoke Klik produk — navigasi ke detail page", async ({ page }) => {
+  test("[DSC-010] @smoke Klik produk — navigasi ke detail produk", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search page", async () => {
@@ -322,10 +325,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-011: API 500 error handling (route interception)
+  // DSC-011: API 500 error handling (route interception)
   // ====================================================================
 
-  test("[SRC-011] @error-handling API 500 — UI tidak crash", async ({ page }) => {
+  test("[DSC-011] @error-handling API 500 — UI tidak crash", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Intercept API products untuk return 500", async () => {
@@ -352,10 +355,10 @@ test.describe("Search Module", () => {
   });
 
   // ====================================================================
-  // SRC-012: Product count consistency
+  // DSC-012: Product count consistency
   // ====================================================================
 
-  test("[SRC-012] Jumlah produk UI — konsisten dengan API total_count", async ({ page, request }) => {
+  test("[DSC-012] Jumlah produk UI — konsisten dengan API", async ({ page, request }) => {
     const searchPage = new SearchPage(page);
 
     await test.step("Buka search page", async () => {
@@ -375,7 +378,7 @@ test.describe("Search Module", () => {
       // Note: SSR may paginate differently — this assertion is a consistency check
       expect(
         uiCount,
-        `[SRC-012] BUG_APP: UI menampilkan ${uiCount} produk tapi API total_count=${totalApi}.\n` +
+        `[DSC-012] BUG_APP: UI menampilkan ${uiCount} produk tapi API total_count=${totalApi}.\n` +
         `Frontend dan backend tidak sinkron dalam menampilkan jumlah produk.`,
       ).toBe(totalApi);
     });

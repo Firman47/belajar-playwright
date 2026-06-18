@@ -2,11 +2,11 @@ import { test, expect } from "@playwright/test";
 import { SearchPage } from "../pages/SearchPage";
 
 /**
- * Smoke Test — Search Module
+ * Smoke Test — Catalog Discovery Module
  * Critical path: search from header → products visible,
  * search page direct → SSR renders products, click product → detail.
  */
-test.describe("Search Smoke", () => {
+test.describe("Catalog Discovery Smoke", () => {
   test("[SMOKE] Search dari header — produk muncul, klik ke detail", async ({ page }) => {
     const searchPage = new SearchPage(page);
 
