@@ -1,0 +1,41 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - heading "Transaction History" [level=1] [ref=e8]
+      - generic [ref=e9]:
+        - link [ref=e12] [cursor=pointer]:
+          - /url: /kurostoreid/cart
+        - button "Cari produk" [ref=e15] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e20]:
+      - generic [ref=e22]:
+        - heading "Transaction History" [level=1] [ref=e23]
+        - paragraph [ref=e24]: View and manage all your orders
+      - textbox "Search product" [ref=e26]
+      - generic [ref=e29]:
+        - button "All" [ref=e30]
+        - button "Pending" [ref=e31]
+        - button "Processing" [ref=e32]
+        - button "Shipped" [ref=e33]
+        - button "Completed" [ref=e34]
+        - button "Cancelled" [ref=e35]
+      - generic [ref=e36]:
+        - paragraph [ref=e39]: No orders yet
+        - paragraph [ref=e40]: Your first order awaits
+        - link "Start Shopping" [ref=e41] [cursor=pointer]:
+          - /url: /kurostoreid
+          - generic [ref=e42]: Start Shopping
+  - navigation [ref=e43]:
+    - generic [ref=e44]:
+      - link "Home" [ref=e45] [cursor=pointer]:
+        - /url: /kurostoreid
+        - generic [ref=e48]: Home
+      - link "Cart" [ref=e49] [cursor=pointer]:
+        - /url: /kurostoreid/cart
+        - generic [ref=e52]: Cart
+      - link "Orders" [ref=e53] [cursor=pointer]:
+        - /url: /kurostoreid/checkout/history
+        - generic [ref=e56]: Orders
+      - link "Profile" [ref=e57] [cursor=pointer]:
+        - /url: /kurostoreid/setting
+        - generic [ref=e60]: Profile

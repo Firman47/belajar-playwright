@@ -1,0 +1,212 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - banner [ref=e4]:
+        - generic [ref=e5]:
+          - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+            - /url: /kurostoreid
+            - img "kuroStoreID" [ref=e8]
+          - generic [ref=e10]:
+            - button "Category" [ref=e11] [cursor=pointer]:
+              - generic [ref=e12]: Category
+            - textbox "Search products, categories, etc." [ref=e16]
+          - generic [ref=e20]:
+            - button "EN" [ref=e21] [cursor=pointer]:
+              - generic [ref=e23]: EN
+            - link [ref=e26] [cursor=pointer]:
+              - /url: /kurostoreid/cart
+            - link [ref=e29] [cursor=pointer]:
+              - /url: /kurostoreid/checkout/history
+            - button "F" [ref=e31] [cursor=pointer]:
+              - generic [ref=e33]: F
+      - main [ref=e34]:
+        - generic [ref=e35]:
+          - navigation "breadcrumb" [ref=e38]:
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Home" [ref=e41] [cursor=pointer]:
+                  - /url: /kurostoreid
+                  - generic [ref=e42]: Home
+              - listitem [ref=e43]
+              - listitem [ref=e45]:
+                - link "Charger 5V" [ref=e46] [cursor=pointer]:
+                  - /url: /kurostoreid/charger-5v
+                  - generic [ref=e47]: Charger 5V
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - generic [ref=e50]:
+                - region [ref=e52]:
+                  - group [ref=e55]:
+                    - img "Product preview" [ref=e57]
+                - region [ref=e59]:
+                  - group [ref=e62]:
+                    - img "Product preview" [ref=e64] [cursor=pointer]
+              - generic [ref=e65]:
+                - generic [ref=e66]:
+                  - generic [ref=e67]:
+                    - heading "Charger 5V" [level=1] [ref=e68]
+                    - paragraph [ref=e70]: Rp. 50.000
+                  - generic [ref=e71]:
+                    - button "Specification and Description":
+                      - heading "Specification and Description" [level=2]
+                    - generic [ref=e73]:
+                      - generic [ref=e74]: SKU:C5V
+                      - generic [ref=e75]:
+                        - text: "Category:"
+                        - link:
+                          - /url: /kurostoreid
+                      - generic [ref=e76]: Minimum purchase:1 unit
+                      - generic [ref=e77]: Weight:100
+                - generic [ref=e78]:
+                  - paragraph [ref=e80]: "Stock: 1"
+                  - generic [ref=e82]:
+                    - generic [ref=e83]:
+                      - paragraph [ref=e84]: Order Quantity
+                      - group [ref=e85]:
+                        - spinbutton [ref=e86]: "1"
+                        - button "Increment" [disabled] [ref=e88]
+                        - button "Decrement" [disabled] [ref=e91]
+                    - generic [ref=e93]:
+                      - paragraph [ref=e94]: Subtotal
+                      - paragraph [ref=e95]: Rp. 50.000
+                  - button "Add to Cart" [ref=e97] [cursor=pointer]: Add to Cart
+            - generic [ref=e100]:
+              - heading "Buyer Reviews" [level=2] [ref=e101]
+              - generic [ref=e104]:
+                - generic [ref=e105]: No reviews yet
+                - generic [ref=e106]: Be the first buyer to review this product.
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - heading "Other products" [level=3] [ref=e110]
+              - link "View all" [ref=e111] [cursor=pointer]:
+                - /url: /kurostoreid
+            - generic [ref=e112]:
+              - 'link "Product image: Test 10k Test 10k Rp. 10.000 Keranjang" [ref=e113] [cursor=pointer]':
+                - /url: /kurostoreid/test-10k
+                - generic [ref=e114]:
+                  - 'img "Product image: Test 10k" [ref=e116]'
+                  - generic [ref=e119]:
+                    - paragraph
+                    - paragraph [ref=e120]: Test 10k
+                    - paragraph [ref=e121]: Rp. 10.000
+                    - button "Keranjang" [ref=e122]: Keranjang
+              - 'link "Product image: Teko abi Teko abi Rp. 50.000 Keranjang" [ref=e124] [cursor=pointer]':
+                - /url: /kurostoreid/teko-abi
+                - generic [ref=e125]:
+                  - 'img "Product image: Teko abi" [ref=e127]'
+                  - generic [ref=e130]:
+                    - paragraph
+                    - paragraph [ref=e131]: Teko abi
+                    - paragraph [ref=e132]: Rp. 50.000
+                    - button "Keranjang" [ref=e133]: Keranjang
+              - link "Keyboard Keyboard Rp. 100.000 Keranjang" [ref=e135] [cursor=pointer]:
+                - /url: /kurostoreid/keyboard
+                - generic [ref=e140]:
+                  - paragraph [ref=e141]: Keyboard
+                  - paragraph [ref=e142]: Keyboard
+                  - paragraph [ref=e143]: Rp. 100.000
+                  - button "Keranjang" [ref=e144]: Keranjang
+              - link "Monitor Monitor Rp. 100.000 Keranjang" [ref=e146] [cursor=pointer]:
+                - /url: /kurostoreid/monitor
+                - generic [ref=e151]:
+                  - paragraph [ref=e152]: Monitor
+                  - paragraph [ref=e153]: Monitor
+                  - paragraph [ref=e154]: Rp. 100.000
+                  - button "Keranjang" [ref=e155]: Keranjang
+              - link "Casing Casing Rp. 100.000 Keranjang" [ref=e157] [cursor=pointer]:
+                - /url: /kurostoreid/casing
+                - generic [ref=e162]:
+                  - paragraph [ref=e163]: Casing
+                  - paragraph [ref=e164]: Casing
+                  - paragraph [ref=e165]: Rp. 100.000
+                  - button "Keranjang" [ref=e166]: Keranjang
+              - link "CPU Cooler CPU Cooler Rp. 100.000 Keranjang" [ref=e168] [cursor=pointer]:
+                - /url: /kurostoreid/cpu-cooler
+                - generic [ref=e173]:
+                  - paragraph [ref=e174]: CPU Cooler
+                  - paragraph [ref=e175]: CPU Cooler
+                  - paragraph [ref=e176]: Rp. 100.000
+                  - button "Keranjang" [ref=e177]: Keranjang
+              - link "VGA Graphic Card Rp. 100.000 Keranjang" [ref=e179] [cursor=pointer]:
+                - /url: /kurostoreid/graphic-card
+                - generic [ref=e184]:
+                  - paragraph [ref=e185]: VGA
+                  - paragraph [ref=e186]: Graphic Card
+                  - paragraph [ref=e187]: Rp. 100.000
+                  - button "Keranjang" [ref=e188]: Keranjang
+              - link "Power Supply Power Supply 500W Rp. 100.000 Keranjang" [ref=e190] [cursor=pointer]:
+                - /url: /kurostoreid/power-supply-500w
+                - generic [ref=e195]:
+                  - paragraph [ref=e196]: Power Supply
+                  - paragraph [ref=e197]: Power Supply 500W
+                  - paragraph [ref=e198]: Rp. 100.000
+                  - button "Keranjang" [ref=e199]: Keranjang
+              - link "Storage SSD 1t Rp. 100.000 Keranjang" [ref=e201] [cursor=pointer]:
+                - /url: /kurostoreid/ssd-1t
+                - generic [ref=e206]:
+                  - paragraph [ref=e207]: Storage
+                  - paragraph [ref=e208]: SSD 1t
+                  - paragraph [ref=e209]: Rp. 100.000
+                  - button "Keranjang" [ref=e210]: Keranjang
+              - link "RAM RAM 12gb Rp. 100.000 Keranjang" [ref=e212] [cursor=pointer]:
+                - /url: /kurostoreid/ram-12gb
+                - generic [ref=e217]:
+                  - paragraph [ref=e218]: RAM
+                  - paragraph [ref=e219]: RAM 12gb
+                  - paragraph [ref=e220]: Rp. 100.000
+                  - button "Keranjang" [ref=e221]: Keranjang
+              - link "Motherboard Motherboard Rp. 100.000 Keranjang" [ref=e223] [cursor=pointer]:
+                - /url: /kurostoreid/motherboard
+                - generic [ref=e228]:
+                  - paragraph [ref=e229]: Motherboard
+                  - paragraph [ref=e230]: Motherboard
+                  - paragraph [ref=e231]: Rp. 100.000
+                  - button "Keranjang" [ref=e232]: Keranjang
+              - link "Processor Processor Rp. 100.000 Keranjang" [ref=e234] [cursor=pointer]:
+                - /url: /kurostoreid/processor
+                - generic [ref=e239]:
+                  - paragraph [ref=e240]: Processor
+                  - paragraph [ref=e241]: Processor
+                  - paragraph [ref=e242]: Rp. 100.000
+                  - button "Keranjang" [ref=e243]: Keranjang
+      - contentinfo [ref=e245]:
+        - generic [ref=e246]:
+          - generic [ref=e247]:
+            - generic [ref=e248]:
+              - img "kuroStoreID" [ref=e249]
+              - generic [ref=e250]:
+                - heading "kuroStoreID" [level=2] [ref=e251]
+                - paragraph [ref=e252]: 12312323232 123123232
+            - generic [ref=e253]:
+              - button "Belanja" [ref=e254]:
+                - heading "Belanja" [level=3] [ref=e255]
+              - generic [ref=e257]:
+                - link "About Us" [ref=e258] [cursor=pointer]:
+                  - /url: /kurostoreid/about
+                - link "Privacy Policy" [ref=e259] [cursor=pointer]:
+                  - /url: /privacy
+                - link "Terms of Service" [ref=e260] [cursor=pointer]:
+                  - /url: /terms
+            - generic [ref=e261]:
+              - button "Contact" [ref=e262]:
+                - heading "Contact" [level=3] [ref=e263]
+              - generic [ref=e265]:
+                - generic [ref=e268]:
+                  - paragraph [ref=e269]: Contact
+                  - paragraph [ref=e270]: "6285318158201"
+                - generic [ref=e273]:
+                  - paragraph [ref=e274]: Operating Hours
+                  - paragraph [ref=e275]: "Senin - Minggu: 08:00 - 17:00"
+            - generic [ref=e276]:
+              - button "Address" [ref=e277]:
+                - heading "Address" [level=3] [ref=e278]
+              - paragraph [ref=e283]: "12"
+          - generic [ref=e284]:
+            - paragraph [ref=e285]: © 2026 OLPOS. All rights reserved.
+            - generic [ref=e286]:
+              - generic [ref=e287]: Powered by
+              - link "OLPOS" [ref=e288] [cursor=pointer]:
+                - /url: https://olpos.id
+    - button "Open chatbot" [ref=e291] [cursor=pointer]
+  - region "Notifications (F8)":
+    - list

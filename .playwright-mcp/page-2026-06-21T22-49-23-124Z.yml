@@ -1,0 +1,292 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "kuroStoreID" [ref=e7] [cursor=pointer]:
+        - /url: /kurostoreid
+        - img "kuroStoreID" [ref=e8]
+      - generic [ref=e10]:
+        - button "Category" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: Category
+        - textbox "Search products, categories, etc." [ref=e16]
+      - generic [ref=e20]:
+        - link [ref=e21] [cursor=pointer]:
+          - /url: /kurostoreid/simasko/rakit-komputer
+        - button "EN" [ref=e23] [cursor=pointer]:
+          - generic [ref=e25]: EN
+        - link "Login" [ref=e27] [cursor=pointer]:
+          - /url: /kurostoreid/auth/login
+          - generic [ref=e28]: Login
+  - main [ref=e29]:
+    - generic [ref=e30]:
+      - region [ref=e33]:
+        - generic [ref=e35]:
+          - tabpanel [ref=e36]:
+            - link "Banner Image Lihat Detail" [ref=e37] [cursor=pointer]:
+              - /url: https://drive.google.com/drive/u/0/folders/1JN5KCKRqwg6jsA38klN2PpzdSwma_Jd1
+              - img "Banner Image" [ref=e38]
+              - generic:
+                - generic: Lihat Detail
+          - tabpanel [ref=e39]:
+            - link "Banner Image Lihat Detail" [ref=e40] [cursor=pointer]:
+              - /url: /test
+              - img "Banner Image" [ref=e41]
+              - generic:
+                - generic: Lihat Detail
+          - tabpanel [ref=e42]:
+            - link "Banner Image Lihat Detail" [ref=e43] [cursor=pointer]:
+              - /url: /agus link
+              - img "Banner Image" [ref=e44]
+              - generic:
+                - generic: Lihat Detail
+        - generic:
+          - tablist "Choose slide to display"
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - heading "Check Service Status" [level=3] [ref=e54]
+              - generic [ref=e55]: Baru
+            - paragraph [ref=e56]: Track your device repair progress quickly and transparently.
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - generic [ref=e62]: Service Code*
+              - generic [ref=e64]:
+                - textbox "Service Code*" [ref=e66]:
+                  - /placeholder: "Example: SRV-2026-00123"
+                - button "Paste from clipboard" [ref=e69] [cursor=pointer]
+            - generic [ref=e71]:
+              - paragraph [ref=e72]: After submitting, you will be redirected to the official service tracking page.
+              - button "Check Status Now" [disabled] [ref=e73]:
+                - generic [ref=e75]: Check Status Now
+        - generic [ref=e76]:
+          - generic [ref=e81]:
+            - heading "Build PC" [level=3] [ref=e82]
+            - paragraph [ref=e83]: Design your ideal PC for your needs and budget with confidence.
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - paragraph [ref=e89]: Get balanced and compatible component recommendations.
+              - paragraph [ref=e92]: Choose setups for work, gaming, or creative workloads.
+              - paragraph [ref=e95]: Continue to the builder page for detailed configuration.
+            - link "Start Building" [ref=e97] [cursor=pointer]:
+              - /url: /kurostoreid/simasko/rakit-komputer
+              - generic [ref=e99]: Start Building
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - heading "All Products" [level=2] [ref=e104]
+            - paragraph [ref=e105]: Temukan produk terbaik untuk Anda
+          - combobox [ref=e106]:
+            - generic: Terbaru
+          - combobox [ref=e109]
+        - generic [ref=e110]:
+          - generic [ref=e113]:
+            - paragraph [ref=e114]: Category
+            - generic [ref=e115]:
+              - link "Casing" [ref=e116] [cursor=pointer]:
+                - /url: /kurostoreid/casing
+                - generic [ref=e118]: Casing
+              - link "CPU Cooler" [ref=e119] [cursor=pointer]:
+                - /url: /kurostoreid/cpu-cooler
+                - generic [ref=e121]: CPU Cooler
+              - link "Graphic Card" [ref=e122] [cursor=pointer]:
+                - /url: /kurostoreid/graphic-card
+                - generic [ref=e124]: Graphic Card
+              - link "Keyboard" [ref=e125] [cursor=pointer]:
+                - /url: /kurostoreid/keyboard
+                - generic [ref=e127]: Keyboard
+              - link "Laptop" [ref=e128] [cursor=pointer]:
+                - /url: /kurostoreid/laptop
+                - generic [ref=e130]: Laptop
+              - link "Laptop Gaming" [ref=e131] [cursor=pointer]:
+                - /url: /kurostoreid/laptop-gaming
+                - generic [ref=e133]: Laptop Gaming
+              - link "ma" [ref=e134] [cursor=pointer]:
+                - /url: /kurostoreid/ma
+                - generic [ref=e136]: ma
+              - link "Monitor" [ref=e137] [cursor=pointer]:
+                - /url: /kurostoreid/monitor
+                - generic [ref=e139]: Monitor
+              - link "Motherboard" [ref=e140] [cursor=pointer]:
+                - /url: /kurostoreid/motherboard
+                - generic [ref=e142]: Motherboard
+              - link "mouse" [ref=e143] [cursor=pointer]:
+                - /url: /kurostoreid/mouse
+                - generic [ref=e145]: mouse
+              - link "Power Supply" [ref=e146] [cursor=pointer]:
+                - /url: /kurostoreid/power-supply
+                - generic [ref=e148]: Power Supply
+              - link "Processor" [ref=e149] [cursor=pointer]:
+                - /url: /kurostoreid/processor
+                - generic [ref=e151]: Processor
+              - link "RAM" [ref=e152] [cursor=pointer]:
+                - /url: /kurostoreid/ram
+                - generic [ref=e154]: RAM
+              - link "Storage" [ref=e155] [cursor=pointer]:
+                - /url: /kurostoreid/storage
+                - generic [ref=e157]: Storage
+              - link "VGA" [ref=e158] [cursor=pointer]:
+                - /url: /kurostoreid/vga
+                - generic [ref=e160]: VGA
+          - generic [ref=e163]:
+            - 'link "Product image: Charger 5V Charger 5V Rp. 50.000" [ref=e164] [cursor=pointer]':
+              - /url: /kurostoreid/charger-5v
+              - generic [ref=e165]:
+                - 'img "Product image: Charger 5V" [ref=e167]'
+                - generic [ref=e170]:
+                  - paragraph
+                  - paragraph [ref=e171]: Charger 5V
+                  - paragraph [ref=e172]: Rp. 50.000
+            - link "Keyboard Keyboard Rp. 100.000" [ref=e173] [cursor=pointer]:
+              - /url: /kurostoreid/keyboard
+              - generic [ref=e178]:
+                - paragraph [ref=e179]: Keyboard
+                - paragraph [ref=e180]: Keyboard
+                - paragraph [ref=e181]: Rp. 100.000
+            - link "Monitor Monitor Rp. 100.000" [ref=e182] [cursor=pointer]:
+              - /url: /kurostoreid/monitor
+              - generic [ref=e187]:
+                - paragraph [ref=e188]: Monitor
+                - paragraph [ref=e189]: Monitor
+                - paragraph [ref=e190]: Rp. 100.000
+            - link "Casing Casing Rp. 100.000" [ref=e191] [cursor=pointer]:
+              - /url: /kurostoreid/casing
+              - generic [ref=e196]:
+                - paragraph [ref=e197]: Casing
+                - paragraph [ref=e198]: Casing
+                - paragraph [ref=e199]: Rp. 100.000
+            - link "CPU Cooler CPU Cooler Rp. 100.000" [ref=e200] [cursor=pointer]:
+              - /url: /kurostoreid/cpu-cooler
+              - generic [ref=e205]:
+                - paragraph [ref=e206]: CPU Cooler
+                - paragraph [ref=e207]: CPU Cooler
+                - paragraph [ref=e208]: Rp. 100.000
+            - link "VGA Graphic Card Rp. 100.000" [ref=e209] [cursor=pointer]:
+              - /url: /kurostoreid/graphic-card
+              - generic [ref=e214]:
+                - paragraph [ref=e215]: VGA
+                - paragraph [ref=e216]: Graphic Card
+                - paragraph [ref=e217]: Rp. 100.000
+            - link "Power Supply Power Supply 500W Rp. 100.000" [ref=e218] [cursor=pointer]:
+              - /url: /kurostoreid/power-supply-500w
+              - generic [ref=e223]:
+                - paragraph [ref=e224]: Power Supply
+                - paragraph [ref=e225]: Power Supply 500W
+                - paragraph [ref=e226]: Rp. 100.000
+            - link "Storage SSD 1t Rp. 100.000" [ref=e227] [cursor=pointer]:
+              - /url: /kurostoreid/ssd-1t
+              - generic [ref=e232]:
+                - paragraph [ref=e233]: Storage
+                - paragraph [ref=e234]: SSD 1t
+                - paragraph [ref=e235]: Rp. 100.000
+            - link "RAM RAM 12gb Rp. 100.000" [ref=e236] [cursor=pointer]:
+              - /url: /kurostoreid/ram-12gb
+              - generic [ref=e241]:
+                - paragraph [ref=e242]: RAM
+                - paragraph [ref=e243]: RAM 12gb
+                - paragraph [ref=e244]: Rp. 100.000
+            - link "Motherboard Motherboard Rp. 100.000" [ref=e245] [cursor=pointer]:
+              - /url: /kurostoreid/motherboard
+              - generic [ref=e250]:
+                - paragraph [ref=e251]: Motherboard
+                - paragraph [ref=e252]: Motherboard
+                - paragraph [ref=e253]: Rp. 100.000
+            - link "Processor Processor Rp. 100.000" [ref=e254] [cursor=pointer]:
+              - /url: /kurostoreid/processor
+              - generic [ref=e259]:
+                - paragraph [ref=e260]: Processor
+                - paragraph [ref=e261]: Processor
+                - paragraph [ref=e262]: Rp. 100.000
+            - link "produk 7jt Rp. 7.000.000" [ref=e263] [cursor=pointer]:
+              - /url: /kurostoreid/produk-7jt
+              - generic [ref=e268]:
+                - paragraph
+                - paragraph [ref=e269]: produk 7jt
+                - paragraph [ref=e270]: Rp. 7.000.000
+            - link "produk 5jt Rp. 5.000.000" [ref=e271] [cursor=pointer]:
+              - /url: /kurostoreid/produk-5jt
+              - generic [ref=e276]:
+                - paragraph
+                - paragraph [ref=e277]: produk 5jt
+                - paragraph [ref=e278]: Rp. 5.000.000
+            - link "prudk 1jt Rp. 1.000.000" [ref=e279] [cursor=pointer]:
+              - /url: /kurostoreid/prudk-1jt
+              - generic [ref=e284]:
+                - paragraph
+                - paragraph [ref=e285]: prudk 1jt
+                - paragraph [ref=e286]: Rp. 1.000.000
+            - link "produk 700k Rp. 700.000" [ref=e287] [cursor=pointer]:
+              - /url: /kurostoreid/produk-700k
+              - generic [ref=e292]:
+                - paragraph
+                - paragraph [ref=e293]: produk 700k
+                - paragraph [ref=e294]: Rp. 700.000
+            - link "produk 500k Rp. 500.000" [ref=e295] [cursor=pointer]:
+              - /url: /kurostoreid/produk-500k
+              - generic [ref=e300]:
+                - paragraph
+                - paragraph [ref=e301]: produk 500k
+                - paragraph [ref=e302]: Rp. 500.000
+            - link "produk 200k Rp. 200.000" [ref=e303] [cursor=pointer]:
+              - /url: /kurostoreid/produk-200k
+              - generic [ref=e308]:
+                - paragraph
+                - paragraph [ref=e309]: produk 200k
+                - paragraph [ref=e310]: Rp. 200.000
+            - link "produk 100k Rp. 100.000" [ref=e311] [cursor=pointer]:
+              - /url: /kurostoreid/produk-100k
+              - generic [ref=e316]:
+                - paragraph
+                - paragraph [ref=e317]: produk 100k
+                - paragraph [ref=e318]: Rp. 100.000
+            - link "Produk 90k Rp. 90.000" [ref=e319] [cursor=pointer]:
+              - /url: /kurostoreid/produk-90k
+              - generic [ref=e324]:
+                - paragraph
+                - paragraph [ref=e325]: Produk 90k
+                - paragraph [ref=e326]: Rp. 90.000
+            - 'link "Product image: Zelotes F35 Wireless Rechargeable Vertical Ergonomic Gaming Mouse || 2400 DPI 6 programmable button mouse Zelotes F35 Wireless Rechargeable Vertical Ergonomic Gaming Mouse || 2400 DPI 6 programmable button Rp. 2" [ref=e327] [cursor=pointer]':
+              - /url: /kurostoreid/zelotes-f35-wireless-rechargeable-vertical-ergonomic-gaming-mouse-2400-dpi-6-programmable-button
+              - generic [ref=e328]:
+                - 'img "Product image: Zelotes F35 Wireless Rechargeable Vertical Ergonomic Gaming Mouse || 2400 DPI 6 programmable button" [ref=e330]'
+                - generic [ref=e333]:
+                  - paragraph [ref=e334]: mouse
+                  - paragraph [ref=e335]: Zelotes F35 Wireless Rechargeable Vertical Ergonomic Gaming Mouse || 2400 DPI 6 programmable button
+                  - paragraph [ref=e336]: Rp. 2
+  - contentinfo [ref=e338]:
+    - generic [ref=e339]:
+      - generic [ref=e340]:
+        - generic [ref=e341]:
+          - img "kuroStoreID" [ref=e342]
+          - generic [ref=e343]:
+            - heading "kuroStoreID" [level=2] [ref=e344]
+            - paragraph [ref=e345]: 12312323232 123123232
+        - generic [ref=e346]:
+          - button "Belanja" [ref=e347]:
+            - heading "Belanja" [level=3] [ref=e348]
+          - generic [ref=e350]:
+            - link "About Us" [ref=e351] [cursor=pointer]:
+              - /url: /kurostoreid/about
+            - link "Privacy Policy" [ref=e352] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e353] [cursor=pointer]:
+              - /url: /terms
+        - generic [ref=e354]:
+          - button "Contact" [ref=e355]:
+            - heading "Contact" [level=3] [ref=e356]
+          - generic [ref=e358]:
+            - generic [ref=e361]:
+              - paragraph [ref=e362]: Contact
+              - paragraph [ref=e363]: "6285318158201"
+            - generic [ref=e366]:
+              - paragraph [ref=e367]: Operating Hours
+              - paragraph [ref=e368]: "Senin - Minggu: 08:00 - 17:00"
+        - generic [ref=e369]:
+          - button "Address" [ref=e370]:
+            - heading "Address" [level=3] [ref=e371]
+          - paragraph [ref=e376]: "12"
+      - generic [ref=e377]:
+        - paragraph [ref=e378]: © 2026 OLPOS. All rights reserved.
+        - generic [ref=e379]:
+          - generic [ref=e380]: Powered by
+          - link "OLPOS" [ref=e381] [cursor=pointer]:
+            - /url: https://olpos.id

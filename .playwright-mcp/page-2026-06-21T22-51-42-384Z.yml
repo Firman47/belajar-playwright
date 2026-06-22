@@ -1,0 +1,34 @@
+- generic [ref=e3]:
+  - button "EN" [ref=e5] [cursor=pointer]:
+    - generic [ref=e7]: EN
+  - generic [ref=e9]:
+    - link "kuroStoreID" [ref=e10] [cursor=pointer]:
+      - /url: /kurostoreid
+      - img "kuroStoreID" [ref=e11]
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Login" [level=1] [ref=e17]
+        - paragraph [ref=e18]: Sign in to your account
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e23]: Username
+          - textbox "Username" [ref=e26]:
+            - /placeholder: Enter your username
+        - generic [ref=e27]:
+          - generic [ref=e30]: Password
+          - generic [ref=e32]:
+            - textbox "Password" [ref=e33]:
+              - /placeholder: Enter your password
+            - button "Show password" [ref=e35]
+        - generic [ref=e37]:
+          - generic [ref=e38] [cursor=pointer]:
+            - checkbox "Remember me" [ref=e41]
+            - generic [ref=e42]: Remember me
+          - link "Forgot Password?" [ref=e43] [cursor=pointer]:
+            - /url: /kurostoreid/auth/forgot-password
+        - button "Login" [ref=e44] [cursor=pointer]
+        - generic [ref=e47]: or
+        - generic [ref=e49]:
+          - paragraph [ref=e50]: Don't have an account?
+          - link "Register" [ref=e51] [cursor=pointer]:
+            - /url: /kurostoreid/auth/register

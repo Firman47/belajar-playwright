@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "./pages/LoginPage";
-import { assertToastMismatch } from "./helpers/bug-assertions";
+import { assertToastMismatch } from "../helpers/bug-assertions";
 
 test.describe("Login Module", () => {
   /**

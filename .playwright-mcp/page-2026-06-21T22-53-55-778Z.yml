@@ -1,0 +1,51 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - heading "Settings" [level=1] [ref=e8]
+      - generic [ref=e9]:
+        - link [ref=e12] [cursor=pointer]:
+          - /url: /kurostoreid/cart
+        - button "Cari produk" [ref=e15] [cursor=pointer]
+  - main [ref=e17]:
+    - generic [ref=e20]:
+      - heading "Settings" [level=1] [ref=e22]
+      - generic [ref=e24]:
+        - generic [ref=e26]: F
+        - generic [ref=e27]:
+          - heading "firman raza" [level=2] [ref=e28]
+          - paragraph [ref=e29]: firmansrf47@gmail.com
+          - generic [ref=e31]: "0816161784747"
+        - button [ref=e32]
+      - generic [ref=e34]:
+        - button "Your Profile Manage your personal data" [ref=e35]:
+          - generic [ref=e38]:
+            - paragraph [ref=e39]: Your Profile
+            - paragraph [ref=e40]: Manage your personal data
+        - button "Change Password Update your account password" [ref=e42]:
+          - generic [ref=e45]:
+            - paragraph [ref=e46]: Change Password
+            - paragraph [ref=e47]: Update your account password
+        - button "Address List Manage your shipping addresses" [ref=e49]:
+          - generic [ref=e52]:
+            - paragraph [ref=e53]: Address List
+            - paragraph [ref=e54]: Manage your shipping addresses
+        - 'button "Language Language: EN" [ref=e56]':
+          - generic [ref=e59]:
+            - paragraph [ref=e60]: Language
+            - paragraph [ref=e61]: "Language: EN"
+      - button "Logout" [ref=e63]:
+        - generic [ref=e65]: Logout
+  - navigation [ref=e66]:
+    - generic [ref=e67]:
+      - link "Home" [ref=e68] [cursor=pointer]:
+        - /url: /kurostoreid
+        - generic [ref=e71]: Home
+      - link "Cart" [ref=e72] [cursor=pointer]:
+        - /url: /kurostoreid/cart
+        - generic [ref=e75]: Cart
+      - link "Orders" [ref=e76] [cursor=pointer]:
+        - /url: /kurostoreid/checkout/history
+        - generic [ref=e79]: Orders
+      - link "Profile" [ref=e80] [cursor=pointer]:
+        - /url: /kurostoreid/setting
+        - generic [ref=e83]: Profile

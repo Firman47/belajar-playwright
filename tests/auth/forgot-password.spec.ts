@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
-import { assertToastMismatch } from "./helpers/bug-assertions";
+import { assertToastMismatch } from "../helpers/bug-assertions";
 
 /**
  * Strategy:

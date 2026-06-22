@@ -194,6 +194,22 @@ export class ForgotPasswordPage {
     return apiCallCount === 0;
   }
 
+  async hasNoResetPasswordApiCall(): Promise<boolean> {
+    let apiCallCount = 0;
+    const handler = (req: Request) => {
+      if (
+        req.url().includes("/e_commerce/v1/auth/reset-password") &&
+        req.method() === "POST"
+      ) {
+        apiCallCount++;
+      }
+    };
+    this.page.on("request", handler);
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    this.page.off("request", handler);
+    return apiCallCount === 0;
+  }
+
   // === Static Factory for Test Data ===
   static generateTestEmail() {
     return `test_${Date.now()}@example.com`;

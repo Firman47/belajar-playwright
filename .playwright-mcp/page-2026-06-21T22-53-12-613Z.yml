@@ -1,0 +1,66 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e7]:
+        - button "Kembali" [ref=e8] [cursor=pointer]
+        - heading "Checkout" [level=1] [ref=e10]
+      - button "Cari produk" [ref=e13] [cursor=pointer]
+  - main [ref=e15]:
+    - generic [ref=e17]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: Shipping Address Not Set
+        - generic [ref=e22]: You haven't added a shipping address yet. Please add an address before proceeding with payment.
+        - button "Add Address" [ref=e24]:
+          - generic [ref=e25]: Add Address
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e30]:
+              - heading "Shipping Address" [level=2] [ref=e34]
+              - button "Change Address" [ref=e35] [cursor=pointer]:
+                - generic [ref=e36]: Change Address
+            - paragraph [ref=e39]: No address selected yet
+          - generic [ref=e40]:
+            - generic [ref=e42]:
+              - heading "Item" [level=2] [ref=e45]
+              - generic [ref=e46]: 3 items
+            - generic [ref=e48]:
+              - generic [ref=e50]:
+                - generic [ref=e51]: No Image
+                - generic [ref=e53]:
+                  - paragraph [ref=e55]: (1x) - prudk 1jt
+                  - paragraph [ref=e58]: Rp. 1.000.000
+              - generic [ref=e60]:
+                - generic [ref=e61]: No Image
+                - generic [ref=e63]:
+                  - paragraph [ref=e65]: (1x) - produk 5jt
+                  - paragraph [ref=e68]: Rp. 5.000.000
+              - generic [ref=e70]:
+                - generic [ref=e71]: No Image
+                - generic [ref=e73]:
+                  - paragraph [ref=e75]: (1x) - produk 7jt
+                  - paragraph [ref=e78]: Rp. 7.000.000
+        - generic [ref=e81]:
+          - heading "Transaction Summary" [level=2] [ref=e83]
+          - generic [ref=e86]:
+            - generic [ref=e88]:
+              - generic [ref=e90]: Logistics*
+              - paragraph [ref=e91]: Please select a shipping address first to view logistics options.
+            - generic [ref=e92]:
+              - generic [ref=e95]: Bank Transfer*
+              - generic [ref=e96]:
+                - combobox "Bank Transfer*" [ref=e97]:
+                  - generic [ref=e98]: Select destination account
+                - combobox [ref=e101]
+                - generic [ref=e102]: Total transaction exceeds Rp10.000.000, payment method is automatically switched to bank transfer.
+            - generic [ref=e105]:
+              - generic [ref=e106]: Total Price (3 Item)
+              - generic [ref=e107]: Rp. 13.000.000
+            - generic [ref=e109]:
+              - generic [ref=e110]: Total Payment
+              - generic [ref=e111]: Rp. 13.000.000
+            - generic [ref=e115]:
+              - generic [ref=e116]: Bank Transfer
+              - generic [ref=e117]: Manual transfer for large amounts
+            - button "Pay Now" [disabled] [ref=e118]:
+              - generic [ref=e119]: Pay Now

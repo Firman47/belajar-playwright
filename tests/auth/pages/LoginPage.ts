@@ -8,6 +8,7 @@ export class LoginPage {
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
   readonly showPasswordButton: Locator;
+  readonly hidePasswordButton: Locator;
   readonly rememberMeCheckbox: Locator;
   readonly forgotPasswordLink: Locator;
   readonly registerLink: Locator;
@@ -21,6 +22,7 @@ export class LoginPage {
     this.passwordInput = page.getByRole("textbox", { name: "Password", exact: true });
     this.loginButton = page.getByRole("button", { name: "Login", exact: true });
     this.showPasswordButton = page.getByRole("button", { name: "Show password" });
+    this.hidePasswordButton = page.getByRole("button", { name: "Hide password" });
     this.rememberMeCheckbox = page.getByRole("checkbox", { name: "Remember me" });
     this.forgotPasswordLink = page.getByRole("link", { name: "Forgot Password?" });
     this.registerLink = page.getByRole("link", { name: "Register" });
@@ -65,6 +67,11 @@ export class LoginPage {
     await this.showPasswordButton.click();
   }
 
+  /** Click "Hide password" button to mask password */
+  async clickHidePassword() {
+    await this.hidePasswordButton.click();
+  }
+
   /** Click label "Remember me" to toggle checkbox state */
   async toggleRememberMe() {
     await this.page.getByText("Remember me").click();
@@ -105,6 +112,11 @@ export class LoginPage {
   /** Success toast setelah login berhasil */
   get successNotification() {
     return this.page.getByRole("alert").filter({ hasText: /Login successful/i });
+  }
+
+  /** Get password input type attribute */
+  async getPasswordInputType(): Promise<string | null> {
+    return await this.passwordInput.getAttribute("type");
   }
 
   /** Get login button disabled state */

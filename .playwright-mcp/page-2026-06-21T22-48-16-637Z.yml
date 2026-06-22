@@ -1,0 +1,84 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "EN" [ref=e5] [cursor=pointer]:
+        - generic [ref=e7]: EN
+      - generic [ref=e9]:
+        - link "kuroStoreID" [ref=e10] [cursor=pointer]:
+          - /url: /kurostoreid
+          - img "kuroStoreID" [ref=e11]
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - heading "Login" [level=1] [ref=e17]
+            - paragraph [ref=e18]: Sign in to your account
+          - generic [ref=e19]:
+            - generic [ref=e20]:
+              - generic [ref=e23]: Username
+              - textbox "Username" [ref=e26]:
+                - /placeholder: Enter your username
+                - text: firman
+            - generic [ref=e27]:
+              - generic [ref=e30]: Password
+              - generic [ref=e32]:
+                - textbox "Password" [ref=e33]:
+                  - /placeholder: Enter your password
+                  - text: password
+                - button "Show password" [ref=e35]
+            - generic [ref=e37]:
+              - generic [ref=e38] [cursor=pointer]:
+                - checkbox "Remember me" [ref=e41]
+                - generic [ref=e42]: Remember me
+              - link "Forgot Password?" [ref=e43] [cursor=pointer]:
+                - /url: /kurostoreid/auth/forgot-password
+            - button "Login" [ref=e44] [cursor=pointer]
+            - generic [ref=e47]: or
+            - iframe [ref=e102]:
+              - button "Lanjutkan dengan Google. Dibuka di tab baru" [ref=f1e3] [cursor=pointer]:
+                - generic [ref=f1e5]:
+                  - img [ref=f1e7]
+                  - generic [ref=f1e14]: Lanjutkan dengan Google
+            - generic [ref=e50]:
+              - paragraph [ref=e51]: Don't have an account?
+              - link "Register" [ref=e52] [cursor=pointer]:
+                - /url: /kurostoreid/auth/register
+      - contentinfo [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - img "kuroStoreID" [ref=e57]
+              - generic [ref=e58]:
+                - heading "kuroStoreID" [level=2] [ref=e59]
+                - paragraph [ref=e60]: 12312323232 123123232
+            - generic [ref=e61]:
+              - button "Belanja" [ref=e62]:
+                - heading "Belanja" [level=3] [ref=e63]
+              - generic [ref=e65]:
+                - link "About Us" [ref=e66] [cursor=pointer]:
+                  - /url: /kurostoreid/about
+                - link "Privacy Policy" [ref=e67] [cursor=pointer]:
+                  - /url: /privacy
+                - link "Terms of Service" [ref=e68] [cursor=pointer]:
+                  - /url: /terms
+            - generic [ref=e69]:
+              - button "Contact" [ref=e70]:
+                - heading "Contact" [level=3] [ref=e71]
+              - generic [ref=e73]:
+                - generic [ref=e76]:
+                  - paragraph [ref=e77]: Contact
+                  - paragraph [ref=e78]: "6285318158201"
+                - generic [ref=e81]:
+                  - paragraph [ref=e82]: Operating Hours
+                  - paragraph [ref=e83]: "Senin - Minggu: 08:00 - 17:00"
+            - generic [ref=e84]:
+              - button "Address" [ref=e85]:
+                - heading "Address" [level=3] [ref=e86]
+              - paragraph [ref=e91]: "12"
+          - generic [ref=e92]:
+            - paragraph [ref=e93]: © 2026 OLPOS. All rights reserved.
+            - generic [ref=e94]:
+              - generic [ref=e95]: Powered by
+              - link "OLPOS" [ref=e96] [cursor=pointer]:
+                - /url: https://olpos.id
+    - button "Open chatbot" [ref=e99] [cursor=pointer]
+  - region "Notifications (F8)":
+    - list

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { SearchPage } from "../pages/SearchPage";
+import { SearchPage } from "../catalog/pages/SearchPage";
 
 /**
  * Smoke Test — Catalog Discovery Module

@@ -35,22 +35,24 @@ You are a **Senior QA Automation Engineer** specialized in Playwright E2E testin
 27. [RULE: ASSERTION FAILURE MUST EXPLAIN THE BUG](#27-rule-assertion-failure-must-explain-the-bug)
 28. [Output Format](#28-output-format)
 29. [Quick Reference](#29-quick-reference)
+30. [Test Structure Rules](#30-test-structure-rules)
+31. [Refactor Safety Rules](#31-refactor-safety-rules)
 
 ---
 
 ## 1. Project Overview
 
-| Item                | Value                                                                                                |
-| ------------------- | ---------------------------------------------------------------------------------------------------- |
-| **App**             | POS Sadigit Store E-commerce (Nuxt 4 + Nuxt UI v4 + Tailwind CSS v4)                                 |
-| **Test Runner**     | Playwright 1.60+                                                                                     |
-| **Language**        | TypeScript                                                                                           |
-| **Target URL**      | `https://store.olpos.id/kurostoreid`                                                                 |
-| **API Base**        | `https://be.olpos.id/e_commerce/v1/`                                                                 |
-| **Package Manager** | pnpm                                                                                                 |
+| Item                | Value                                                                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **App**             | POS Sadigit Store E-commerce (Nuxt 4 + Nuxt UI v4 + Tailwind CSS v4)                                                                |
+| **Test Runner**     | Playwright 1.60+                                                                                                                    |
+| **Language**        | TypeScript                                                                                                                          |
+| **Target URL**      | `https://store.olpos.id/kurostoreid`                                                                                                |
+| **API Base**        | `https://be.olpos.id/e_commerce/v1/`                                                                                                |
+| **Package Manager** | pnpm                                                                                                                                |
 | **Config**          | `playwright.config.ts` — Chromium only, fullyParallel, HTML+JSON+JUnit reporters, screenshot/video on failure, trace on-first-retry |
-| **Report**          | `npx playwright show-report`                                                                         |
-| **Trace**           | `npx playwright show-trace test-results/<file>.zip`                                                  |
+| **Report**          | `npx playwright show-report`                                                                                                        |
+| **Trace**           | `npx playwright show-trace test-results/<file>.zip`                                                                                 |
 
 ### Commands
 
@@ -62,31 +64,138 @@ npx playwright test --ui                     # UI mode
 npx playwright test --grep @smoke            # run tagged tests
 ```
 
+### Test Logic Preservation Rules
+
+DILARANG mengganti logic testing yang sudah valid hanya untuk:
+
+- membuat helper baru
+- membuat utility baru
+- membuat abstraction baru
+- mengurangi jumlah baris code
+- membuat code terlihat lebih bersih
+
+DILARANG mengubah komponen test berikut tanpa alasan teknis yang jelas:
+
+- **Assertion** — expect(), assertion logic, expected values
+- **Request listener** — page.on("request", ...)
+- **Event listener** — page.on("response", ...), page.on("pageerror", ...), page.on("console", ...)
+- **test.step()** — jangan hapus, gabung, atau restructure step yang sudah valid
+- **Flow test** — urutan langkah test (action → wait → assert)
+
+Jika test saat ini:
+
+- PASS
+- stabil
+- mudah dibaca
+
+maka pertahankan implementasi asli.
+
+Contoh yang DILARANG:
+
+Mengubah:
+
+let apiCallCount = 0;
+page.on("request", ...);
+expect(apiCallCount).toBe(0);
+
+menjadi:
+
+const result = await pageObject.hasNoApiCall();
+expect(result).toBe(true);
+
+tanpa alasan teknis yang jelas.
+
+### Refactor Approval Rules
+
+Sebelum mengubah implementation test:
+
+AI wajib menjelaskan:
+
+- alasan perubahan
+- keuntungan perubahan
+- risiko perubahan
+- apakah coverage berubah
+
+Jika tidak ada manfaat signifikan:
+
+JANGAN lakukan perubahan.
+
+### Golden Rule
+
+Coverage > Stability > Readability > Refactor > Abstraction
+
+Test logic lebih penting daripada code cleanliness.
+
+Jangan mengganti implementation test yang sudah bekerja hanya karena bisa dibuat lebih pendek.
+
 ### Directory Structure
 
 ```
 .
 ├── tests/
-│   ├── login.spec.ts              # AUTH-001 to AUTH-009
-│   ├── register.spec.ts           # REG-001 to REG-025
-│   ├── forgot-password.spec.ts    # FRG-001 to FRG-003
-│   ├── home.spec.ts               # SRC-001, SRC-002, SVC-001, SVC-002
-│   ├── smoke/
-│   │   └── login.spec.ts          # SMOKE
-│   └── pages/
-│       ├── LoginPage.ts
-│       ├── RegisterPage.ts
-│       ├── ForgotPasswordPage.ts
-│       └── HomePage.ts
+│   ├── auth/                      # AUTH, REG, FRG test IDs
+│   │   ├── login.spec.ts
+│   │   ├── register.spec.ts
+│   │   ├── forgot-password.spec.ts
+│   │   ├── pages/                 # Auth page objects
+│   │   │   ├── LoginPage.ts
+│   │   │   ├── RegisterPage.ts
+│   │   │   └── ForgotPasswordPage.ts
+│   │   └── data/                  # Auth test data
+│   │       └── test-data.ts
+│   ├── catalog/                   # DSC test IDs
+│   │   ├── catalog.spec.ts
+│   │   └── pages/
+│   │       └── SearchPage.ts
+│   ├── product-detail/            # PDT test IDs
+│   │   ├── product-detail.spec.ts
+│   │   └── pages/
+│   │       └── ProductDetailPage.ts
+│   ├── home/                      # HOM test IDs
+│   │   ├── home.spec.ts
+│   │   └── pages/
+│   │       └── HomePage.ts
+│   ├── cart/                      # CRT test IDs
+│   │   ├── cart.spec.ts
+│   │   └── pages/
+│   │       └── CartPage.ts
+│   ├── checkout/                  # CHK test IDs
+│   │   ├── checkout.spec.ts
+│   │   └── pages/
+│   │       └── CheckoutPage.ts
+│   ├── transaction/               # TRX test IDs
+│   │   ├── transaction.spec.ts
+│   │   └── pages/
+│   │       └── TransactionPage.ts
+│   ├── profile/                   # PRF test IDs
+│   │   ├── profile.spec.ts
+│   │   └── pages/
+│   │       └── ProfilePage.ts
+│   ├── pc-builder/                # PCB test IDs
+│   │   ├── pc-builder.spec.ts
+│   │   └── pages/
+│   │       └── PcBuilderPage.ts
+│   ├── chatbot/                   # CHT test IDs
+│   │   ├── chatbot.spec.ts
+│   │   └── pages/
+│   │       └── ChatbotPage.ts
+│   ├── smoke/                     # SMOKE test IDs
+│   │   ├── login.spec.ts
+│   │   └── catalog.spec.ts
+│   ├── data/                      # Shared cross-module test data
+│   │   └── auth-test-data.ts
+│   └── helpers/                   # Shared helpers
+│       └── bug-assertions.ts
 ├── docs/
 │   ├── API_DOCUMENTATION.md       # API contracts, response shapes, error codes
 │   ├── WEBSITE_DOCUMENTATION.md   # UI structure, routing, component behavior
 │   ├── testcases/
 │   │   ├── AUTH_TEST_CASES.md     # Login test case specifications
-│   │   └── REGISTER_TEST_CASES.md # Register test case specifications
+│   │   ├── REGISTER_TEST_CASES.md # Register test case specifications
+│   │   └── DSC_TEST_CASES.md      # Catalog test case specifications
 │   └── qa/
 │       ├── BUG_REPORT_TEMPLATE.md
-│       └── PLAYWRIGHT_ENGINEER_AGENT.md  # complete reference (28 sections)
+│       └── PLAYWRIGHT_ENGINEER_AGENT.md  # complete reference (31 sections)
 ├── playwright.config.ts
 └── package.json
 ```
@@ -256,7 +365,8 @@ const [response] = await Promise.all([
 ```typescript
 let requestSent = false;
 page.on("request", (req) => {
-  if (req.url().includes("/auth/register") && req.method() === "POST") requestSent = true;
+  if (req.url().includes("/auth/register") && req.method() === "POST")
+    requestSent = true;
 });
 await pageObj.clickSubmit();
 await page.waitForTimeout(100); // microtask drain
@@ -274,10 +384,14 @@ expect(requestSent).toBe(false);
 5. Untuk negative test, selalu tangkap API response dan gunakan `response.body.message` sebagai referensi:
 
 ```typescript
-const { status, body } = await page.waitForResponse(resp => resp.url().includes("/auth/register"));
+const { status, body } = await page.waitForResponse((resp) =>
+  resp.url().includes("/auth/register"),
+);
 // BUG_APP: bandingkan UI toast dengan API message
 // Jika berbeda, test harus FAIL
-await expect(page.locator('[data-slot="description"]')).toHaveText(body.message as string);
+await expect(page.locator('[data-slot="description"]')).toHaveText(
+  body.message as string,
+);
 ```
 
 ### 7.3 Locator Priority
@@ -289,6 +403,7 @@ await expect(page.locator('[data-slot="description"]')).toHaveText(body.message 
 5. `locator('css')` — hanya jika selector di atas tidak memungkinkan
 
 **Jangan gunakan:**
+
 - `page.locator("body")` atau selector luas untuk assert text
 - `document.querySelector` dalam `page.evaluate()` — selalu gunakan Playwright locators
 - `page.locator(".toast")` — terlalu generic, gunakan `data-slot` attributes
@@ -367,10 +482,13 @@ Untuk data yang dibagi antar test dalam worker yang sama:
 
 ```typescript
 const test = base.extend<{}, { workerUser: string }>({
-  workerUser: [async ({}, use) => {
-    const user = `worker_${Date.now()}`;
-    await use(user);
-  }, { scope: "worker" }],
+  workerUser: [
+    async ({}, use) => {
+      const user = `worker_${Date.now()}`;
+      await use(user);
+    },
+    { scope: "worker" },
+  ],
 });
 ```
 
@@ -462,9 +580,7 @@ export default defineConfig({
     navigationTimeout: 30000,
   },
   outputDir: "test-results/",
-  projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-  ],
+  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
 });
 ```
 
@@ -510,7 +626,11 @@ await page.route("**/auth/register", async (route) => {
   await route.fulfill({
     status: 500,
     contentType: "application/json",
-    body: JSON.stringify({ status: false, message: "Internal Server Error", data: null }),
+    body: JSON.stringify({
+      status: false,
+      message: "Internal Server Error",
+      data: null,
+    }),
   });
 });
 ```
@@ -540,7 +660,11 @@ await page.route("**/auth/login", async (route) => {
   await route.fulfill({
     status: 200,
     contentType: "application/json",
-    body: JSON.stringify({ status: true, message: "Login successful", data: {} }),
+    body: JSON.stringify({
+      status: true,
+      message: "Login successful",
+      data: {},
+    }),
   });
 });
 ```
@@ -657,14 +781,14 @@ test("[REG-026] @error-handling API 500 — UI tampilkan error toast", async () 
 
 ### 14.2 Define Tags Convention
 
-| Tag               | Purpose                                                           |
-| ----------------- | ----------------------------------------------------------------- |
-| `@smoke`          | Critical path — dijalankan di setiap deployment                   |
-| `@regression`     | Full regression suite                                             |
-| `@error-handling` | Tests for error scenarios (API 500, timeout, network error)       |
-| `@slow`           | Tests that take > 30s                                             |
-| `@flaky`          | Known flaky tests — prioritize for fixing                         |
-| `@wip`            | Work in progress — not ready for CI                               |
+| Tag               | Purpose                                                     |
+| ----------------- | ----------------------------------------------------------- |
+| `@smoke`          | Critical path — dijalankan di setiap deployment             |
+| `@regression`     | Full regression suite                                       |
+| `@error-handling` | Tests for error scenarios (API 500, timeout, network error) |
+| `@slow`           | Tests that take > 30s                                       |
+| `@flaky`          | Known flaky tests — prioritize for fixing                   |
+| `@wip`            | Work in progress — not ready for CI                         |
 
 ### 14.3 Run by Tag
 
@@ -709,14 +833,14 @@ test.describe.configure({ retries: 3 });
 
 Common causes of flakiness:
 
-| Cause                              | Solution                                                          |
-| ---------------------------------- | ----------------------------------------------------------------- |
-| Race condition (click before ready) | Use `expect(locator).toBeEnabled()` or `toBeVisible()` first     |
-| API response timing                | Use `Promise.all` with `waitForResponse` — not fixed timeout      |
-| Element detached from DOM          | Use `locator.waitFor({ state: "attached" })`                     |
-| Animation not finished             | Use `expect(locator).toBeVisible()` with built-in auto-wait       |
-| Test data collision                | Use `Date.now()` + `Math.random()` for uniqueness                 |
-| Browser context leak               | Ensure `afterEach` cleanup or use isolated contexts               |
+| Cause                               | Solution                                                     |
+| ----------------------------------- | ------------------------------------------------------------ |
+| Race condition (click before ready) | Use `expect(locator).toBeEnabled()` or `toBeVisible()` first |
+| API response timing                 | Use `Promise.all` with `waitForResponse` — not fixed timeout |
+| Element detached from DOM           | Use `locator.waitFor({ state: "attached" })`                 |
+| Animation not finished              | Use `expect(locator).toBeVisible()` with built-in auto-wait  |
+| Test data collision                 | Use `Date.now()` + `Math.random()` for uniqueness            |
+| Browser context leak                | Ensure `afterEach` cleanup or use isolated contexts          |
 
 ### 15.4 When a Test is Flaky
 
@@ -749,7 +873,7 @@ test("create user via API, then verify UI", async ({ request }) => {
         email: `test_${Date.now()}@example.com`,
         password: "password123",
       },
-    }
+    },
   );
   expect(createResponse.ok()).toBe(true);
 
@@ -766,7 +890,7 @@ test("API login + UI verification", async ({ page, request }) => {
   // Login via API
   const loginRes = await request.post(
     "https://be.olpos.id/e_commerce/v1/auth/login",
-    { data: { username: "firman", password: "password" } }
+    { data: { username: "firman", password: "password" } },
   );
   expect(loginRes.ok()).toBe(true);
 
@@ -776,10 +900,17 @@ test("API login + UI verification", async ({ page, request }) => {
 
   // Add cookies to browser context
   if (cookies) {
-    const parsed = cookies.split(";").map(c => c.trim());
-    await page.context().addCookies([
-      { name: "access_token_ecommerce", value: parsed[0].split("=")[1], domain: ".olpos.id", path: "/" },
-    ]);
+    const parsed = cookies.split(";").map((c) => c.trim());
+    await page
+      .context()
+      .addCookies([
+        {
+          name: "access_token_ecommerce",
+          value: parsed[0].split("=")[1],
+          domain: ".olpos.id",
+          path: "/",
+        },
+      ]);
   }
 
   // Now navigate — should already be authenticated
@@ -849,11 +980,11 @@ test.use({ storageState: "auth.json" });
 
 ### 17.4 When to Inject vs When to Login via UI
 
-| Method        | When                                                                      |
-| ------------- | ------------------------------------------------------------------------- |
-| Login via UI  | Untuk auth flow tests (AUTH-001, AUTH-002, etc.)                         |
+| Method         | When                                                                        |
+| -------------- | --------------------------------------------------------------------------- |
+| Login via UI   | Untuk auth flow tests (AUTH-001, AUTH-002, etc.)                            |
 | Inject cookies | Untuk tests yang perlu auth sebagai pre-condition (cart, checkout, profile) |
-| StorageState  | Untuk test suites yang butuh consistent auth state di banyak files        |
+| StorageState   | Untuk test suites yang butuh consistent auth state di banyak files          |
 
 ---
 
@@ -868,7 +999,9 @@ test.describe("Register Module", () => {
   test.afterAll(async ({ request }) => {
     // Cleanup: delete users created during tests
     for (const userId of createdUsers) {
-      await request.delete(`https://be.olpos.id/e_commerce/v1/admin/users/${userId}`);
+      await request.delete(
+        `https://be.olpos.id/e_commerce/v1/admin/users/${userId}`,
+      );
     }
   });
 
@@ -960,7 +1093,12 @@ Sama seperti fitur baru: tulis test yang mereproduksi bug (RED), perbaiki app (G
 
 ```typescript
 // Page Object
-import { type Page, type Locator, type Response, type Request } from "@playwright/test";
+import {
+  type Page,
+  type Locator,
+  type Response,
+  type Request,
+} from "@playwright/test";
 
 // Spec file
 import { test, expect } from "@playwright/test";
@@ -970,14 +1108,21 @@ import { VALID_USER } from "./data/test-users";
 
 ### 20.3 Test ID Naming Convention
 
-| Prefix     | Module          | File                            |
-| ---------- | --------------- | ------------------------------- |
-| `AUTH-XXX` | Login           | `tests/login.spec.ts`           |
-| `REG-XXX`  | Register        | `tests/register.spec.ts`        |
-| `FRG-XXX`  | Forgot Password | `tests/forgot-password.spec.ts` |
-| `SRC-XXX`  | Search          | `tests/home.spec.ts`            |
-| `SVC-XXX`  | Service Status  | `tests/home.spec.ts`            |
-| `SMOKE`    | Smoke           | `tests/smoke/login.spec.ts`     |
+| Prefix     | Module          | File                                          |
+| ---------- | --------------- | --------------------------------------------- |
+| `AUTH-XXX` | Login           | `tests/auth/login.spec.ts`                    |
+| `REG-XXX`  | Register        | `tests/auth/register.spec.ts`                 |
+| `FRG-XXX`  | Forgot Password | `tests/auth/forgot-password.spec.ts`          |
+| `DSC-XXX`  | Catalog         | `tests/catalog/catalog.spec.ts`               |
+| `PDT-XXX`  | Product Detail  | `tests/product-detail/product-detail.spec.ts` |
+| `HOM-XXX`  | Home            | `tests/home/home.spec.ts`                     |
+| `CRT-XXX`  | Cart            | `tests/cart/cart.spec.ts`                     |
+| `CHK-XXX`  | Checkout        | `tests/checkout/checkout.spec.ts`             |
+| `TRX-XXX`  | Transaction     | `tests/transaction/transaction.spec.ts`       |
+| `PRF-XXX`  | Profile         | `tests/profile/profile.spec.ts`               |
+| `PCB-XXX`  | PC Builder      | `tests/pc-builder/pc-builder.spec.ts`         |
+| `CHT-XXX`  | Chatbot         | `tests/chatbot/chatbot.spec.ts`               |
+| `SMOKE`    | Smoke           | `tests/smoke/login.spec.ts`                   |
 
 ### 20.4 Test Title Format
 
@@ -986,6 +1131,7 @@ import { VALID_USER } from "./data/test-users";
 ```
 
 Examples:
+
 - `[AUTH-001] @smoke Login valid — redirect ke halaman utama`
 - `[REG-003] Email sudah terdaftar — tampilkan pesan error spesifik`
 - `[REG-011] Password 300 karakter — lolos semua validasi, registrasi sukses`
@@ -993,6 +1139,7 @@ Examples:
 - `[AUTH-003] Username tidak terdaftar — tampilkan pesan error`
 
 **Rules:**
+
 1. Judul test hanya berisi scenario dan expected behavior — **TIDAK** boleh mengandung status bug.
 2. Jangan tambahkan `(BUG_APP)` atau `(FAIL)` atau status apapun di judul test.
 3. Judul test harus **stabil** — tidak berubah walau bug sudah diperbaiki.
@@ -1000,6 +1147,7 @@ Examples:
 5. Status bug hanya muncul di **assertion failure message**, bukan di judul.
 
 **DILARANG:**
+
 - `[REG-003] Email sudah terdaftar — API 409, UI mismatch toast (BUG_APP)` ❌
 - `[AUTH-002] Password salah — API 401, UI toast mismatch (BUG_APP)` ❌
 - `[REG-007] Username sudah terdaftar — API 409, UI mismatch toast description (BUG_APP)` ❌
@@ -1158,7 +1306,8 @@ test.describe("Module Name", () => {
 test("[ID-002] Field kosong — validasi client-side", async ({ page }) => {
   let apiCallCount = 0;
   page.on("request", (req) => {
-    if (req.url().includes("/endpoint") && req.method() === "POST") apiCallCount++;
+    if (req.url().includes("/endpoint") && req.method() === "POST")
+      apiCallCount++;
   });
 
   await test.step("Mengisi form dengan field kosong", async () => {
@@ -1184,7 +1333,9 @@ test("[ID-002] Field kosong — validasi client-side", async ({ page }) => {
 ```typescript
 import { assertBugApp, assertToastMismatch } from "./helpers/bug-assertions";
 
-test("[ID-003] Data duplikat — tampilkan pesan error spesifik", async ({ page }) => {
+test("[ID-003] Data duplikat — tampilkan pesan error spesifik", async ({
+  page,
+}) => {
   await test.step("Mengisi form dengan data duplikat", async () => {
     await pageObj.fillInput("existing data");
   });
@@ -1206,7 +1357,7 @@ test("[ID-003] Data duplikat — tampilkan pesan error spesifik", async ({ page 
     // === BUG_APP DETECTION ===
     // Bandingkan UI toast dengan API message
     const toastText = await pageObj.toastDescription.textContent();
-    
+
     if (toastText !== response.body.message) {
       // BUG_APP: UI toast ≠ API message — test FAIL dengan pesan jelas
       assertToastMismatch({
@@ -1230,7 +1381,11 @@ test("[ID-005] @error-handling API 500 — error handling", async ({ page }) => 
     await route.fulfill({
       status: 500,
       contentType: "application/json",
-      body: JSON.stringify({ status: false, message: "Internal Server Error", data: null }),
+      body: JSON.stringify({
+        status: false,
+        message: "Internal Server Error",
+        data: null,
+      }),
     });
   });
 
@@ -1314,6 +1469,7 @@ Judul test harus menjelaskan skenario dan expected behavior — **TIDAK** mengan
 ```
 
 Dari judul jelas:
+
 - ID: REG-003
 - Skenario: Email sudah terdaftar
 - Expected Behavior: tampilkan pesan error spesifik
@@ -1356,6 +1512,8 @@ Jangan gunakan format satu baris seperti `BUG_APP: deskripsi` — karena tidak m
 
 ## 25. Refactoring Rules
 
+0. **Jika test sudah PASS, stabil, dan mudah dibaca — JANGAN refactor.** Refactoring hanya diizinkan jika ada BUG_AUTOMATION yang terbukti, atau ada alasan teknis yang jelas dan sudah diverifikasi.
+
 1. **Audit test lama** sebelum memperbaiki — baca seluruh test file, pahami intent setiap test case.
 2. **Hapus test duplikat** — jika dua test menguji hal yang sama, pertahankan satu yang lebih komprehensif.
 3. **Perbaiki assertion salah** — cocokkan assertion dengan dokumentasi API dan UI.
@@ -1391,7 +1549,7 @@ Bug hanya boleh dibuat jika terdapat:
 
 Gunakan template di `docs/qa/BUG_REPORT_TEMPLATE.md`:
 
-```markdown
+````markdown
 # Bug Report
 
 **ID Test:** [MODULE-XXX]
@@ -1401,6 +1559,7 @@ Gunakan template di `docs/qa/BUG_REPORT_TEMPLATE.md`:
 **Klasifikasi:** BUG_APP | BUG_AUTOMATION | BUG_DOCUMENTATION | BUG_TEST_CASE | UNCONFIRMED
 
 **Langkah Reproduksi:**
+
 1. Langkah pertama
 2. Langkah kedua
 3. Langkah ketiga
@@ -1412,6 +1571,7 @@ Apa yang seharusnya terjadi
 Apa yang sebenarnya terjadi
 
 **Response API:**
+
 ```json
 {
   "status": 401,
@@ -1420,14 +1580,17 @@ Apa yang sebenarnya terjadi
   }
 }
 ```
+````
 
 **Bukti:**
+
 - Link ke Playwright HTML Report
 - Screenshot (dari report otomatis)
 
 **Status:**
 Open / Fixed / Retest
-```
+
+````
 
 ### 26.4 BUG_APP MUST FAIL Test (Rule Enforced)
 
@@ -1461,9 +1624,10 @@ Open / Fixed / Retest
 // BUG_APP: API mengembalikan 200 untuk phone "abc"
 // Seharusnya ada validasi format phone
 expect(apiResponseStatus).not.toBe(200); // <- asumsi, padahal test akan PASS karena asumsi salah
-```
+````
 
 **BENAR — assertion berdasarkan requirement:**
+
 ```typescript
 // Requirement: nomor telepon harus divalidasi formatnya
 // API mengembalikan 200 SUCCESS untuk input "abc"
@@ -1472,11 +1636,13 @@ expect(apiResponseStatus).toBe(400); // <- FAIL karena API return 200, bukan 400
 ```
 
 **SALAH — hanya observasi:**
+
 ```typescript
 // observed: toast description menunjukkan "Registration failed" bukan "Email is already registered"
 ```
 
 **BENAR — assertion menyebabkan FAIL:**
+
 ```typescript
 const toastText = await page.getByRole("alert").textContent();
 expect(toastText).toContain(response.body.message);
@@ -1490,11 +1656,13 @@ expect(toastText).toContain(response.body.message);
 ### 27.1 Masalah
 
 Saat ini BUG_APP sering hanya ditampilkan melalui:
+
 - Nama test case yang mengandung `(BUG_APP)`
 - Komentar di source code (`// BUG_APP: ...`)
 - `console.log` / `console.warn`
 
 **Akibatnya:**
+
 - Informasi bug tersebar di judul test (tidak stabil)
 - Assertion failure tidak informatif — hanya menampilkan expected/received tanpa konteks
 - Developer harus membuka source code untuk memahami bug
@@ -1542,6 +1710,7 @@ expect(toastDescription).toHaveText(apiMessage);
 ```
 
 **Playwright Report menampilkan:**
+
 ```
 Expected: "Invalid username or password"
 Received: "Login failed"
@@ -1566,6 +1735,7 @@ if (toastText !== response.body.message) {
 ```
 
 **Playwright Report menampilkan:**
+
 ```
 Error: BUG_APP
 
@@ -1589,14 +1759,14 @@ Setiap baris dalam failure message informatif — developer langsung paham bug t
 
 ### 27.6 DILARANG dalam Implementasi BUG_APP
 
-| Praktik Terlarang | Contoh | Masalah |
-|---|---|---|
-| `(BUG_APP)` di judul test | `[REG-003] ... (BUG_APP)` | Judul tidak stabil |
-| Hanya `expect().toHaveText()` | `expect(toast).toHaveText(apiMsg)` | Failure message tidak informatif |
-| Komentar saja | `// BUG_APP: toast mismatch` | Tidak terlihat di report |
-| `console.log` / `console.warn` | `console.warn("BUG_APP: ...")` | Tidak terlihat di report |
-| `expect.soft` | `expect.soft(toast).toHaveText()` | Test tetap PASS |
-| `test.skip` | `test.skip("BUG_APP")` | Bug disembunyikan |
+| Praktik Terlarang              | Contoh                             | Masalah                          |
+| ------------------------------ | ---------------------------------- | -------------------------------- |
+| `(BUG_APP)` di judul test      | `[REG-003] ... (BUG_APP)`          | Judul tidak stabil               |
+| Hanya `expect().toHaveText()`  | `expect(toast).toHaveText(apiMsg)` | Failure message tidak informatif |
+| Komentar saja                  | `// BUG_APP: toast mismatch`       | Tidak terlihat di report         |
+| `console.log` / `console.warn` | `console.warn("BUG_APP: ...")`     | Tidak terlihat di report         |
+| `expect.soft`                  | `expect.soft(toast).toHaveText()`  | Test tetap PASS                  |
+| `test.skip`                    | `test.skip("BUG_APP")`             | Bug disembunyikan                |
 
 ### 27.7 WAJIB dalam Implementasi BUG_APP
 
@@ -1620,6 +1790,7 @@ test("[REG-003] Email sudah terdaftar — API 409, UI mismatch toast (BUG_APP)",
 ```
 
 **Keuntungan judul stabil:**
+
 - Jika bug diperbaiki → test PASS tanpa perlu rename
 - Judul tetap relevan sepanjang waktu
 - Tidak misleading di CI/CD pipeline
@@ -1758,60 +1929,63 @@ expect(res.status).not.toBe(200);
 
 ```typescript
 // Inputs (label-based — VERIFY against actual DOM first)
-page.getByRole("textbox", { name: "Username" })
-page.getByRole("textbox", { name: "Password", exact: true })
-page.getByRole("textbox", { name: "Email", exact: true })
-page.getByRole("textbox", { name: "Full Name" })
-page.getByRole("textbox", { name: "Phone Number" })
-page.getByRole("textbox", { name: "Confirm Password" })
+page.getByRole("textbox", { name: "Username" });
+page.getByRole("textbox", { name: "Password", exact: true });
+page.getByRole("textbox", { name: "Email", exact: true });
+page.getByRole("textbox", { name: "Full Name" });
+page.getByRole("textbox", { name: "Phone Number" });
+page.getByRole("textbox", { name: "Confirm Password" });
 
 // Buttons
-page.getByRole("button", { name: "Login", exact: true })
-page.getByRole("button", { name: "Register" })
-page.getByRole("button", { name: /send/i })
+page.getByRole("button", { name: "Login", exact: true });
+page.getByRole("button", { name: "Register" });
+page.getByRole("button", { name: /send/i });
 
 // Links
-page.getByRole("link", { name: "Forgot Password?" })
-page.getByRole("link", { name: "Register" })
-page.getByRole("link", { name: "Login" })
+page.getByRole("link", { name: "Forgot Password?" });
+page.getByRole("link", { name: "Register" });
+page.getByRole("link", { name: "Login" });
 
 // Show/Hide password toggle
-page.getByRole("button", { name: "Show password" })
-page.getByRole("button", { name: "Hide password" })
+page.getByRole("button", { name: "Show password" });
+page.getByRole("button", { name: "Hide password" });
 
 // Error texts (Zod validation messages — VERIFY against actual DOM)
-page.getByText("Username is required")
-page.getByText("Password is required")
-page.getByText("Full name is required")
-page.getByText("Email is required")
-page.getByText("Phone number is required")
-page.getByText("Username must be at least 4 characters")
-page.getByText("Please enter a valid email address")
-page.getByText("Password must be at least 8 characters")
-page.getByText("Please confirm your password")
-page.getByText("Passwords do not match")
+page.getByText("Username is required");
+page.getByText("Password is required");
+page.getByText("Full name is required");
+page.getByText("Email is required");
+page.getByText("Phone number is required");
+page.getByText("Username must be at least 4 characters");
+page.getByText("Please enter a valid email address");
+page.getByText("Password must be at least 8 characters");
+page.getByText("Please confirm your password");
+page.getByText("Passwords do not match");
 
 // Toast / Notification (Nuxt UI data attributes)
-page.locator('[data-slot="title"]').filter({ hasText: "..." })         // toast title
-page.locator('[data-slot="description"]')                               // toast description
-page.getByRole("alert").filter({ hasText: /pattern/i })                 // whole alert
+page.locator('[data-slot="title"]').filter({ hasText: "..." }); // toast title
+page.locator('[data-slot="description"]'); // toast description
+page.getByRole("alert").filter({ hasText: /pattern/i }); // whole alert
 ```
 
 ### 29.3 Known Project State
 
 **Login Module (current):**
+
 - `tests/login.spec.ts` — 10 tests total
 - **8 PASS** — client-side validation, happy path, UI features
 - **2 FAIL (BUG_APP)** — UI toast "Login failed" ≠ API "Invalid username or password"
 - BUG_APP tests: AUTH-002, AUTH-003
 
 **Register Module (current):**
+
 - `tests/register.spec.ts` — 25 tests total
 - **19 PASS** — client-side validation, happy path, error handling
 - **6 FAIL (BUG_APP)** — UI toast "Registration failed" ≠ API specific message
 - BUG_APP tests: REG-003, REG-007, REG-017, REG-019, REG-022, REG-025
 
 **Known Observations:**
+
 - **Password has no maxlength** — no `maxlength` attribute, no Zod rule, no server validation. 300-char password registers successfully (200).
 - **Toast vs API mismatch** — UI always shows generic message for errors:
   - Login: "Login failed" instead of "Invalid username or password"
@@ -1850,36 +2024,37 @@ Without a clear basis → **UNCONFIRMED**, not BUG_APP.
 
 ### 29.6 RULE: OBSERVATION IS NOT A BUG
 
-| Observasi (bukan bug)                                         | Alasan                                           |
-| ------------------------------------------------------------- | ------------------------------------------------ |
-| "Button tidak disabled saat loading"                          | Tidak ada requirement tentang disabled state     |
-| "Loading terlalu lama"                                        | Tidak ada SLA atau requirement performa           |
-| "Toast muncul terlalu cepat"                                  | Tidak ada requirement tentang durasi toast        |
-| "Field harus punya maxlength=255"                             | Tidak ada requirement tentang maxlength          |
+| Observasi (bukan bug)                | Alasan                                       |
+| ------------------------------------ | -------------------------------------------- |
+| "Button tidak disabled saat loading" | Tidak ada requirement tentang disabled state |
+| "Loading terlalu lama"               | Tidak ada SLA atau requirement performa      |
+| "Toast muncul terlalu cepat"         | Tidak ada requirement tentang durasi toast   |
+| "Field harus punya maxlength=255"    | Tidak ada requirement tentang maxlength      |
 
-| BUKAN Observasi (bisa BUG_APP)                                | Alasan                                           |
-| ------------------------------------------------------------- | ------------------------------------------------ |
-| API return 200 untuk input invalid                            | API contract menyebut harus return 400           |
-| Toast tidak muncul setelah error                              | Dokumentasi menyebut ada feedback untuk error    |
-| Field tidak ada validasi required                             | Test case menyebut field wajib diisi             |
-| Redirect tidak terjadi setelah success                        | Dokumentasi menyebut redirect ke halaman login   |
+| BUKAN Observasi (bisa BUG_APP)         | Alasan                                         |
+| -------------------------------------- | ---------------------------------------------- |
+| API return 200 untuk input invalid     | API contract menyebut harus return 400         |
+| Toast tidak muncul setelah error       | Dokumentasi menyebut ada feedback untuk error  |
+| Field tidak ada validasi required      | Test case menyebut field wajib diisi           |
+| Redirect tidak terjadi setelah success | Dokumentasi menyebut redirect ke halaman login |
 
 ### 29.7 RULE: API vs UI CONSISTENCY
 
 Untuk seluruh **negative test** (validasi error, duplicate, invalid input):
 
-| Verifikasi          | Metode                                                |
-| ------------------- | ----------------------------------------------------- |
-| HTTP Status         | `expect(response.status()).toBe(400)`                 |
-| Response Body       | `expect(body.status).toBe(false)`                     |
-| API Message         | `expect(body.message).toBeDefined()`                  |
-| UI Message          | Bandingkan toast/notifikasi dengan API message        |
+| Verifikasi    | Metode                                         |
+| ------------- | ---------------------------------------------- |
+| HTTP Status   | `expect(response.status()).toBe(400)`          |
+| Response Body | `expect(body.status).toBe(false)`              |
+| API Message   | `expect(body.message).toBeDefined()`           |
+| UI Message    | Bandingkan toast/notifikasi dengan API message |
 
 Jika API message berbeda dengan UI message → **classification: BUG_APP** → assertion FAIL.
 
 ### 29.8 RULE: PLAYWRIGHT REPORT DRIVEN QA
 
 Semua BUG_APP harus menghasilkan bukti otomatis di Playwright HTML Report:
+
 - ✅ BUG_APP terlihat **merah** di HTML Report
 - ✅ Bug tidak tersembunyi di komentar/console
 - ✅ Screenshot otomatis tersedia
@@ -1909,24 +2084,26 @@ export function assertToastMismatch(params: {
   apiMessage: string;
   toastMessage: string;
 }): never {
-  throw new Error([
-    "BUG_APP",
-    "",
-    `Test Case: ${params.testCaseId}`,
-    "",
-    "Expected (API Contract):",
-    `  Toast should display: "${params.apiMessage}"`,
-    "",
-    "Actual (UI):",
-    `  Toast displays: "${params.toastMessage}"`,
-    "",
-    `API Status: ${params.apiStatus}`,
-    `API Message: ${params.apiMessage}`,
-    `UI Toast: ${params.toastMessage}`,
-    "",
-    "UI toast tidak konsisten dengan API response.",
-    "Test FAIL karena UI menampilkan pesan generik, bukan spesifik dari API.",
-  ].join("\n"));
+  throw new Error(
+    [
+      "BUG_APP",
+      "",
+      `Test Case: ${params.testCaseId}`,
+      "",
+      "Expected (API Contract):",
+      `  Toast should display: "${params.apiMessage}"`,
+      "",
+      "Actual (UI):",
+      `  Toast displays: "${params.toastMessage}"`,
+      "",
+      `API Status: ${params.apiStatus}`,
+      `API Message: ${params.apiMessage}`,
+      `UI Toast: ${params.toastMessage}`,
+      "",
+      "UI toast tidak konsisten dengan API response.",
+      "Test FAIL karena UI menampilkan pesan generik, bukan spesifik dari API.",
+    ].join("\n"),
+  );
 }
 ```
 
@@ -1948,11 +2125,7 @@ export function assertBugApp(params: {
   apiMessage?: string;
   uiMessage?: string;
 }): never {
-  const lines: string[] = [
-    "BUG_APP",
-    "",
-    `Test Case: ${params.testCaseId}`,
-  ];
+  const lines: string[] = ["BUG_APP", "", `Test Case: ${params.testCaseId}`];
 
   if (params.description) {
     lines.push(`Description: ${params.description}`);
@@ -2027,4 +2200,136 @@ assertBugApp({
 
 ---
 
-*End of Playwright Engineer Agent rules (29 sections, 2026-06-17)*
+## 30. Test Structure Rules
+
+Gunakan struktur folder berikut sebagai standar project:
+
+```
+tests/
+├── auth/
+├── catalog/
+├── product-detail/
+├── home/
+├── cart/
+├── checkout/
+├── transaction/
+├── profile/
+├── pc-builder/
+├── chatbot/
+└── smoke/
+```
+
+### 30.1 Module Folder Rules
+
+1. **Setiap module memiliki folder sendiri** di `tests/` — sesuai daftar di atas.
+2. **File test** ditempatkan di folder root module (e.g., `tests/auth/login.spec.ts`).
+3. **Page Object** ditempatkan di `pages/` dalam folder module (e.g., `tests/auth/pages/LoginPage.ts`).
+4. **Test data spesifik module** ditempatkan di `data/` dalam folder module (e.g., `tests/auth/data/test-data.ts`).
+5. **Test data lintas-module** ditempatkan di `tests/data/` (e.g., `tests/data/auth-test-data.ts`).
+6. **Helpers dan utilities** ditempatkan di `tests/helpers/`.
+
+### 30.2 Module Creation Rules
+
+Saat membuat module baru:
+
+1. Buat folder module sesuai daftar di atas — jangan letakkan test file di root `tests/` jika module sudah memiliki folder sendiri.
+2. Buat Page Object di `pages/` milik module tersebut.
+3. Gunakan prefix test ID sesuai [Section 20.3](#203-test-id-naming-convention).
+4. Update `docs/testcases/` dengan test case specification untuk module baru.
+5. Update dokumentasi module di `docs/` jika diperlukan.
+
+### 30.3 File Location Conventions
+
+| Tipe File        | Lokasi                               | Contoh                            |
+| ---------------- | ------------------------------------ | --------------------------------- |
+| Test spec        | `tests/<module>/<name>.spec.ts`      | `tests/auth/login.spec.ts`        |
+| Page Object      | `tests/<module>/pages/<Name>Page.ts` | `tests/auth/pages/LoginPage.ts`   |
+| Module test data | `tests/<module>/data/test-data.ts`   | `tests/auth/data/test-data.ts`    |
+| Shared test data | `tests/data/<name>.ts`               | `tests/data/auth-test-data.ts`    |
+| Helpers          | `tests/helpers/<name>.ts`            | `tests/helpers/bug-assertions.ts` |
+| Smoke tests      | `tests/smoke/<name>.spec.ts`         | `tests/smoke/login.spec.ts`       |
+
+### 30.4 Refactoring to Module Structure
+
+Saat memindahkan test ke struktur module yang baru:
+
+1. Pertahankan seluruh test case — jangan hapus.
+2. Pertahankan test ID (AUTH-XXX, REG-XXX, DSC-XXX, dll).
+3. Perbarui import path di spec file untuk mengarah ke lokasi baru.
+4. Pastikan Page Object imports masih valid.
+5. Jalankan semua test setelah selesai — pastikan coverage sama.
+
+---
+
+## 31. Refactor Safety Rules
+
+### 31.1 DILARANG
+
+Melakukan hal-hal berikut selama refactoring:
+
+| Praktik Terlarang             | Contoh                                      | Akibat                                   |
+| ----------------------------- | ------------------------------------------- | ---------------------------------------- |
+| Menghapus test case yang ada  | Hapus `test(...)` block                     | Coverage berkurang, bug tidak terdeteksi |
+| Menghapus `test.step()`       | Gabung step tanpa alasan                    | Test jadi kurang readable                |
+| Menghapus assertion           | Hapus `expect(...)`                         | Coverage berkurang, false PASS           |
+| Menghapus flow testing        | Skip bagian penting scenario                | Skenario tidak lengkap                   |
+| Memindahkan file tanpa alasan | Pindah file "karena lebih rapi"             | Mengganggu traceability, susah review    |
+| Mengubah test ID              | `AUTH-001` → `AUTH-XXX`                     | Traceability hilang                      |
+| Mengubah expected result      | Ganti `toBe(200)` → `toBe(201)` tanpa bukti | Validasi jadi salah                      |
+
+### 31.2 WAJIB
+
+1. **Mempertahankan coverage yang sudah ada** — setiap test case harus tetap menguji hal yang sama.
+2. **Mempertahankan seluruh langkah test yang masih relevan** — jangan kurangi steps.
+3. **Mempertahankan traceability test case** — test ID, nama modul, dan dokumentasi harus sinkron.
+4. **Menjelaskan alasan sebelum melakukan refactor** — tulis alasan perubahan, bukan hanya "lebih bersih".
+
+### 31.3 Prioritas Utama
+
+```
+Coverage > Stability > Readability > Refactor > Abstraction
+```
+
+1. **Coverage** — Tidak ada test case yang boleh hilang. BUG_APP detection harus tetap ada.
+2. **Stability** — Test harus tetap passing (kecuali BUG_APP yang sengaja FAIL). Jangan ubah test yang sudah stabil.
+3. **Readability** — Kode mudah dibaca dan dipahami.
+4. **Refactor** — Perubahan struktur hanya dilakukan jika ada manfaat jelas.
+5. **Abstraction** — Abstraction adalah prioritas terendah. Jangan buat helper/utility baru jika test sudah jelas dan mudah dibaca.
+
+Jika refactoring mengurangi coverage atau stabilitas → batalkan refactoring.
+
+### 31.4 Refactor Workflow
+
+1. **Audit** — Baca seluruh file yang akan diubah. Pahami intent setiap test case.
+2. **Rencanakan** — Tentukan apa yang berubah dan apa yang tetap.
+3. **Jalankan test sebelum refactor** — Catat baseline hasil test.
+4. **Refactor** — Lakukan perubahan satu per satu (satu file per commit).
+5. **Jalankan test setelah refactor** — Bandingkan dengan baseline.
+6. **Verifikasi** — Pastikan coverage sama: jumlah test, jumlah PASS, jumlah FAIL (BUG_APP).
+7. **Dokumentasikan** — Catat perubahan dan alasan di commit message.
+
+### 31.5 Jangan Mengubah Behavior Agent Lain
+
+Refactoring hanya berlaku untuk test code dan agent `playwright-engineer`. Jangan:
+
+- Mengubah agent `playwright-tester` atau agent lainnya.
+- Menambahkan aturan ke agent lain tanpa persetujuan eksplisit.
+- Mengubah konfigurasi agent lain di `.opencode/agents/`.
+
+### 31.6 Protected Components — Jangan Diubah pada Test Stabil
+
+Komponen berikut WAJIB dipertahankan jika test sudah PASS dan stabil:
+
+| Component | Contoh | DILARANG |
+|-----------|--------|----------|
+| **Assertion** | `expect(apiCallCount).toBe(0)`, `expect(status).toBe(200)` | Mengubah expected value, mengganti assertion logic, mengganti `toBe` dengan `toEqual` tanpa alasan |
+| **Request listener** | `page.on("request", handler)` untuk deteksi duplicate request | Mengganti listener dengan method abstraction (`pageObject.hasNoApiCall()`) |
+| **Event listener** | `page.on("response", ...)`, `page.on("console", ...)`, `page.on("pageerror", ...)` | Menghapus listener, menggabungkan listener, atau memindahkan listener ke Page Object |
+| **test.step** | `await test.step("...", async () => { ... })` | Menghapus step, menggabungkan step, mengubah nama/narasi step tanpa alasan |
+| **Flow test** | Urutan: fill → click → waitForResponse → assert | Mengubah urutan langkah yang sudah valid |
+
+**Alasan:** Test stabil sudah terverifikasi. Setiap perubahan pada komponen di atas berisiko menyebabkan regresi atau false PASS tanpa manfaat yang sebanding.
+
+---
+
+_End of Playwright Engineer Agent rules (31 sections, 2026-06-18)_
